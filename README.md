@@ -2,6 +2,6 @@
 :)
 * Co-operation
 * Motivation
-* Prespect
+* Respect
 * Support
 * Commitment
