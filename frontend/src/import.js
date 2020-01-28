@@ -1,7 +1,6 @@
 var express = require('express');
 var mysql = require('mysql');
 
-
 const con = mysql.createConnection({
 	host: "urbelis.dev",
 	user: "adminrootusername",
