@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Card from './Card'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 
 class ProcedureList extends Component {
 
@@ -12,8 +12,8 @@ class ProcedureList extends Component {
 
 }
 
-ProcedureList.propTypes = {
-  cards: PropTypes.array.isRequired
-}
+// ProcedureList.propTypes = {
+//   cards: PropTypes.array.isRequired
+// }
 
 export default ProcedureList;

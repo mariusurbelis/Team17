@@ -2,7 +2,7 @@ import React from 'react';
 import { Nav, Navbar, NavbarBrand } from 'react-bootstrap';
 
 import styled from 'styled-components';
-import { Switch } from 'react-router-dom';
+// import { Switch } from 'react-router-dom';
 
 const Styles = styled.div`
     .navbar {

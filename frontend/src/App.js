@@ -12,6 +12,17 @@ import { NavigationBar } from './components/NavigationBar';
 
 import ProcedureList from './components/ProcedureList';
 
+
+fetch('http://http://localhost:3001/procedure', {
+  mode: 'no-cors'
+})
+  .then((response) => {
+    return response;
+  })
+  .then((myJson) => {
+    console.log(myJson);
+  });
+
 class App extends Component {
 
   state = {
@@ -54,7 +65,7 @@ class App extends Component {
       }
     ]
   }
-
+  
   render(){
     return(
       <React.Fragment>
