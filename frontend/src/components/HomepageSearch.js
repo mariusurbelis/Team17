@@ -4,8 +4,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import styled from 'styled-components';
 
-import City from './assets/city.png';
-
 const Styles = styled.div`
     .homeHeading{
         padding-top : 25%;
@@ -28,7 +26,7 @@ export const HomepageSearch = () =>(
     <Styles>
         <Row>
             <Col><h1 class = "homeHeading">A smarter way to find affordable healthcare</h1></Col>
-            <Col><Image src={City} align="right"/></Col>
+            <Col></Col>
         </Row>
     </Styles>
 )
