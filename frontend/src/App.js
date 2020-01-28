@@ -10,13 +10,13 @@ import { NoMatch } from './NoMatch';
 import { ColorLayout } from './components/ColorLayout';
 import { NavigationBar } from './components/NavigationBar';
 
-import Flashcard from './components/Procedures';
+import ProcedureList from './components/ProcedureList';
 
 
 class App extends Component{
 
   state = {
-    flashcards: [
+    procedures: [
       {
         id: 1,
         english: 'Inner Forearm',
@@ -73,7 +73,7 @@ class App extends Component{
             </Router>
           </ColorLayout>
           
-          <Flashcard flashcards = {this.state.flashcards} flipCard = {this.flipCard} />
+          <ProcedureList procedures = {this.state.procedures} />
 
       </React.Fragment>
     );

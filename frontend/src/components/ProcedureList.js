@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import Card from './Card'
 import PropTypes from 'prop-types'
 
-class Flashcard extends Component {
+class ProcedureList extends Component {
 
   render() {
-    return this.props.flashcards.map((card) => (
+    return this.props.procedures.map((card) => (
       <Card key={card.id} card={card} />
     ));
   }
 
 }
 
-Flashcard.propTypes = {
+ProcedureList.propTypes = {
   cards: PropTypes.array.isRequired
 }
 
-export default Flashcard;
+export default ProcedureList;
