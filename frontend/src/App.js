@@ -13,14 +13,25 @@ import { NavigationBar } from './components/NavigationBar';
 import ProcedureList from './components/ProcedureList';
 
 
-fetch('http://http://localhost:3001/procedure', {
-  mode: 'no-cors'
-})
-  .then((response) => {
-    return response;
-  })
-  .then((myJson) => {
-    console.log(myJson);
+// fetch('http://localhost:3001/product', {headers: {'Access-Control-Allow-Origin': '*'}})
+//   .then((response) => {
+//     return response.json();
+//   })
+//   .then((myJson) => {
+//     console.log(myJson);
+//   });
+
+  const options = {
+      method: 'GET',
+      mode: 'no-cors'
+  };
+
+  // options.body = JSON.stringify(body);
+
+  fetch('http://127.0.0.1:3001/product', options).then(function(response) {
+    response.text().then(function(text) {
+      console.log(text);
+    });
   });
 
 class App extends Component {
