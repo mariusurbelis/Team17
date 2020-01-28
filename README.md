@@ -1,7 +1,1 @@
-# Team17
-:)
-* Co-operation
-* Motivation
-* Respect
-* Support
-* Commitment
+# The frontend development branch
