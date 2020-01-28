@@ -6,12 +6,15 @@ import { Switch } from 'react-router-dom';
 
 const Styles = styled.div`
     .navbar {
-        
+        font-size: 20px;
+    }
+
+    .navbar-brand{
+        font-size: 30px;
     }
 
     .navbar-brand, .navbar-nav .nav-link {
         color: white;
-
         &:hover {
             color: white;
         }

@@ -13,6 +13,8 @@ import { Version } from './components/Version';
 import { ColorLayout } from './components/ColorLayout';
 import { NavigationBar } from './components/NavigationBar';
 import { HomepageSearch } from './components/HomepageSearch';
+import { LowerLayout } from './components/LowerLayout';
+import { Footer } from './components/Footer';
 
 class App extends Component{
   render(){
@@ -33,9 +35,13 @@ class App extends Component{
           </ColorLayout>
           <Version>
           </Version>
-
-          <HomepageSearch>
-          </HomepageSearch>
+          <LowerLayout>
+            <HomepageSearch>
+              
+            </HomepageSearch>
+          </LowerLayout>
+        <Footer>
+        </Footer>
       </React.Fragment>
     );
   }

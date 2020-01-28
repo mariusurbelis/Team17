@@ -7,7 +7,7 @@ import styled from 'styled-components';
 const Styles = styled.div`
     .homeHeading{
         padding-top : 25%;
-        color: white;
+        color: grey;
     }
 
     .headingRow{
@@ -25,7 +25,14 @@ const Styles = styled.div`
 export const HomepageSearch = () =>(
     <Styles>
         <Row>
-            <Col><h1 class = "homeHeading">A smarter way to find affordable healthcare</h1></Col>
+            <Col>
+                <h1 class = "homeHeading">Start Saving Money Today</h1>
+                <p>Using our super advanced AI search tools that are absolutly
+                    not a bunch of IF statements, we can help you find the best
+                    price for the healthcare you require. Simply enter your location
+                    and the name/code of the procedure and hit search.
+                </p>
+            </Col>
             <Col></Col>
         </Row>
     </Styles>
