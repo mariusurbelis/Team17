@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { Home } from './Home';
-import { Hospitals } from './Hospitals';
+// import { Hospitals } from './Hospitals';
 import { Procedures } from './Procedures';
 import { About } from './About';
 import { NoMatch } from './NoMatch';
@@ -11,27 +11,6 @@ import { ColorLayout } from './components/ColorLayout';
 import { NavigationBar } from './components/NavigationBar';
 
 import ProcedureList from './components/ProcedureList';
-
-
-var express = require('express');
-var mysql = require('mysql');
-
-const con = mysql.createConnection({
-	host: "urbelis.dev",
-	user: "adminrootusername",
-	password: "adminrootpassword",
-	database: "agile"
-});
-
-con.connect(function(err) {
-	if (err) throw err;
-	console.log("connected!")
-
-	con.query("SELECT * FROM GPD", function (err, result, fields) {
-    if (err) throw err;
-    console.log(result);
-  	});
-});
 
 class App extends Component {
 
@@ -85,7 +64,7 @@ class App extends Component {
             <Router>
               <Switch>
                 <Route exact path = "/" component = {Home}/>
-                <Route path = "/hospitals" component = {Hospitals}/>
+                {/* <Route path = "/hospitals" component = {Hospitals}/> */}
                 <Route path = "/procedures" component = {Procedures}/>
                 <Route path = "/about" component = {About}/>
                 <Route component = {NoMatch}/>
