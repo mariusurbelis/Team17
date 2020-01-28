@@ -24,7 +24,7 @@ const Styles = styled.div`
     }
 `;
 
-export const Home = () =>(
+export const HomepageSearch = () =>(
     <Styles>
         <Row>
             <Col><h1 class = "homeHeading">A smarter way to find affordable healthcare</h1></Col>
