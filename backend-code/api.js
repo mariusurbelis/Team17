@@ -4,6 +4,7 @@ var app = express();
 var mysql      = require('mysql');
 var bodyParser = require('body-parser');
 
+
 //start mysql connection
 var connection = mysql.createConnection({
   host     : 'urbelis.dev', //mysql database host name
@@ -26,7 +27,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 //end body-parser configuration
 
 //create app server
-var server = app.listen(3001,  "127.0.0.1", function () {
+var server = app.listen(3001,  "localhost", function () {
 
   var host = server.address().address
   var port = server.address().port
@@ -39,6 +40,7 @@ var server = app.listen(3001,  "127.0.0.1", function () {
 app.get('/procedure', function (req, res) {
     connection.query('select * from GPD', function (error, results, fields) {
        if (error) throw error;
+       console.log('Data sent');
        res.end(JSON.stringify(results));
     });
 });
