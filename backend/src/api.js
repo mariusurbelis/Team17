@@ -1,8 +1,15 @@
 var http = require("http");
+var cors = require('cors');
 var express = require('express');
 var app = express();
 var mysql      = require('mysql');
 var bodyParser = require('body-parser');
+
+
+var corsOptions = {
+  origin: 'https://agile.urbelis.dev',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
 //start mysql connection
 var connection = mysql.createConnection({
@@ -30,7 +37,7 @@ var server = app.listen(3000,  function () {
 });
 
 //rest api to get all procedures
-app.get('/procedure', function (req, res) {
+app.get('/procedure', cors(corsOptions), function (req, res) {
     connection.query('select * from GPD', function (error, results, fields) {
        if (error) throw error;
        res.end(JSON.stringify(results));

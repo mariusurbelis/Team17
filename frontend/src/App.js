@@ -13,14 +13,29 @@ import { NavigationBar } from './components/NavigationBar';
 import ProcedureList from './components/ProcedureList';
 
 
-fetch('https://api.urbelis.dev/procedure', {mode: 'no-cors', method: 'GET'})
-  .then((response) => {
-    // return response.json();
-    return response.text();
-  })
-  .then((myJson) => {
-    console.log(myJson);
-  });
+// fetch('https://api.urbelis.dev/procedure', {mode: 'no-cors', method: 'GET'})
+//   .then((response) => {
+//     // return response.json();
+//     return response.text();
+//   })
+//   .then((myJson) => {
+//     console.log(myJson);
+//   });
+
+fetch('https://api.urbelis.dev/', {
+  // mode: 'no-cors',
+  method: 'GET',
+  headers: {
+    Accept: 'application/json',
+  },
+},
+).then(response => {
+  if (response.ok) {
+    response.json().then(json => {
+      console.log(json);
+    });
+  }
+});
 
 class App extends Component {
 
