@@ -5,12 +5,6 @@ var app = express();
 var mysql      = require('mysql');
 var bodyParser = require('body-parser');
 
-
-var corsOptions = {
-  origin: 'https://agile.urbelis.dev',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
-
 //start mysql connection
 var connection = mysql.createConnection({
   host     : 'urbelis.dev', //mysql database host name
@@ -30,6 +24,11 @@ app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 //end body-parser configuration
 
 //create app server
@@ -37,9 +36,7 @@ var server = app.listen(3000,  function () {
 });
 
 //rest api to get all procedures
-app.get('/procedure', cors(corsOptions), function (req, res) {
-    res.header('Access-Control-Allow-Origin', "*");
-    res.header('Access-Control-Allow-Headers', "*");
+app.get('/procedure', function (req, res) {
     connection.query('select * from GPD', function (error, results, fields) {
        if (error) throw error;
        res.end(JSON.stringify(results));
