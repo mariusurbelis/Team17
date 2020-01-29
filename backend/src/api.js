@@ -63,6 +63,14 @@ app.get('/procedure', function (req, res) {
     });
 });
 
+//rest api to get all payments
+app.get('/payments', function (req, res) {
+  connection.query('select * from payments', function (error, results, fields) {
+     if (error) throw error;
+     res.end(JSON.stringify(results));
+  });
+});
+
 // EXAMPLES BELOW
 
 /*
