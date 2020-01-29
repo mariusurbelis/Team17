@@ -13,21 +13,13 @@ import { NavigationBar } from './components/NavigationBar';
 import ProcedureList from './components/ProcedureList';
 
 
-// fetch('http://localhost:3001/product', {headers: {'Access-Control-Allow-Origin': '*'}})
-//   .then((response) => {
-//     return response.json();
-//   })
-//   .then((myJson) => {
-//     console.log(myJson);
-//   });
-
-  fetch('https://api.urbelis.dev/procedure', {
-    method: 'GET',
-    mode: 'no-cors'
-  }).then(function(response) {
-    response.text().then(function(text) {
-      console.log(text);
-    });
+// fetch('https://api.urbelis.dev/procedure', {mode: 'no-cors'})
+fetch('http://agile-api/procedure', {mode: 'no-cors'})
+  .then((response) => {
+    return response.json();
+  })
+  .then((myJson) => {
+    console.log(myJson);
   });
 
 class App extends Component {
