@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+// These are for page navigation
 import { Home } from './Home';
 // import { Hospitals } from './Hospitals';
 import { Procedures } from './Procedures';
 import { About } from './About';
 import { NoMatch } from './NoMatch';
 
+// These are for each ui component
+import { Version } from './components/Version';
 import { ColorLayout } from './components/ColorLayout';
 import { NavigationBar } from './components/NavigationBar';
+import { HomepageSearch } from './components/HomepageSearch';
+import { LowerLayout } from './components/LowerLayout';
+import { Footer } from './components/Footer';
 
 import ProcedureList from './components/ProcedureList';
 
@@ -66,6 +72,15 @@ class App extends Component {
           <div style={{'height': '60vh'}} className={'container overflow-auto'}>
             <ProcedureList procedures = {this.state.procedures} />
           </div>
+          <Version>
+          </Version>
+          <LowerLayout>
+            <HomepageSearch>
+              
+            </HomepageSearch>
+          </LowerLayout>
+        <Footer>
+        </Footer>
       </React.Fragment>
     );
   }
