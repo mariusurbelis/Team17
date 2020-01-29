@@ -13,10 +13,10 @@ import { NavigationBar } from './components/NavigationBar';
 import ProcedureList from './components/ProcedureList';
 
 
-// fetch('https://api.urbelis.dev/procedure', {mode: 'no-cors'})
-fetch('https://api.urbelis.dev/', {mode: 'no-cors'})
+fetch('https://api.urbelis.dev/procedure', {mode: 'no-cors'})
   .then((response) => {
-    return response.json();
+    // return response.json();
+    return response.text();
   })
   .then((myJson) => {
     console.log(myJson);
