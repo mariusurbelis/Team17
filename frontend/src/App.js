@@ -23,13 +23,10 @@ import ProcedureList from './components/ProcedureList';
 //   });
 
 fetch('https://api.urbelis.dev/', {
-  // mode: 'no-cors',
+  mode: 'cors',
   method: 'GET',
-  headers: {
-    Accept: 'application/json',
-  },
-},
-).then(response => {
+  headers: {Accept: 'application/json'},
+},).then(response => {
   if (response.ok) {
     response.json().then(json => {
       console.log(json);

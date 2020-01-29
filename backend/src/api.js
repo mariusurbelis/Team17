@@ -38,6 +38,8 @@ var server = app.listen(3000,  function () {
 
 //rest api to get all procedures
 app.get('/procedure', cors(corsOptions), function (req, res) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Headers', "*");
     connection.query('select * from GPD', function (error, results, fields) {
        if (error) throw error;
        res.end(JSON.stringify(results));
