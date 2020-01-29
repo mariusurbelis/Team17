@@ -1,24 +1,27 @@
 var http = require("http");
 var cors = require('cors');
 var express = require('express');
-var app = express();
 var mysql      = require('mysql');
 var bodyParser = require('body-parser');
 
-// Set up a whitelist and check against it:
-var whitelist = ['httpa://agile.urbelis.dev', 'http://localhost:3000']
-var corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
+var app = express();
 
-// Then pass them to cors:
-app.use(cors(corsOptions));
+app.use(cors());
+
+// // Set up a whitelist and check against it:
+// var whitelist = ['httpa://agile.urbelis.dev', 'http://localhost:3000']
+// var corsOptions = {
+//   origin: function (origin, callback) {
+//     if (whitelist.indexOf(origin) !== -1) {
+//       callback(null, true)
+//     } else {
+//       callback(new Error('Not allowed by CORS'))
+//     }
+//   }
+// }
+
+// // Then pass them to cors:
+// app.use(cors(corsOptions));
 
 //start mysql connection
 var connection = mysql.createConnection({
