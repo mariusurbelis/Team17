@@ -22,7 +22,7 @@ import ProcedureList from './components/ProcedureList';
 //     console.log(myJson);
 //   });
 
-fetch('https://api.urbelis.dev/', {
+fetch('https://api.urbelis.dev/procedure', {
   mode: 'cors',
   method: 'GET',
   headers:{
