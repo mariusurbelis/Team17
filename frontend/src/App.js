@@ -25,8 +25,9 @@ import ProcedureList from './components/ProcedureList';
 fetch('https://api.urbelis.dev/', {
   mode: 'cors',
   method: 'GET',
-  headers: {Accept: 'application/json'},
-},).then(response => {
+  headers:{
+    'Access-Control-Allow-Origin':'*'
+  },},).then(response => {
   if (response.ok) {
     response.json().then(json => {
       console.log(json);
