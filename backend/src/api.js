@@ -65,7 +65,15 @@ app.get('/procedure', function (req, res) {
 
 //rest api to get all payments
 app.get('/payments', function (req, res) {
-  connection.query('select * from payments', function (error, results, fields) {
+  connection.query('select * from Payments WHERE ID BETWEEN 1 AND 100', function (error, results, fields) {
+     if (error) throw error;
+     res.end(JSON.stringify(results));
+  });
+});
+
+//rest api to get all providers
+app.get('/providers', function (req, res) {
+  connection.query('select * from Providers', function (error, results, fields) {
      if (error) throw error;
      res.end(JSON.stringify(results));
   });
