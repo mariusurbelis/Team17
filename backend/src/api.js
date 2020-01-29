@@ -5,8 +5,6 @@ var app = express();
 var mysql      = require('mysql');
 var bodyParser = require('body-parser');
 
-app.use(cors());
-
 // Set up a whitelist and check against it:
 var whitelist = ['httpa://agile.urbelis.dev', 'http://localhost:3000']
 var corsOptions = {
@@ -41,6 +39,8 @@ app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
+
+// CORS
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
