@@ -21,14 +21,10 @@ import ProcedureList from './components/ProcedureList';
 //     console.log(myJson);
 //   });
 
-  const options = {
-      method: 'GET',
-      mode: 'no-cors'
-  };
-
-  // options.body = JSON.stringify(body);
-
-  fetch('http://127.0.0.1:3001/product', options).then(function(response) {
+  fetch('https://api.urbelis.dev/procedure', {
+    method: 'GET',
+    mode: 'no-cors'
+  }).then(function(response) {
     response.text().then(function(text) {
       console.log(text);
     });
