@@ -6,16 +6,16 @@ export class Card extends Component {
     getStyle = () => {
         return {
             padding: '0.7em',
-            width: '90%',
-            margin: '0.5em',
-            fontSize: '1.2em',
+            fontSize: '1em',
             backgroundColor: '#ccebdb'
         }
     }
     
     render() {
         return (
-            <p style={this.getStyle()} >{ this.props.card.english }</p>
+            <div style={{'margin-top': '1em'}} className={'row'}>
+                <div className={'col-12'} style={this.getStyle()}><button style={{'margin-right': '1em'}} className={'btn-lg btn btn-info'}>{this.props.card.ID}</button> {this.props.card.DRGDefinition} </div>
+            </div>
         )
     }
 }

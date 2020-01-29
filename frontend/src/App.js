@@ -22,60 +22,29 @@ import ProcedureList from './components/ProcedureList';
 //     console.log(myJson);
 //   });
 
-fetch('https://api.urbelis.dev/procedure', {
-  mode: 'cors',
-  method: 'GET',
-  headers:{
-    'Access-Control-Allow-Origin':'*'
-  },},).then(response => {
-  if (response.ok) {
-    response.json().then(json => {
-      console.log(json);
-    });
-  }
-});
-
 class App extends Component {
 
-  state = {
-    procedures: [
-      {
-        id: 1,
-        english: 'Inner Forearm',
-        korean: 'An Palmok',
-        flip: false
-      },
-      {
-        id: 2,
-        english: 'Outer Forearm',
-        korean: 'Bakat Palmok',
-        flip: false
-      },
-      {
-        id: 3,
-        english: 'Obverse Punch',
-        korean: 'Baro Jirugi',
-        flip: false
-      },
-      {
-        id: 4,
-        english: 'Hand Parts',
-        korean: 'Sang Bansin',
-        flip: false
-      },
-      {
-        id: 5,
-        english: 'Obverse',
-        korean: 'Baro',
-        flip: false
-      },
-      {
-        id: 6,
-        english: 'Reverse',
-        korean: 'Bandae',
-        flip: false
+  constructor(props){
+    super(props);
+    this.state = {
+      procedures: []
+    }
+  }
+
+  componentDidMount() {
+    fetch('https://api.urbelis.dev/procedure', {
+      mode: 'cors',
+      method: 'GET',
+      headers:{
+        'Access-Control-Allow-Origin':'*'
+      },},).then(response => {
+      if (response.ok) {
+        response.json().then(json => {
+          console.log(json)
+          this.setState({ procedures: json });
+        });
       }
-    ]
+    });
   }
   
   render(){
@@ -94,9 +63,9 @@ class App extends Component {
               </Switch>
             </Router>
           </ColorLayout>
-          
-          <ProcedureList procedures = {this.state.procedures} />
-
+          <div style={{'height': '60vh'}} className={'container overflow-auto'}>
+            <ProcedureList procedures = {this.state.procedures} />
+          </div>
       </React.Fragment>
     );
   }
