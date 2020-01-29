@@ -14,7 +14,7 @@ import ProcedureList from './components/ProcedureList';
 
 
 // fetch('https://api.urbelis.dev/procedure', {mode: 'no-cors'})
-fetch('https://agile-api/procedure', {mode: 'no-cors'})
+fetch('https://api.urbelis.dev/', {mode: 'no-cors'})
   .then((response) => {
     return response.json();
   })
