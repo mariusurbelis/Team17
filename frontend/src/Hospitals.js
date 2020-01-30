@@ -97,4 +97,4 @@ class App extends Component {
   }
 }
 
-// export Hospitals from 'Hospitals'
+export Hospitals from 'Hospitals';

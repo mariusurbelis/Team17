@@ -6,7 +6,7 @@
 The Scrum Master for this meeting was **Callum Darling**
 
 ### Members Present:
-Peter Leslie, Alfi Hippisley, Ruth Carnegie, Marius Urbelis, Daniel Blackley, Callum Darling
+Peter Leslie, Alfie Hippisley, Ruth Carnegie, Marius Urbelis, Daniel Blackley, Callum Darling
 
 ### Members Not Present:
 N/A
@@ -27,7 +27,7 @@ N/A
 The Scrum Master for this meeting was **Callum Darling**
 
 ### Members Present:
-Peter Leslie, Alfi Hippisley, Ruth Carnegie, Marius Urbelis, Daniel Blackley, Callum Darling
+Peter Leslie, Alfie Hippisley, Ruth Carnegie, Marius Urbelis, Daniel Blackley, Callum Darling
 
 ### Members Not Present:
 N/A
@@ -49,7 +49,7 @@ N/A
     
             - Connection timeout
             
-- Wireframe/Mockup for UI completed by Alifi
+- Wireframe/Mockup for UI completed by Alifie
 
 
 ---
@@ -59,13 +59,13 @@ N/A
 The Scrum Master for this meeting was **Callum Darling**
 
 ### Members Present:
-Peter Leslie, Alfi Hippisley, Ruth Carnegie, Marius Urbelis, Daniel Blackley, Callum Darling
+Peter Leslie, Ruth Carnegie, Marius Urbelis, Daniel Blackley, Callum Darling
 
 ### Members Not Present:
-Alfi Hippisley
+Alfie Hippisley
 
 ### Apologies:
-Alfi Hippisley - previous engagement, notified us beforehand.
+Alfie Hippisley - previous engagement, notified us beforehand.
 
 ### Summary of Conversation:
 - Issues resolved with the database reading by Node.JS, done by Marius
@@ -75,6 +75,31 @@ Alfi Hippisley - previous engagement, notified us beforehand.
     - A frontend server providing the users with browser runnable javascript.
 - General update on where everyone is with their sprint backlog
 - Continued updates to Trello board and Sprint backlog.
+
+
+---
+
+
+## Day [4] (30/01/20) - Scrum Meeting summary
+The Scrum Master for this meeting was **Callum Darling**
+
+### Members Present:
+Peter Leslie, Alfie Hippisley, Ruth Carnegie, Marius Urbelis, Daniel Blackley, Callum Darling
+
+### Members Not Present:
+N/A
+
+### Apologies:
+N/A
+
+### Summary of Conversation:
+- Peter has completed more queries and is going to assist Daniel with the searchbar
+- Daniel has completed table component and is working on the search bar 
+- Alfie has completed the UI and Frontend implentation. Is now working on assisting people with UI problems. To be implemented prior to the demonstration
+- Callum converted the database to have locations for hospital. Implementing the Map into the UI now. Then passing user location to the map.
+- Ruth is currently working on the procedures
+- General finishing of task, to be ready for demonstration tommorow 
+- Marius fixed cores issues, API server issues fixed
 
 
 ---

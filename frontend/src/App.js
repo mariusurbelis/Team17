@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-// These are for page navigation
+// These are for page navigation, components change depending page..
 import { Home } from './Home';
-// import { Hospitals } from './Hospitals';
+//import { Hospitals } from './Hospitals';
 import { Procedures } from './Procedures';
 import { About } from './About';
 import { NoMatch } from './NoMatch';
 
-// These are for each ui component
+// These are for each UI component
 import { Version } from './components/Version';
 import { ColorLayout } from './components/ColorLayout';
 import { NavigationBar } from './components/NavigationBar';
@@ -17,6 +17,8 @@ import { LowerLayout } from './components/LowerLayout';
 import { Footer } from './components/Footer';
 
 import ProcedureList from './components/ProcedureList';
+import HospitalsMap from './components/HospitalsMap'
+
 
 
 // fetch('https://api.urbelis.dev/procedure', {mode: 'no-cors', method: 'GET'})
@@ -27,6 +29,14 @@ import ProcedureList from './components/ProcedureList';
 //   .then((myJson) => {
 //     console.log(myJson);
 //   });
+
+var locations = new Array(
+	["Dundee", { lat: 56.462002, lng: -2.970700 }],
+	["Dunde1", { lat: 57.462002, lng: -2.970700 }],
+	["Dunde2", { lat: 58.462002, lng: -2.970700 }],
+	["Dunde3", { lat: 59.462002, lng: -2.970700 }],
+	["Dunde4", { lat: 60.462002, lng: -2.970700 }],
+)
 
 class App extends Component {
 
@@ -55,33 +65,47 @@ class App extends Component {
   
   render(){
     return(
+
       <React.Fragment>
+
+          {/* Header Area - Essentially the Navbar and color gradient components*/}
           <ColorLayout>
-          <NavigationBar>
-          </NavigationBar>
+            <NavigationBar>
+            </NavigationBar>
             <Router>
               <Switch>
+                {/* This is for the homepage city picture and heading text 'smarter healthcare etc' */}
+                {/* <Route path = "PAGE-NAME" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
                 <Route exact path = "/" component = {Home}/>
-                {/* <Route path = "/hospitals" component = {Hospitals}/> */}
-                <Route path = "/procedures" component = {Procedures}/>
-                <Route path = "/about" component = {About}/>
-                <Route component = {NoMatch}/>
               </Switch>
             </Router>
           </ColorLayout>
-          <div style={{'height': '60vh'}} className={'container overflow-auto'}>
-            <ProcedureList procedures = {this.state.procedures} />
-          </div>
+
+          {/* Version Bar -- The little grey bar just underneath the header */}
           <Version>
           </Version>
+
+          {/* Main page area, put your components in here <3 - LowerLayout is just a react container to keep things neat */}
+          {/* <Route path = "PAGE-NAME(Page you want component to appear on)" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
           <LowerLayout>
-            <HomepageSearch>
-              
-            </HomepageSearch>
+            <Router>
+            <Switch>
+              <Route exact path = "/" component = {HomepageSearch}/>
+              <Route path = "/about" component = {About}/>
+              <div style={{'height': '70vh'}} className={'container overflow-auto'}>
+              <ProcedureList procedures = {this.state.procedures} />
+              </div>
+            </Switch>
+            </Router>
+            <HospitalsMap hospList={locations} hi={500} wi={500}/>
           </LowerLayout>
+
+          {/* Its kinda obvious what this bit  does..*/}
         <Footer>
         </Footer>
+
       </React.Fragment>
+
     );
   }
 }

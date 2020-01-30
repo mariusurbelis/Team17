@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import getDistance from 'geolib/es/getDistance';
 
 // var origin = 
-var origin = ["Dundee", { lat: 56.462002, lng: -2.970700 }]
+//var origin = ["Dundee", { lat: 56.462002, lng: -2.970700 }]
 var markers = []
 // var locations = new Array(
 // ["Dundee", { lat: 56.462002, lng: -2.970700 }],
@@ -15,10 +15,11 @@ var markers = []
 
 class HospitalsMap extends Component {
 	//lobal locations = props.hospList
+	origin = this.props.hospList[0]
 
 	findDistancesFromCoord(lcat) {
 		var lo = lcat[0]
-		var gd = getDistance(origin[1], lcat[1])
+		var gd = getDistance(this.props.hospList[0][1], lcat[1])
 		return lo + ": " + gd / 1000 + "km"
 		//return getDistance(locations[0][1],locations[1][1])
 	}
@@ -33,9 +34,9 @@ class HospitalsMap extends Component {
 	}
 
 	marcPush() {
-		markers.push(<Marker
-			position={origin[1]}
-			name={origin[0]} />);
+		//markers.push(<Marker
+		//	position={origin[1]}
+		//	name={origin[0]} />);
 
 		var arrayLength = this.props.hospList.length;
 		for (var i = 0; i < arrayLength; i++) {
@@ -78,7 +79,7 @@ class HospitalsMap extends Component {
 				<div style={{width: this.props.wi, height: this.props.hi }}>
 					<Map google={this.props.google}
 						onClick={this.onMapClicked}
-						initialCenter={origin[1]}
+						initialCenter={this.props.hospList[0][1]}
 						zoom={8}
 						style={{width: this.props.wi, height: this.props.hi, backgroundColor: 'powderblue'}}
 					>
