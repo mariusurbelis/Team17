@@ -44,12 +44,13 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      procedures: []
+      procedures: [],
+      query: ''
     }
   }
 
   componentDidMount() {
-    fetch('https://api.urbelis.dev/procedure', {
+    fetch('https://api.urbelis.dev/procedures?query=' + this.state.query, {
       mode: 'cors',
       method: 'GET',
       headers:{

@@ -41,8 +41,8 @@ export const HomepageSearch = () =>(
             </Col>
 
             <Col>
-            <SearchBar name='Hospital Provider' />
-            <SearchBar name='Post code' />
+            {/* <SearchBar name='Hospital Provider' /> */}
+            {/* <SearchBar name='Post code' /> */}
             <SearchBar name='Procedure' />
 
             </Col>

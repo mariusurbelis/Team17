@@ -23,7 +23,21 @@ class SearchBar extends React.Component {
     alert(this.state.value)
   }
 
-
+  getProcedures() {
+    fetch('https://api.urbelis.dev/procedures?query=' + document.getElementById('text-field').value, {
+      mode: 'cors',
+      method: 'GET',
+      headers:{
+        'Access-Control-Allow-Origin':'*'
+      },},).then(response => {
+      if (response.ok) {
+        response.json().then(json => {
+          console.log(json)
+          document.getElementById('results').innerHTML = JSON.stringify(json)
+        });
+      }
+    });
+  }
 
 
   render() {
@@ -32,8 +46,9 @@ class SearchBar extends React.Component {
         <label>
           {this.props.name}:
           <input type="text" id='text-field' onChange={this.handleChange} />
-          <button onClick={this.handleClick}>Search</button>
+          <button onClick={this.getProcedures}>Search</button>
           {this.sendData}
+          <p id='results'></p>
         </label>
     );
   }
