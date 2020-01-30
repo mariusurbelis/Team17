@@ -92,7 +92,7 @@ class App extends Component {
             <Switch>
               <Route exact path = "/" component = {HomepageSearch}/>
               <Route path = "/about" component = {About}/>
-              <div style={{'height': '70vh'}} className={'container overflow-auto'}>
+              <div style={{'height': '60vh'}} className={'container overflow-auto'}>
               <ProcedureList procedures = {this.state.procedures} />
               </div>
             </Switch>

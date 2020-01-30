@@ -13,7 +13,7 @@ class Procedure extends Component{
     }
 
     componentDidMount(){
-        fetch('https://api.urbelis.dev/procedures?=back',{
+        fetch('https://api.urbelis.dev/procedure',{
             mode: 'cors',
             method: 'GET',
             headers:{

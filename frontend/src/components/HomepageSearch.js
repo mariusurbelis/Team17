@@ -4,7 +4,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Placeholder from '../assets/placeholder.png';
 import styled from 'styled-components';
-import SearchBar from './SearchBar'
 
 const Styles = styled.div`
     .homeHeading{
@@ -24,10 +23,7 @@ const Styles = styled.div`
     }
 `;
 
-
 export const HomepageSearch = () =>(
-
-    
     <Styles>
         <Row>
             <Col>
@@ -36,16 +32,9 @@ export const HomepageSearch = () =>(
                     not a bunch of IF statements, we can help you find the best
                     price for the healthcare you require. Simply enter your location
                     and the name/code of the procedure and hit search.
-                     
                 </p>
             </Col>
-
-            <Col>
-            <SearchBar name='Hospital Provider' />
-            <SearchBar name='Post code' />
-            <SearchBar name='Procedure' />
-
-            </Col>
+            <Col><Image src={Placeholder} align="right"/></Col>
         </Row>
     </Styles>
 )
