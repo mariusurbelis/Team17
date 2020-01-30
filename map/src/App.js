@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import HospitalsMap from './components/HospitalsMap'
-import { Map, InfoWindow, GoogleApiWrapper, Marker } from 'google-maps-react';
+import GoogleMapReact from 'google-maps-react';
 import './App.css';
 
 var JSONInput;
