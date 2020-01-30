@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Placeholder from '../assets/placeholder.png';
 import styled from 'styled-components';
 
 const Styles = styled.div`
@@ -33,7 +34,7 @@ export const HomepageSearch = () =>(
                     and the name/code of the procedure and hit search.
                 </p>
             </Col>
-            <Col></Col>
+            <Col><Image src={Placeholder} align="right"/></Col>
         </Row>
     </Styles>
 )
