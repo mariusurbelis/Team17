@@ -30,10 +30,7 @@ class Procedure extends Component{
    
     render(){
         return(
-        <div style={{'height': '60vh'}} className={'container overflow-auto'}>
-        <ProcedureList procedures = {this.state.procedures} />
-      </div>
-
+    
         );
     }
 }
