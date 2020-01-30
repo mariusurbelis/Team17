@@ -28,11 +28,7 @@ class Procedure extends Component{
             });
         }
    
-    render(){
-        return(
-    
-        );
-    }
+   
 }
 
 export default Procedure;
