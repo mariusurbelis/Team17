@@ -45,7 +45,7 @@ class SearchBar extends Component {
         <label>
           {this.props.name}:
           <input type="text" id='text-field' onChange={this.handleChange} />
-          <button onClick={this.loadData}>Search</button>
+          <button onClick={this.getProcedures}>Search</button>
           {this.sendData}
           <p id='results'></p>
           <ProcedureList procedures={this.state.procedures}></ProcedureList>
