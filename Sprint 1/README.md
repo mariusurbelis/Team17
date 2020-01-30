@@ -6,7 +6,7 @@
 The Scrum Master for this meeting was **Callum Darling**
 
 ### Members Present:
-Peter Leslie, Alfi Hippisley, Ruth Carnegie, Marius Urbelis, Daniel Blackley, Callum Darling
+Peter Leslie, Alfie Hippisley, Ruth Carnegie, Marius Urbelis, Daniel Blackley, Callum Darling
 
 ### Members Not Present:
 N/A
@@ -27,7 +27,7 @@ N/A
 The Scrum Master for this meeting was **Callum Darling**
 
 ### Members Present:
-Peter Leslie, Alfi Hippisley, Ruth Carnegie, Marius Urbelis, Daniel Blackley, Callum Darling
+Peter Leslie, Alfie Hippisley, Ruth Carnegie, Marius Urbelis, Daniel Blackley, Callum Darling
 
 ### Members Not Present:
 N/A
@@ -62,10 +62,10 @@ The Scrum Master for this meeting was **Callum Darling**
 Peter Leslie, Alfi Hippisley, Ruth Carnegie, Marius Urbelis, Daniel Blackley, Callum Darling
 
 ### Members Not Present:
-Alfi Hippisley
+Alfie Hippisley
 
 ### Apologies:
-Alfi Hippisley - previous engagement, notified us beforehand.
+Alfie Hippisley - previous engagement, notified us beforehand.
 
 ### Summary of Conversation:
 - Issues resolved with the database reading by Node.JS, done by Marius
