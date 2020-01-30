@@ -17,6 +17,8 @@ import { LowerLayout } from './components/LowerLayout';
 import { Footer } from './components/Footer';
 
 import ProcedureList from './components/ProcedureList';
+import HospitalsMap from './components/HospitalsMap'
+
 
 
 // fetch('https://api.urbelis.dev/procedure', {mode: 'no-cors', method: 'GET'})
@@ -27,6 +29,14 @@ import ProcedureList from './components/ProcedureList';
 //   .then((myJson) => {
 //     console.log(myJson);
 //   });
+
+var locations = new Array(
+	["Dundee", { lat: 56.462002, lng: -2.970700 }],
+	["Dunde1", { lat: 57.462002, lng: -2.970700 }],
+	["Dunde2", { lat: 58.462002, lng: -2.970700 }],
+	["Dunde3", { lat: 59.462002, lng: -2.970700 }],
+	["Dunde4", { lat: 60.462002, lng: -2.970700 }],
+)
 
 class App extends Component {
 
@@ -87,9 +97,10 @@ class App extends Component {
               </div>
             </Switch>
             </Router>
+            <HospitalsMap hospList={locations} hi={500} wi={500}/>
           </LowerLayout>
 
-          {/* Its kinda obvious what this bit does..*/}
+          {/* Its kinda obvious what this bit  does..*/}
         <Footer>
         </Footer>
 
