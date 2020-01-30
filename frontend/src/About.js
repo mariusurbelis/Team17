@@ -10,8 +10,8 @@ export const About = () =>(
         <p></p>
         <p>Archie Hippisley</p>
         <p>Mario Urbelis</p>
-        <p>DANEIL! Blackley</p>
-        <p>Ruth Carnegie</p>
+        <p>David Blackley</p>
+        <p>Beth Carnegie</p>
         <p>Scrum Lord Callum Darling</p>
         <p>ft Steven and his cats</p>
         
