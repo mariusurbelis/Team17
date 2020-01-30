@@ -24,11 +24,7 @@ class SearchBar extends Component {
     alert(this.state.value)
   }
 
-  loadData() {
-    this.state.procedures = this.getProcedures
-  }
-
-  getProcedures() {
+  getProcedures = () => {
     fetch('https://api.urbelis.dev/procedures?query=' + document.getElementById('text-field').value, {
       mode: 'cors',
       method: 'GET',
@@ -36,9 +32,7 @@ class SearchBar extends Component {
         'Access-Control-Allow-Origin':'*'
       },},).then(response => {
       if (response.ok) {
-        response.json().then(json => {
-          return json
-        });
+        response.json().then(data => this.setState({ 'procedures': data }))
       }
     });
   }
@@ -62,7 +56,7 @@ class SearchBar extends Component {
         <label>
           {this.props.name}:
           <input type="text" id='text-field' onChange={this.handleChange} />
-          <button onClick={this.loadData}>Search</button>
+          <button onClick={this.getProcedures}>Search</button>
           {this.sendData}
           <p id='results'></p>
         </label>
