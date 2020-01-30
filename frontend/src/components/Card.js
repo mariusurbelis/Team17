@@ -6,16 +6,9 @@ import styled from 'styled-components';
 const Styles = styled.div`
 
     .checkBtn {
-        position: relative;
-        text-align: center;
+        text-align: right;
         background-color: #17A2B8;
         color: white;
-        padding: 10px;
-        border: none;
-        border-radius: 10px;
-        margin-right: 30px;
-        right: -800px;
-        bottom: 40px;
     }
 
     .modal{
@@ -46,8 +39,7 @@ export class Card extends Component {
     getStyle = () => {
         return {
             padding: '0.7em',
-            fontSize: '1em',
-            backgroundColor: '#ccebdb'
+            fontSize: '0.7em',
         }
     }
 
@@ -56,10 +48,18 @@ export class Card extends Component {
     render() {
         return (
             <Styles> 
-            <div style={{'margin-top': '1em'}} className={'row'}>
-                <div className={'col-12'} style={this.getStyle()}><button style={{'margin-right': '1em'}} className={'btn-lg btn btn-info'}>{this.props.card.ID}</button> {this.props.card.DRGDefinition}
-                <button className={'checkBtn'}>Check Price</button> <button className={'checkBtn'}> Check Hospitals</button> 
-                 </div>
+            <div style={{'margin-top': '1em', backgroundColor: '#ccebdb'}} className={'row align-items-center'}>
+                <div className={'col-9'}>
+                    {this.props.card.ID} {this.props.card.DRGDefinition}
+                </div>
+
+                <div className={'col-1'} style={this.getStyle()}>
+                    <button className={'btn-info btn'}>Check Price</button>
+                </div>
+
+                <div className={'col-1'} style={this.getStyle()}>
+                    <button className={'btn-info btn'}>Check Hospitals</button> 
+                </div>
                 {/* <div id="priceModal" class="modal">
                     <div class="priceModalContent">
                         <span class="close"> </span>
