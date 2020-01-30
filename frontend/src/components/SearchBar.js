@@ -4,20 +4,29 @@ import ReactDOM from 'react-dom';
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { HospitalName: '' };
+    this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-  ChangeHandler = (event) => {
-    this.setState({HospitalName: event.target.value});
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
   }
+
+  handleSubmit(event) {
+    alert('A '+ this.props.name +' was submitted: ' + this.state.value);
+    event.preventDefault();
+  }
+
   render() {
     return (
-      <form>
-      <h2>Enter a Hospital Provider:</h2>
-      <p>You searched for: {this.state.HospitalName}</p>
-      <input
-        type='text'
-        onChange={this.ChangeHandler}
-      />
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          {this.props.name}:
+          <input type="text" value={this.state.value} onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
       </form>
     );
   }
