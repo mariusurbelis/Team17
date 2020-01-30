@@ -56,8 +56,14 @@ var server = app.listen(3000,  function () {
 });
 
 //rest api to get all procedures
-app.get('/procedure', function (req, res) {
-    connection.query('select * from GPD', function (error, results, fields) {
+app.get('/', function (req, res) {
+  res.end('Use /procedures?query=ADD_YOUR_SEARCH_TERM');
+});
+
+//rest api to get all procedures
+app.get('/procedures', function (req, res) {
+    var query = req.query.query;
+    connection.query('select * from GPD where DRGDefinition LIKE \'%' + query + '%\'', function (error, results, fields) {
        if (error) throw error;
        res.end(JSON.stringify(results));
     });

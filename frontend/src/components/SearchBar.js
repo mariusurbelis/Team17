@@ -7,27 +7,34 @@ class SearchBar extends React.Component {
     this.state = {value: ''};
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
+
+
+  sendData = () => {
+    this.props.parentCallback("Hey Popsie, How’s it going?");
+  };
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+    this.setState({value: document.getElementById('text-field').value});
   }
 
-  handleSubmit(event) {
-    alert('A '+ this.props.name +' was submitted: ' + this.state.value);
-    event.preventDefault();
+  handleClick(event) {
+    alert(this.state.value)
   }
+
+
+
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      
         <label>
           {this.props.name}:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
+          <input type="text" id='text-field' onChange={this.handleChange} />
+          <button onClick={this.handleClick}>Search</button>
+          {this.sendData}
         </label>
-        <input type="submit" value="Submit" />
-      </form>
     );
   }
 }
