@@ -18,6 +18,7 @@ import { Footer } from './components/Footer';
 
 import ProcedureList from './components/ProcedureList';
 import HospitalsMap from './components/HospitalsMap'
+import { HospitalsSelection } from './components/HospitalsSelection';
 
 
 
@@ -92,12 +93,9 @@ class App extends Component {
             <Switch>
               <Route exact path = "/" component = {HomepageSearch}/>
               <Route path = "/about" component = {About}/>
-              <div style={{'height': '70vh'}} className={'container overflow-auto'}>
-              <ProcedureList procedures = {this.state.procedures} />
-              </div>
+              <Route path = "/hospitals" component = {HospitalsSelection}/>
             </Switch>
             </Router>
-            <HospitalsMap hospList={locations} hi={500} wi={500}/>
           </LowerLayout>
 
           {/* Its kinda obvious what this bit  does..*/}
