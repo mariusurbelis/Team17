@@ -95,7 +95,7 @@ N/A
 ### Summary of Conversation:
 - Peter has completed more queries and is going to assist Daniel with the searchbar
 - Daniel has completed table component and is working on the search bar 
-- Alfie has completed the UI and is now working on assisting people with UI problems. To be implemented prior to the demonstration
+- Alfie has completed the UI and Frontend implentation. Is now working on assisting people with UI problems. To be implemented prior to the demonstration
 - Callum converted the database to have locations for hospital. Implementing the Map into the UI now. Then passing user location to the map.
 - Ruth is currently working on the procedures
 - General finishing of task, to be ready for demonstration tommorow 
