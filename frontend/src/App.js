@@ -48,7 +48,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('https://api.urbelis.dev/procedure', {
+    fetch('https://api.urbelis.dev/procedures?query=back', {
       mode: 'cors',
       method: 'GET',
       headers:{
