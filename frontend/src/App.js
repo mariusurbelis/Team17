@@ -19,6 +19,7 @@ import { Footer } from './components/Footer';
 import ProcedureList from './components/ProcedureList';
 import HospitalsMap from './components/HospitalsMap'
 import { HospitalsSelection } from './components/HospitalsSelection';
+import SearchBar from './components/SearchBar';
 
 
 
@@ -95,6 +96,7 @@ class App extends Component {
               <Route exact path = "/" component = {HomepageSearch}/>
               <Route path = "/about" component = {About}/>
               <Route path = "/hospitals" component = {HospitalsSelection}/>
+              <Route path = "/procedures" component = {SearchBar}/>
             </Switch>
             </Router>
           </LowerLayout>
