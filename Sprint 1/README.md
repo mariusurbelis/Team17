@@ -104,3 +104,23 @@ N/A
 
 ---
 
+## Day [5] (31/01/20) - Scrum Meeting summary
+The Scrum Master for this meeting was **Callum Darling**
+
+### Members Present:
+Peter Leslie, Alfie Hippisley, Ruth Carnegie, Marius Urbelis, Daniel Blackley, Callum Darling
+
+### Members Not Present:
+N/A
+
+### Apologies:
+N/A
+
+### Summary of Conversation:
+Recap of the presentation with all team members
+Disscussion of the postive feedback
+Ideas of how to implement request aspects
+Disscussion of negatives from the presentation
+Scheduling of Monday to go over sprint 2 and product backlog
+
+---
