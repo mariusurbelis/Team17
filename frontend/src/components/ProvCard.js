@@ -35,7 +35,6 @@ const Styles = styled.div`
     }
 
 `;
-const stateNeeded="TX"
 
 export class ProvCard extends Component {
 
@@ -49,14 +48,8 @@ export class ProvCard extends Component {
     
     //<HospitalsMap hospList={this.props.locations} hi={"90vh"} wi={"90vw"}/>    
     render() {
-
-        if(this.props.card.State==stateNeeded){
-            if(this.props.card.ID==30001){
-                return(
-                <div>
-                    Grow up
-                </div>
-            )}
+        console.log(this.props.stater)
+        if(this.props.card.State==this.props.state){
             return (
                 <Styles> 
                 <div style={{'margin-top': '1em', backgroundColor: '#ccebdb'}} className={'row align-items-center'}>

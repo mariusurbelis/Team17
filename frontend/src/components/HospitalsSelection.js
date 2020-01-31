@@ -27,6 +27,8 @@ import HospitalSelectionPanel from './HospitalSelectionPanel';
 //   	});
 // });
 
+const state = "CA"
+const startLocation = {lat: 34.0522, lng: -118.2437}
 const Styles = styled.div`
     h1{
         color: grey;
@@ -49,7 +51,7 @@ export const HospitalsSelection = (props) => (
         <hr></hr>
         <Row>
             <Col>
-            <HospitalSelectionPanel left={true}/> 
+            <HospitalSelectionPanel startLocation={startLocation} stater={state} left={true}/> 
             </Col>
             <Col>
               <HospitalSelectionPanel left={false}/>
