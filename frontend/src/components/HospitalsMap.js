@@ -14,13 +14,21 @@ var markers = []
 // )
 
 class HospitalsMap extends Component {
+
+	shouldComponentUpdate(nextProps, nextState) {
+		if(this.state.activeMarker != nextState.activeMarker){
+			return true;
+		}
+		return false;
+	  }
 	//lobal locations = props.hospList
 	origin = this.props.hospList[0]
 
 	findDistancesFromCoord(lcat) {
 		var lo = lcat[0]
 		var gd = getDistance(this.props.hospList[0][1], lcat[1])
-		return lo + ": " + gd / 1000 + "km"
+		//return lo + ": " + gd / 1000 + "km"
+		return Math.round(gd / 1000) + "km"
 		//return getDistance(locations[0][1],locations[1][1])
 	}
 
@@ -44,8 +52,8 @@ class HospitalsMap extends Component {
 			markers.push(<Marker
 				position={this.props.hospList[i][1]}
 				onClick={this.onMarkerClick}
-				name={this.findDistancesFromCoord(this.props.hospList[i])}
-				label={this.props.hospList[i][0]}
+				label={this.findDistancesFromCoord(this.props.hospList[i])}
+				name={this.props.hospList[i][0]}
 				title={this.props.hospList[i][0]} />);
 		}
 	}
@@ -80,7 +88,7 @@ class HospitalsMap extends Component {
 					<Map google={this.props.google}
 						onClick={this.onMapClicked}
 						initialCenter={this.props.hospList[0][1]}
-						zoom={8}
+						zoom={11}
 						style={{width: this.props.wi, height: this.props.hi, backgroundColor: 'powderblue'}}
 					>
 						{this.marcPush()}

@@ -1,34 +1,90 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import ProcedureList from './ProcedureList';
 
-class SearchBar extends React.Component {
+class SearchBar extends Component {
   constructor(props) {
     super(props);
-    this.state = {value: ''};
+    this.state = {value: '', procedures: ''};
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
+
+
+  sendData = () => {
+    this.props.parentCallback("Hey Popsie, How’s it going?");
+  };
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+    this.setState({value: document.getElementById('text-field').value});
   }
 
-  handleSubmit(event) {
-    alert('A '+ this.props.name +' was submitted: ' + this.state.value);
-    event.preventDefault();
+  handleClick(event) {
+    alert(this.state.value)
   }
+
+  getProcedures = () => {
+    fetch('https://api.urbelis.dev/procedures?query=' + document.getElementById('text-field').value, {
+      mode: 'cors',
+      method: 'GET',
+      headers:{
+        'Access-Control-Allow-Origin':'*'
+      },},).then(response => {
+      if (response.ok) {
+        response.json().then(data => this.setState({ 'procedures': data }))
+      }
+    });
+  }
+
 
   render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          {this.props.name}:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    );
+
+    if (this.state.procedures) {
+      return (
+        <div className={'container'}>
+          <div className={'row'}>
+            <div className={'col-8'}>
+              {this.props.name}
+            </div>
+          </div>
+          <div className={'row'}>
+            <div className={'col-8'}>
+              <input type="text" className={'form-control'} id='text-field' onChange={this.handleChange} />
+            </div>
+            <div className={'col-4'}>
+              <button className={'btn btn-info'} onClick={this.getProcedures}>Search</button>
+            </div>
+          </div>
+          <div className={'row'}>
+            <div className={'col-12'}>
+              <ProcedureList procedures={this.state.procedures}></ProcedureList>
+            </div>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className={'container'}>
+          <div className={'row'}>
+            <div className={'col-8'}>
+              {this.props.name}
+            </div>
+          </div>
+          <div className={'row'}>
+            <div className={'col-8'}>
+              <input type="text" className={'form-control'} id='text-field' onChange={this.handleChange} />
+            </div>
+            <div className={'col-4'}>
+              <button className={'btn btn-info'} onClick={this.getProcedures}>Search</button>
+            </div>
+            <p id='results'></p>
+          </div>
+        </div>
+      );
+    }
+
+    
   }
 }
 
