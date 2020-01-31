@@ -60,16 +60,16 @@ export class Card extends Component {
 
                     <div style={{fontSize: '1em'}}  className={'row'}>
                         <div className={'col-12'}>
-                            {this.props.card.ID}
+                            GPDID: {this.props.card.GPDID}
                         </div>
                     </div>
 
                     <div style={{'margin-top':'1em'}} className={'row'}>
                         <div className={'col-8'}>
-                            {this.props.card.ID}
+                            {this.props.card.ProviderName}
                         </div>
                         <div className={'col-4 text-center'}>
-                            {this.props.card.ID}
+                            ${this.props.card.TotalPayments}
                         </div>
                     </div>
 
