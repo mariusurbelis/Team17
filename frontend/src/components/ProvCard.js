@@ -60,7 +60,7 @@ export class ProvCard extends Component {
             return (
                 <Styles> 
                 <div style={{'margin-top': '1em', backgroundColor: '#ccebdb'}} className={'row align-items-center'}>
-                    <div className={'col-9'}>
+                    <div className={'col-9'} style={{'padding-top':'1em'}}>
                         <p>{this.props.card.ProviderName}</p>
                         <p>{this.props.card.Address}, {this.props.card.State}</p>
                     </div>
