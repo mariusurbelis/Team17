@@ -9,9 +9,14 @@
 
 ## Group Members:
 
-Peter Leslie (Matriculation Number)
+Peter Leslie (150026873)
+
 Callum Darling (170014082)
+
 Marius Urbelis (Matriculation Number)
+
 Ruth Carnegie (Matriculation Number)
-Alfie Hippisley (Matriculation Number)
+
+Alfie Hippisley (170009063)
+
 Daniel Blackley (Matriculation Number)
