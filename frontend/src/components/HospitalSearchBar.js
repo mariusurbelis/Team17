@@ -32,7 +32,9 @@ class HospitalSearchBar extends React.Component {
     this.state = {value: '', sub:false};
 
     this.handleChange = this.handleChange.bind(this);
+
     this.handleSubmit = this.handleSubmit.bind(this);
+
   }
 
   handleChange(event) {
@@ -41,6 +43,7 @@ class HospitalSearchBar extends React.Component {
 
   handleSubmit(event) {
     this.setState({sub: true});
+
     //alert('A name was submitted: ' + this.state.value);
     
     //event.preventDefault();
@@ -68,11 +71,19 @@ class HospitalSearchBar extends React.Component {
     }
     return (
       <form onSubmit={this.handleSubmit}>
+        <p>Enter Your State Letters (e.g. TX)</p> 
         <label>
-          Enter Your State Letters (e.g. TX) 
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
+        <Styles>
+        <Row>
+            <Col>
+              <input className={'form-control'} type="text" value={this.state.value} onChange={this.handleChange} />
+            </Col>
+            <Col>
+              <input className={'btn btn-info'} type="submit" value="Submit" />              
+            </Col>
+        </Row>
+        </Styles>
         </label>
-        <input type="submit" value="Submit" />
       </form>
     );
   }
