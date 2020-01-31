@@ -9,7 +9,6 @@ var locations = new Array(
 )
 
 var stateoid = 'CA'
-
 export default class HospitalSelectionPanel extends Component {
 
     getLocals(){
@@ -74,7 +73,7 @@ export default class HospitalSelectionPanel extends Component {
               <>
               
               </>
-            );
-          }
+          );
+        }
     }
 }

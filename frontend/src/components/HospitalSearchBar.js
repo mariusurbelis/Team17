@@ -7,6 +7,7 @@ import HospitalSelectionPanel from './HospitalSelectionPanel';
 
 const state = "MO"
 const startLocation = {lat: 38.6545, lng: -90.3117}
+const stateLetters= [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY' ];
 
 const Styles = styled.div`
     h1{
@@ -31,7 +32,9 @@ class HospitalSearchBar extends React.Component {
     this.state = {value: '', sub:false};
 
     this.handleChange = this.handleChange.bind(this);
+
     this.handleSubmit = this.handleSubmit.bind(this);
+
   }
 
   handleChange(event) {
@@ -40,13 +43,14 @@ class HospitalSearchBar extends React.Component {
 
   handleSubmit(event) {
     this.setState({sub: true});
+
     //alert('A name was submitted: ' + this.state.value);
     
     //event.preventDefault();
   }
 
   render() {
-    if(this.state.sub==true){
+    if(this.state.sub==true && stateLetters.indexOf(this.state.value) > -1){
      //reactDOM.unmountComponentAtNode(document.getElementById('));
      //ReactDOM.unmountComponentAtNode(document.getElementById(''));
       return(
@@ -67,11 +71,19 @@ class HospitalSearchBar extends React.Component {
     }
     return (
       <form onSubmit={this.handleSubmit}>
+        <p>Enter Your State Letters (e.g. TX)</p> 
         <label>
-          Enter Your State:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
+        <Styles>
+        <Row>
+            <Col>
+              <input className={'form-control'} type="text" value={this.state.value} onChange={this.handleChange} />
+            </Col>
+            <Col>
+              <input className={'btn btn-info'} type="submit" value="Submit" />              
+            </Col>
+        </Row>
+        </Styles>
         </label>
-        <input type="submit" value="Submit" />
       </form>
     );
   }
