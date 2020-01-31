@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ProcedureList from './ProcedureList';
 import ProvCard from './ProvCard'
 import HospitalsMap from '../components/HospitalsMap';
+import HospitalSearchBar from '../components/HospitalSearchBar'
 
 var locations = new Array(
 
@@ -10,10 +11,13 @@ var locations = new Array(
 var stateoid = 'CA'
 
 export default class HospitalSelectionPanel extends Component {
+
     getLocals(){
       stateoid = this.props.stater;
-      var startRecord = ["Your Location", this.props.startLocation];
-      locations.push(startRecord)
+      if(this.props.startLocation==null){
+        var startRecord = ["Your Location", this.props.startLocation];
+        locations.push(startRecord)
+      }
       var json = this.state.procedures;
       var y=0;
       for(var i = 0; i < json.length; i++) {
@@ -48,8 +52,7 @@ export default class HospitalSelectionPanel extends Component {
       }
 
     render() {
-        this.getProcedures()
-        
+      this.getProcedures()
         if (this.state.procedures) {
             if(this.props.left == true){
               this.getLocals()  

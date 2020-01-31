@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import styled from 'styled-components';
 import HospitalsMap from '../components/HospitalsMap';
 import HospitalSelectionPanel from './HospitalSelectionPanel';
+import HospitalSearchBar from './HospitalSearchBar';
 
 
 
@@ -26,8 +27,8 @@ import HospitalSelectionPanel from './HospitalSelectionPanel';
 //   	});
 // });
 
-const state = "CA"
-const startLocation = {lat: 34.0522, lng: -118.2437}
+const state = "MO"
+const startLocation = {lat: 38.6545, lng: -90.3117}
 const Styles = styled.div`
     h1{
         color: grey;
@@ -49,14 +50,17 @@ export const HospitalsSelection = (props) => (
     <Styles>
         <h1 class = "PageTitle"> Hospitals In Your Local Area </h1>
         <hr></hr>
-        <Row>
-            <Col>
-            <HospitalSelectionPanel startLocation={startLocation} stater={state} left={true}/> 
-            </Col>
-            <Col>
-              <HospitalSelectionPanel left={false}/>
-                {/* <p>Loading...</p> */}
-            </Col>
-        </Row>
+        <HospitalSearchBar></HospitalSearchBar>
     </Styles>
 )   
+
+//        <Row>
+{/* <HospitalSearchBar/>
+//<Col>
+//<HospitalSelectionPanel startLocation={startLocation} stater={state} left={true}/> 
+//</Col>
+//<Col>
+ // <HospitalSelectionPanel left={false}/>
+ //   {/* <p>Loading...</p> */}
+//</Col>
+//</Row> */}
