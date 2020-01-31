@@ -8,7 +8,7 @@ import SearchBar from './SearchBar'
 
 const Styles = styled.div`
     .homeHeading{
-        padding-top : 25%;
+        padding-top : 10%;
         color: grey;
     }
 
@@ -40,12 +40,7 @@ export const HomepageSearch = () =>(
                 </p>
             </Col>
 
-            <Col>
-            {/* <SearchBar name='Hospital Provider' /> */}
-            {/* <SearchBar name='Post code' /> */}
-            <SearchBar name='Procedure' />
-
-            </Col>
+            
         </Row>
     </Styles>
 )
