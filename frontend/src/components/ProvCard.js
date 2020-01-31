@@ -35,7 +35,6 @@ const Styles = styled.div`
     }
 
 `;
-const stateNeeded="TX"
 
 export class ProvCard extends Component {
 
@@ -49,29 +48,23 @@ export class ProvCard extends Component {
     
     //<HospitalsMap hospList={this.props.locations} hi={"90vh"} wi={"90vw"}/>    
     render() {
-
-        if(this.props.card.State==stateNeeded){
-            if(this.props.card.ID==30001){
-                return(
-                <div>
-                    Grow up
-                </div>
-            )}
+        console.log(this.props.stater)
+        if(this.props.card.State==this.props.state){
             return (
                 <Styles> 
-                <div style={{'margin-top': '1em', backgroundColor: '#ccebdb'}} className={'row align-items-center'}>
-                    <div className={'col-9'}>
-                        <p>{this.props.card.ProviderName}</p>
-                        <p>{this.props.card.Address}, {this.props.card.State}</p>
+                <div style={{'margin-top': '1em', backgroundColor: '#0b9cdb26'}} className={'row align-items-center'}>
+                    <div className={'col-12'} style={{'padding-top':'1em'}}>
+                        <p style={{'fontSize':'1em'}}><b>{this.props.card.ProviderName}</b></p>
+                        <p style={{'fontSize':'0.8em'}}>{this.props.card.Address}, {this.props.card.State}</p>
                     </div>
 
-                    <div className={'col-1'} style={this.getStyle()}>
+                    {/* <div className={'col-1'} style={this.getStyle()}>
                         <button className={'btn-info btn'}>P</button>
                     </div>
 
                     <div className={'col-1'} style={this.getStyle()}>
                         <button className={'btn-info btn'}>H</button> 
-                    </div>
+                    </div> */}
                     {/* <div id="priceModal" class="modal">
                         <div class="priceModalContent">
                             <span class="close"> </span>

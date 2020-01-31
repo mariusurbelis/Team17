@@ -7,15 +7,18 @@ var locations = new Array(
 
 )
 
+var stateoid = 'CA'
+
 export default class HospitalSelectionPanel extends Component {
-
-
     getLocals(){
+      stateoid = this.props.stater;
+      var startRecord = ["Your Location", this.props.startLocation];
+      locations.push(startRecord)
       var json = this.state.procedures;
       var y=0;
       for(var i = 0; i < json.length; i++) {
         var obj = json[i];
-        if(obj.State=="TX" && y<500){
+        if(obj.State==this.props.stater && y<500){
           y++;
           var innerRecord = { lat: obj.Latitude, lng: obj.longitude }
           var record = [obj.ProviderName, innerRecord]
@@ -47,9 +50,6 @@ export default class HospitalSelectionPanel extends Component {
     render() {
         this.getProcedures()
         
-
-
-        
         if (this.state.procedures) {
             if(this.props.left == true){
               this.getLocals()  
@@ -58,9 +58,9 @@ export default class HospitalSelectionPanel extends Component {
                   <HospitalsMap hospList={locations} hi={"70vh"} wi={"35vw"}/>
               )
             }
+            console.log(this.props.stater)
             return this.state.procedures.map((card) => (
-              
-               <ProvCard card={card} key={card.id} locations={locations}/>
+               <ProvCard state={stateoid} card={card} key={card.id} locations={locations}/>
                
                 
                 )

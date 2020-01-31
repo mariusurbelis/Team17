@@ -48,13 +48,21 @@ class HospitalsMap extends Component {
 
 		var arrayLength = this.props.hospList.length;
 		for (var i = 0; i < arrayLength; i++) {
-
+			if(i==0){
+				markers.push(<Marker
+					position={this.props.hospList[i][1]}
+					onClick={this.onMarkerClick}
+					label={"You are Here"}
+					name={this.props.hospList[i][0]}
+					title={this.props.hospList[i][0]} />);
+			}else{
 			markers.push(<Marker
 				position={this.props.hospList[i][1]}
 				onClick={this.onMarkerClick}
 				label={this.findDistancesFromCoord(this.props.hospList[i])}
 				name={this.props.hospList[i][0]}
 				title={this.props.hospList[i][0]} />);
+			}
 		}
 	}
 
@@ -79,7 +87,6 @@ class HospitalsMap extends Component {
 			})
 		}
 	};
-
 
 	render() {
 		return (
@@ -108,6 +115,7 @@ class HospitalsMap extends Component {
 }
 // export class MapContainer extends React.Component { }
 export default GoogleApiWrapper({
+	// apiKey: 'AIzaSyBUGx7RRQurAj4RxZb0NzMNtOHzcUZZpVo'
 	apiKey: ''
 })(HospitalsMap);
 

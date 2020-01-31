@@ -8,12 +8,30 @@ export const About = () =>(
         <p></p>
         <h3>Created by :</h3>
         <p></p>
-        <p>Archie Hippisley</p>
-        <p>Mario Urbelis</p>
-        <p>David Blackley</p>
-        <p>Beth Carnegie</p>
-        <p>Scrum Lord Callum Darling</p>
-        <p>ft Steven and his cats</p>
+        <div className={'container'}>
+            <div className={'row'}>
+                <div className={'col-4'}>
+                    Archie Hippisley
+                </div>
+                <div className={'col-4'}>
+                    Mario Urbelis
+                </div>
+                <div className={'col-4'}>
+                    David Blackley
+                </div>
+            </div>
+            <div className={'row mt-2'}>
+                <div className={'col-4'}>
+                    Beth Carnegie
+                </div>
+                <div className={'col-4'}>
+                    Scrum Lord Callum Darling
+                </div>
+                <div className={'col-4'}>
+                    ft Steven and his cats
+                </div>
+            </div>
+        </div>
         
     </div>
 )

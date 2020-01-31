@@ -8,7 +8,6 @@ import HospitalSelectionPanel from './HospitalSelectionPanel';
 
 
 
-
 // const con = mysql.createConnection({
 // 	host: "urbelis.dev",
 // 	user: "adminrootusername",
@@ -27,6 +26,8 @@ import HospitalSelectionPanel from './HospitalSelectionPanel';
 //   	});
 // });
 
+const state = "CA"
+const startLocation = {lat: 34.0522, lng: -118.2437}
 const Styles = styled.div`
     h1{
         color: grey;
@@ -42,6 +43,7 @@ const Styles = styled.div`
 
     }
 `;
+
 // <HospitalsMap hospList={locations} hi={"40vh"} wi={"40vw"}/>
 export const HospitalsSelection = (props) => (
     <Styles>
@@ -49,11 +51,11 @@ export const HospitalsSelection = (props) => (
         <hr></hr>
         <Row>
             <Col>
-            <HospitalSelectionPanel left={true}/> 
+            <HospitalSelectionPanel startLocation={startLocation} stater={state} left={true}/> 
             </Col>
             <Col>
               <HospitalSelectionPanel left={false}/>
-                <p>Place cards here\</p>
+                {/* <p>Loading...</p> */}
             </Col>
         </Row>
     </Styles>
