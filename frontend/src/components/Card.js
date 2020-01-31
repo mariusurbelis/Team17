@@ -48,9 +48,9 @@ export class Card extends Component {
     render() {
         return (
             <Styles> 
-            <div style={{'margin-top': '1em', backgroundColor: '#ccebdb'}} className={'row align-items-center'}>
+            <div style={{'margin-top': '1em', backgroundColor: '#0b9cdb26'}} className={'row align-items-center'}>
                 <div className={'col-9'}>
-                    {this.props.card.ID} {this.props.card.DRGDefinition}
+                    {this.props.card.DRGDefinition} <span style={{fontSize: '0.8em'}}>(ID: {this.props.card.ID})</span>
                 </div>
 
                 <div className={'col-1'} style={this.getStyle()}>

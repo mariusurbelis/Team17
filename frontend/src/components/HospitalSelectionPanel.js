@@ -49,6 +49,7 @@ export default class HospitalSelectionPanel extends Component {
 
     render() {
         this.getProcedures()
+        
         if (this.state.procedures) {
             if(this.props.left == true){
               this.getLocals()  

@@ -52,10 +52,10 @@ export class ProvCard extends Component {
         if(this.props.card.State==this.props.state){
             return (
                 <Styles> 
-                <div style={{'margin-top': '1em', backgroundColor: '#ccebdb'}} className={'row align-items-center'}>
+                <div style={{'margin-top': '1em', backgroundColor: '#0b9cdb26'}} className={'row align-items-center'}>
                     <div className={'col-9'} style={{'padding-top':'1em'}}>
-                        <p>{this.props.card.ProviderName}</p>
-                        <p>{this.props.card.Address}, {this.props.card.State}</p>
+                        <p style={{'fontSize':'1em'}}><b>{this.props.card.ProviderName}</b></p>
+                        <p style={{'fontSize':'0.8em'}}>{this.props.card.Address}, {this.props.card.State}</p>
                     </div>
 
                     <div className={'col-1'} style={this.getStyle()}>
