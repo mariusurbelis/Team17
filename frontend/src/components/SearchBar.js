@@ -43,20 +43,25 @@ class SearchBar extends Component {
     if (this.state.procedures) {
       return (
         <div className={'container'}>
+          <div className={'row mt-2 mb-2'}>
+            <div className={'col-12'}>
+              <h2>Search for a procedure</h2>
+            </div>
+          </div>
           <div className={'row'}>
             <div className={'col-8'}>
               {this.props.name}
             </div>
           </div>
           <div className={'row'}>
-          <div className={'col-8 offset-1'}>
+          <div className={'col-8'}>
               <input type="text" className={'form-control'} id='text-field' onChange={this.handleChange} />
             </div>
-            <div className={'col-3'}>
+            <div className={'col-4'}>
               <button className={'btn btn-info'} onClick={this.getProcedures}>Search</button>
             </div>
           </div>
-          <div className={'row'}>
+          <div className={'row mt-2'}>
             <div className={'col-12'}>
               <ProcedureList procedures={this.state.procedures}></ProcedureList>
             </div>
@@ -66,16 +71,21 @@ class SearchBar extends Component {
     } else {
       return (
         <div className={'container'}>
+          <div className={'row mt-2 mb-2'}>
+            <div className={'col-12'}>
+              <h2>Search for a procedure</h2>
+            </div>
+          </div>
           <div className={'row'}>
             <div className={'col-8'}>
               {this.props.name}
             </div>
           </div>
           <div className={'row'}>
-            <div className={'col-8 offset-1'}>
+            <div className={'col-8'}>
               <input type="text" className={'form-control'} id='text-field' onChange={this.handleChange} />
             </div>
-            <div className={'col-3'}>
+            <div className={'col-4'}>
               <button className={'btn btn-info'} onClick={this.getProcedures}>Search</button>
             </div>
             <p id='results'></p>
