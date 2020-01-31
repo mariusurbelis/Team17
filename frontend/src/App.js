@@ -21,7 +21,8 @@ import HospitalsMap from './components/HospitalsMap'
 import { HospitalsSelection } from './components/HospitalsSelection';
 import SearchBar from './components/SearchBar';
 
-
+import FadeLoader from "react-spinners/FadeLoader";
+import { css } from "@emotion/core";
 
 // fetch('https://api.urbelis.dev/procedure', {mode: 'no-cors', method: 'GET'})
 //   .then((response) => {
@@ -40,32 +41,43 @@ var locations = new Array(
 	["Dunde4", { lat: 60.462002, lng: -2.970700 }],
 )
 
-class App extends Component {
+// Used for a loading spinner
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
+class App extends Component {
   constructor(props){
     super(props);
     this.state = {
       procedures: [],
-      query: ''
+      query: '',
+      loading: true
     }
   }
 
+  // componentDidMount() {
+  //   fetch('https://api.urbelis.dev/procedures?query=' + this.state.query, {
+  //     mode: 'cors',
+  //     method: 'GET',
+  //     headers:{
+  //       'Access-Control-Allow-Origin':'*'
+  //     },},).then(response => {
+  //     if (response.ok) {
+  //       response.json().then(json => {
+  //         console.log(json)
+  //         this.setState({ procedures: json });
+  //       });
+  //     }
+  //   });
+  // }
+
   componentDidMount() {
-    fetch('https://api.urbelis.dev/procedures?query=' + this.state.query, {
-      mode: 'cors',
-      method: 'GET',
-      headers:{
-        'Access-Control-Allow-Origin':'*'
-      },},).then(response => {
-      if (response.ok) {
-        response.json().then(json => {
-          console.log(json)
-          this.setState({ procedures: json });
-        });
-      }
-    });
+    this.state.loading = false
   }
-  
+
   render(){
     return(
 
@@ -99,6 +111,15 @@ class App extends Component {
               <Route path = "/procedures" component = {SearchBar}/>
             </Switch>
             </Router>
+            {/* <div style={{'margin-top':'1em'}} className="sweet-loading">
+              <FadeLoader
+                css={override}
+                size={200}
+                //size={"150px"} this also works
+                color={"#4287f5"}
+                loading={this.state.loading}
+              />
+            </div> */}
           </LowerLayout>
 
           {/* Its kinda obvious what this bit  does..*/}

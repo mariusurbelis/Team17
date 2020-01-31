@@ -8,7 +8,6 @@ import HospitalSelectionPanel from './HospitalSelectionPanel';
 
 
 
-
 // const con = mysql.createConnection({
 // 	host: "urbelis.dev",
 // 	user: "adminrootusername",
@@ -42,6 +41,7 @@ const Styles = styled.div`
 
     }
 `;
+
 // <HospitalsMap hospList={locations} hi={"40vh"} wi={"40vw"}/>
 export const HospitalsSelection = (props) => (
     <Styles>
@@ -53,7 +53,7 @@ export const HospitalsSelection = (props) => (
             </Col>
             <Col>
               <HospitalSelectionPanel left={false}/>
-                <p>Place cards here\</p>
+                {/* <p>Loading...</p> */}
             </Col>
         </Row>
     </Styles>

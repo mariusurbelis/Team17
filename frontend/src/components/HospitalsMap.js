@@ -80,7 +80,6 @@ class HospitalsMap extends Component {
 		}
 	};
 
-
 	render() {
 		return (
 			<>
