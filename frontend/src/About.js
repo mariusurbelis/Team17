@@ -2,7 +2,7 @@ import React from 'react';
 
 export const About = () =>(
     <div>
-        <h1>About Us</h1>
+        <h1 style={{'margin-top':'2em'}}>About Us</h1>
         <p></p>
         <p>Using the very best in IF statement, machine learning, AI, blockchain technology devloped by the hacker '4chan' we compare healthcare costs across the US.</p>
         <p></p>
@@ -11,24 +11,24 @@ export const About = () =>(
         <div className={'container'}>
             <div className={'row'}>
                 <div className={'col-4'}>
-                    Archie Hippisley
+                    Alfie Hippisley
                 </div>
                 <div className={'col-4'}>
-                    Mario Urbelis
+                    Marius Urbelis
                 </div>
                 <div className={'col-4'}>
-                    David Blackley
+                    Daniel Blackley
                 </div>
             </div>
             <div className={'row mt-2'}>
                 <div className={'col-4'}>
-                    Beth Carnegie
+                    Ruth Carnegie
                 </div>
                 <div className={'col-4'}>
-                    Scrum Lord Callum Darling
+                    Callum Darling
                 </div>
                 <div className={'col-4'}>
-                    ft Steven and his cats
+                    Peter Leslie
                 </div>
             </div>
         </div>

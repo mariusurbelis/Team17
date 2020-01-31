@@ -61,7 +61,7 @@ class HospitalSearchBar extends React.Component {
             <Col>
             <HospitalSelectionPanel startLocation={startLocation} stater={this.state.value} left={true}/> 
             </Col>
-            <Col>
+            <Col className={'overflow-auto'} style={{height:'50vh'}}>
               <HospitalSelectionPanel left={false}/>
                 {/* <p>Loading...</p> */}
             </Col>
