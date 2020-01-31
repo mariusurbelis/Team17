@@ -53,18 +53,18 @@ export class ProvCard extends Component {
             return (
                 <Styles> 
                 <div style={{'margin-top': '1em', backgroundColor: '#0b9cdb26'}} className={'row align-items-center'}>
-                    <div className={'col-9'} style={{'padding-top':'1em'}}>
+                    <div className={'col-12'} style={{'padding-top':'1em'}}>
                         <p style={{'fontSize':'1em'}}><b>{this.props.card.ProviderName}</b></p>
                         <p style={{'fontSize':'0.8em'}}>{this.props.card.Address}, {this.props.card.State}</p>
                     </div>
 
-                    <div className={'col-1'} style={this.getStyle()}>
+                    {/* <div className={'col-1'} style={this.getStyle()}>
                         <button className={'btn-info btn'}>P</button>
                     </div>
 
                     <div className={'col-1'} style={this.getStyle()}>
                         <button className={'btn-info btn'}>H</button> 
-                    </div>
+                    </div> */}
                     {/* <div id="priceModal" class="modal">
                         <div class="priceModalContent">
                             <span class="close"> </span>

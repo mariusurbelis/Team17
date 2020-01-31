@@ -72,10 +72,10 @@ class SearchBar extends Component {
             </div>
           </div>
           <div className={'row'}>
-            <div className={'col-8'}>
+            <div className={'col-8 offset-1'}>
               <input type="text" className={'form-control'} id='text-field' onChange={this.handleChange} />
             </div>
-            <div className={'col-4'}>
+            <div className={'col-3'}>
               <button className={'btn btn-info'} onClick={this.getProcedures}>Search</button>
             </div>
             <p id='results'></p>
