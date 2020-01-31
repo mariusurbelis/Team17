@@ -117,10 +117,10 @@ N/A
 N/A
 
 ### Summary of Conversation:
-Recap of the presentation with all team members
-Disscussion of the postive feedback
-Ideas of how to implement request aspects
-Disscussion of negatives from the presentation
-Scheduling of Monday to go over sprint 2 and product backlog
+- Recap of the presentation with all team members
+- Disscussion of the postive feedback
+- Ideas of how to implement request aspects
+- Disscussion of negatives from the presentation
+- Scheduling of Monday to go over sprint 2 and product backlog
 
 ---
