@@ -42,24 +42,45 @@ class SearchBar extends Component {
 
     if (this.state.procedures) {
       return (
-        <label>
-          {this.props.name}:
-          <input type="text" id='text-field' onChange={this.handleChange} />
-          <button onClick={this.getProcedures}>Search</button>
-          {this.sendData}
-          <p id='results'></p>
-          <ProcedureList procedures={this.state.procedures}></ProcedureList>
-        </label>
+        <div className={'container'}>
+          <div className={'row'}>
+            <div className={'col-8'}>
+              {this.props.name}
+            </div>
+          </div>
+          <div className={'row'}>
+            <div className={'col-8'}>
+              <input type="text" className={'form-control'} id='text-field' onChange={this.handleChange} />
+            </div>
+            <div className={'col-4'}>
+              <button className={'btn btn-info'} onClick={this.getProcedures}>Search</button>
+            </div>
+          </div>
+          <div className={'row'}>
+            <div className={'col-12'}>
+              <ProcedureList procedures={this.state.procedures}></ProcedureList>
+            </div>
+          </div>
+        </div>
       );
     } else {
       return (
-        <label>
-          {this.props.name}:
-          <input type="text" id='text-field' onChange={this.handleChange} />
-          <button onClick={this.getProcedures}>Search</button>
-          {this.sendData}
-          <p id='results'></p>
-        </label>
+        <div className={'container'}>
+          <div className={'row'}>
+            <div className={'col-8'}>
+              {this.props.name}
+            </div>
+          </div>
+          <div className={'row'}>
+            <div className={'col-8'}>
+              <input type="text" className={'form-control'} id='text-field' onChange={this.handleChange} />
+            </div>
+            <div className={'col-4'}>
+              <button className={'btn btn-info'} onClick={this.getProcedures}>Search</button>
+            </div>
+            <p id='results'></p>
+          </div>
+        </div>
       );
     }
 
