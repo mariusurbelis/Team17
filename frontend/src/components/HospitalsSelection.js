@@ -4,15 +4,28 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import styled from 'styled-components';
 import HospitalsMap from '../components/HospitalsMap';
+import HospitalSelectionPanel from './HospitalSelectionPanel';
 
 
-var locations = new Array(
-	["Dundee", { lat: 56.462002, lng: -2.970700 }],
-	["Dunde1", { lat: 57.462002, lng: -2.970700 }],
-	["Dunde2", { lat: 58.462002, lng: -2.970700 }],
-	["Dunde3", { lat: 59.462002, lng: -2.970700 }],
-	["Dunde4", { lat: 60.462002, lng: -2.970700 }],
-)
+
+
+// const con = mysql.createConnection({
+// 	host: "urbelis.dev",
+// 	user: "adminrootusername",
+// 	password: "adminrootpassword",
+// 	database: "agile"
+// });
+
+// con.connect(function(err) {
+// 	if (err) throw err;
+// 	console.log("connected!")
+
+// 	con.query("SELECT * FROM GPD", function (err, result, fields) {
+//     if (err) throw err;
+//     res = result;
+//     console.log(result);
+//   	});
+// });
 
 const Styles = styled.div`
     h1{
@@ -29,17 +42,18 @@ const Styles = styled.div`
 
     }
 `;
-
+// <HospitalsMap hospList={locations} hi={"40vh"} wi={"40vw"}/>
 export const HospitalsSelection = (props) => (
     <Styles>
         <h1 class = "PageTitle"> Hospitals In Your Local Area </h1>
         <hr></hr>
         <Row>
             <Col>
-                <HospitalsMap hospList={locations} hi={500} wi={500}/>
+            <HospitalSelectionPanel left={true}/> 
             </Col>
             <Col>
-                <p>Place cards here</p>
+              <HospitalSelectionPanel left={false}/>
+                <p>Place cards here\</p>
             </Col>
         </Row>
     </Styles>
