@@ -115,8 +115,8 @@ class HospitalsMap extends Component {
 }
 // export class MapContainer extends React.Component { }
 export default GoogleApiWrapper({
-	// apiKey: 'AIzaSyBUGx7RRQurAj4RxZb0NzMNtOHzcUZZpVo'
-	apiKey: ''
+	apiKey: 'AIzaSyBUGx7RRQurAj4RxZb0NzMNtOHzcUZZpVo'
+	// apiKey: ''
 })(HospitalsMap);
 
 
