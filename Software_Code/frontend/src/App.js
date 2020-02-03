@@ -52,25 +52,13 @@ class App extends Component {
             procedures: [],
             query: '',
             loading: false,
-            initial: false,
+            initial: true,
             searchMain: "",
             searchLocation: "",
             searchRadius: "",
             selectedOption: false
         }
     }
-
-    callbackFunction = (childData) => {
-        this.setState({
-            searchMain: childData.s1,
-            searchLocation: childData.s2,
-            searchRadius: childData.s3,
-            selectedOption: childData.s4
-        })
-        getProcedures()
-    }
-
-
 
     getProcedures = () => {
         fetch('https://api.urbelis.dev/procedures?query=' + this.state.searchMain, {
@@ -86,9 +74,21 @@ class App extends Component {
         });
     }
 
+    callbackFunction = (childData) => {
+        this.setState({
+            searchMain: childData.s1,
+            searchLocation: childData.s2,
+            searchRadius: childData.s3,
+            selectedOption: childData.s4
+        })
+        this.getProcedures()
+        this.state.initial = false
+        alert(this.state.searchMain)
+    }
+
     render() {
 
-        if (!this.state.selectedOption) {
+        if (this.state.initial) {
             return (
 
                 <React.Fragment>
