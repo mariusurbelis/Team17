@@ -5,18 +5,32 @@ All information about your first sprint should be put into this folder. Addition
 ---
 
 ## Day [1] 03/02/2020- Scrum Meeting summary
-The Scrum Master for this meeting was **Callum Darling**
+The Scrum Master for this meeting was **Ruth Carnegie**
 
 ### Members Present:
 Ruth Carnegie, Callum Darling, Peter Leslie, Marius Urbelis, Alfie Hippisley
 
 ### Members Not Present:
-N/A
+Daniel Blackley
 
 ### Apologies:
 Daniel Blackley - Illness, Notified us beforehand. 
 
 ### Summary of Conversation:
+Team met to discuss what had been completed since the last scrum, the feedback given on the sprint review, what our next steps are and any issues we may be facing. 
+
+Since the last scrum, Marius has been working on updating the application to be inline with the feedback given by the client. This is being done by implementing all of the functionality on one modular page. Today he will be continuing work on this and he is hoping to have the single page layout completed by the end of the day. He is also looking to start learning the TDD methods needed for this sprint which was his only concern. 
+
+We are all going to be working on learning this new software to complete the task collaboratively and to the best of our abilities. 
+
+Callum had been working on the final functionality of the hospitals map and getting it working with the users input. Today he will be working on the creation and implementation of a new search bar which includes all the features that were mentioned in our feedback and will work efficiently with the modular application. 
+
+Alfie made fixes to the user interface and documentation.  Today he will be working on creating a new user interface design for the proposed changes to the front end, including the new search bar and cards, as well as an appopriate place to display the results. 
+
+Peter updated the scrum documentation and helped with formatting the github in an appropriate manner. Today he will be working on reviewing the feedback we recieved and translating that into our documentation. 
+
+Ruth was working on the product and sprint backlogs, as well as preparing the presentation. Today she will be working on reviewing the feedback with Peter and adapting our product/sprint backlogs accordingly. We will also be assigning tasks to the team members based upon our updated documentation to allow for a more structured approach than last sprint. 
+
 
 ---
 ## Day [2] 04/02/2020- Scrum Meeting summary
