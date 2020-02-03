@@ -17,9 +17,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: cd Software_Code/frontend
-    - run: npm install
-    - run: npm run build --if-present
-    - run: npm test
+    - run: npm install --prefix ./Software_Code/node_modules
+    - run: npm run build --prefix ./Software_Code/node_modules --if-present
+    - run: npm test --prefix ./Software_Code/node_modules
       env:
         CI: true
