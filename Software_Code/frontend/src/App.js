@@ -112,8 +112,6 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={HomepageSearch} />
               <Route path="/about" component={About} />
-              <Route path="/hospitals" component={HospitalsSelection} />
-              <Route path="/procedures" component={SearchBar} />
             </Switch>
           </Router>
           {/* <div style={{'margin-top':'1em'}} className="sweet-loading">
