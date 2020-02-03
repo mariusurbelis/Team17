@@ -29,21 +29,27 @@ const Styles = styled.div`
     }
 `;
 
-
+var haveIUpdated = false;
 
 
 export class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            s1: "",
+            s2: "",
+            s3: "",
+            s4: false
+        }
+    }
+
 
     sendData = () => {
         this.props.parentCallback(this.state);
     }
-    
-    state = {
-        s1: "",
-        s2: "",
-        s3: "",
-        s4: false
-    }
+
+
+
     callbackFunction = (childData) => {
         this.setState({
             s1: childData.searchMain,
@@ -51,16 +57,16 @@ export class Home extends Component {
             s3: childData.searchRadius,
             s4: childData.selectedOption,
         })
-        this.sendData()
     }
+    // console.log(this.state)
+    // this.sendData()
 
     render() {
-
         if (!this.state.s4) {
             return (
 
                 <Styles>
-                    <NewSearch home={true} parentCallback={this.callbackFunction} />
+                    <NewSearch home={true} parentCallback={this.props.parentCallback} />
                     <Row style={{ background: "#32a852", }}>
 
                     </Row>

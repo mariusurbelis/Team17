@@ -74,16 +74,15 @@ class App extends Component {
         });
     }
 
-    callbackFunction = (childData) => {
+    callbackFunction2 = (childData) => {
+        console.log(childData)
         this.setState({
-            searchMain: childData.s1,
-            searchLocation: childData.s2,
-            searchRadius: childData.s3,
-            selectedOption: childData.s4
+            searchMain: childData.searchMain,
+            searchLocation: childData.searchLocation,
+            searchRadius: childData.searchRadius,
+            selectedOption: childData.selectedOption
         })
-        this.getProcedures()
         this.state.initial = false
-        alert(this.state.searchMain)
     }
 
     render() {
@@ -102,7 +101,7 @@ class App extends Component {
                                 {/* This is for the homepage city picture and heading text 'smarter healthcare etc' */}
                                 {/* <Route path = "PAGE-NAME" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
                                 {/* <Route exact path="/" component={Home} /> */}
-                                <Home parentCallback={this.callbackFunction}/>
+                                <Home parentCallback={this.callbackFunction2}/>
                             </Switch>
                         </Router>
                     </ColorLayout>
@@ -147,8 +146,16 @@ class App extends Component {
 
             );
         } else {
+            this.getProcedures()
             return (
+                
                 <React.Fragment>
+                    <ul>
+                    <li >{this.state.searchMain}</li>
+                    <li >{this.state.searchLocation}</li>
+                    <li >{this.state.searchRadius}</li>
+                    <li >{this.state.selectedOption}</li>
+                </ul> 
                     <div className={'container-fluid'}>
                         <Row style={{ 'background': '#aaaaaa' }} className={'align-items-center'} style={{width: 'auto'}}>
                            
