@@ -30,16 +30,6 @@ import Col from 'react-bootstrap/Col';
 import City from './assets/city.png';
 import NewSearch from './components/NewSearch';
 
-
-// fetch('https://api.urbelis.dev/procedure', {mode: 'no-cors', method: 'GET'})
-//   .then((response) => {
-//     // return response.json();
-//     return response.text();
-//   })
-//   .then((myJson) => {
-//     console.log(myJson);
-//   });
-
 var locations = new Array(
     ["Dundee", { lat: 56.462002, lng: -2.970700 }],
     ["Dunde1", { lat: 57.462002, lng: -2.970700 }],
@@ -81,6 +71,21 @@ class App extends Component {
     }
 
 
+
+    getProcedures = () => {
+        fetch('https://api.urbelis.dev/procedures?query=' + this.state.searchMain, {
+            mode: 'cors',
+            method: 'GET',
+            headers: {
+                'Access-Control-Allow-Origin': '*'
+            },
+        }).then(response => {
+            if (response.ok) {
+                response.json().then(data => this.setState({ 'procedures': data }))
+            }
+        });
+    }
+
     render() {
 
         if (!this.state.selectedOption) {
@@ -111,20 +116,9 @@ class App extends Component {
                                 <Route path="/about" component={About} />
                             </Switch>
                         </Router>
-                        {/* <div style={{'margin-top':'1em'}} className="sweet-loading">
-              <FadeLoader
-                css={override}
-                size={200}
-                //size={"150px"} this also works
-                color={"#4287f5"}
-                loading={this.state.loading}
-              />
-            </div> */}
                         <Row>
                             <Col><h1 class="homeHeading">A smarter way to find affordable healthcare</h1></Col>
                             <Col><Image src={City} align="right" /></Col>
-                            {/* Remove Linus \/\/\/    Uncomment the image /\/\/\ */}
-                            {/*<Col><Image style={{'width':'300px'}} src={'https://kwize.com/pics/Linus-Torvalds-quote-about-talking-1c9797.jpg'} align="right"/></Col>*/}
                         </Row>
                     </LowerLayout>
 
@@ -139,20 +133,9 @@ class App extends Component {
                                 <Route path="/procedures" component={SearchBar} />
                             </Switch>
                         </Router>
-                        {/* <div style={{'margin-top':'1em'}} className="sweet-loading">
-                <FadeLoader
-                  css={override}
-                  size={200}
-                  //size={"150px"} this also works
-                  color={"#4287f5"}
-                  loading={this.state.loading}
-                />
-              </div> */}
                         <Row>
                             <Col><h1 class="homeHeading">A smarter way to find affordable healthcare</h1></Col>
                             <Col><Image src={City} align="right" /></Col>
-                            {/* Remove Linus \/\/\/    Uncomment the image /\/\/\ */}
-                            {/*<Col><Image style={{'width':'300px'}} src={'https://kwize.com/pics/Linus-Torvalds-quote-about-talking-1c9797.jpg'} align="right"/></Col>*/}
                         </Row>
                     </LowerLayout>
 
@@ -176,7 +159,7 @@ class App extends Component {
 
                         <Row style={{ height: '90vh' }}>
                             <div style={{ 'background': '#aaeeaa' }} className={'col-2'}>
-                                <p>Place for the cards</p>
+                                <ProcedureList procedures={this.state.procedures}></ProcedureList>
                             </div>
 
                             <div style={{ 'background': '#eeaaaa' }} className={'col-10'}>
