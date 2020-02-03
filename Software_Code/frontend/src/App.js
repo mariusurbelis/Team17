@@ -60,7 +60,8 @@ class App extends Component {
     this.state = {
       procedures: [],
       query: '',
-      loading: true
+      loading: true,
+      initial: false
     }
   }
 
@@ -85,26 +86,24 @@ class App extends Component {
   }
 
   render() {
-    return (
 
-      <React.Fragment>
+    if (this.state.initial) {
+      return (
 
-        {/* Header Area - Essentially the Navbar and color gradient components*/}
-        <ColorLayout>
-          <NavigationBar>
-          </NavigationBar>
-          <Router>
-            <Switch>
-              {/* This is for the homepage city picture and heading text 'smarter healthcare etc' */}
-              {/* <Route path = "PAGE-NAME" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
-              <Route exact path="/" component={Home} />
-            </Switch>
-          </Router>
-        </ColorLayout>
+        <React.Fragment>
 
-        {/* Version Bar -- The little grey bar just underneath the header */}
-        <Version>
-        </Version>
+          {/* Header Area - Essentially the Navbar and color gradient components*/}
+          <ColorLayout>
+            <NavigationBar>
+            </NavigationBar>
+            <Router>
+              <Switch>
+                {/* This is for the homepage city picture and heading text 'smarter healthcare etc' */}
+                {/* <Route path = "PAGE-NAME" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
+                <Route exact path="/" component={Home} />
+              </Switch>
+            </Router>
+          </ColorLayout>
 
         {/* Main page area, put your components in here <3 - LowerLayout is just a react container to keep things neat */}
         {/* <Route path = "PAGE-NAME(Page you want component to appear on)" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
@@ -113,8 +112,6 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={HomepageSearch} />
               <Route path="/about" component={About} />
-              <Route path="/hospitals" component={HospitalsSelection} />
-              <Route path="/procedures" component={SearchBar} />
             </Switch>
           </Router>
           {/* <div style={{'margin-top':'1em'}} className="sweet-loading">
@@ -134,13 +131,48 @@ class App extends Component {
           </Row>
         </LowerLayout>
 
-        {/* Its kinda obvious what this bit  does..*/}
-        <Footer>
-        </Footer>
+          {/* Main page area, put your components in here <3 - LowerLayout is just a react container to keep things neat */}
+          {/* <Route path = "PAGE-NAME(Page you want component to appear on)" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
+          <LowerLayout>
+            <Router>
+              <Switch>
+                <Route exact path="/" component={HomepageSearch} />
+                <Route path="/about" component={About} />
+                <Route path="/hospitals" component={HospitalsSelection} />
+                <Route path="/procedures" component={SearchBar} />
+              </Switch>
+            </Router>
+            {/* <div style={{'margin-top':'1em'}} className="sweet-loading">
+                <FadeLoader
+                  css={override}
+                  size={200}
+                  //size={"150px"} this also works
+                  color={"#4287f5"}
+                  loading={this.state.loading}
+                />
+              </div> */}
+                      <Row>
+            <Col><h1 class="homeHeading">A smarter way to find affordable healthcare</h1></Col>
+            <Col><Image src={City} align="right" /></Col>
+            {/* Remove Linus \/\/\/    Uncomment the image /\/\/\ */}
+            {/*<Col><Image style={{'width':'300px'}} src={'https://kwize.com/pics/Linus-Torvalds-quote-about-talking-1c9797.jpg'} align="right"/></Col>*/}
+          </Row>
+          </LowerLayout>
 
-      </React.Fragment>
+          {/* Its kinda obvious what this bit  does..*/}
+          <Footer>
+          </Footer>
 
-    );
+        </React.Fragment>
+
+      );
+    } else {
+      return (
+        <React.Fragment>
+          <p>"This will be the search"</p>
+        </React.Fragment>
+      );
+    }
   }
 }
 
