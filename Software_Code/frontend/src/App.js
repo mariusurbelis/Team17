@@ -40,11 +40,11 @@ import City from './assets/city.png';
 //   });
 
 var locations = new Array(
-  ["Dundee", { lat: 56.462002, lng: -2.970700 }],
-  ["Dunde1", { lat: 57.462002, lng: -2.970700 }],
-  ["Dunde2", { lat: 58.462002, lng: -2.970700 }],
-  ["Dunde3", { lat: 59.462002, lng: -2.970700 }],
-  ["Dunde4", { lat: 60.462002, lng: -2.970700 }],
+    ["Dundee", { lat: 56.462002, lng: -2.970700 }],
+    ["Dunde1", { lat: 57.462002, lng: -2.970700 }],
+    ["Dunde2", { lat: 58.462002, lng: -2.970700 }],
+    ["Dunde3", { lat: 59.462002, lng: -2.970700 }],
+    ["Dunde4", { lat: 60.462002, lng: -2.970700 }],
 )
 
 // Used for a loading spinner
@@ -55,66 +55,46 @@ const override = css`
 `;
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      procedures: [],
-      query: '',
-      loading: true,
-      initial: true
+    constructor(props) {
+        super(props);
+        this.state = {
+            procedures: [],
+            query: '',
+            loading: false,
+            initial: false
+        }
     }
-  }
 
-  // componentDidMount() {
-  //   fetch('https://api.urbelis.dev/procedures?query=' + this.state.query, {
-  //     mode: 'cors',
-  //     method: 'GET',
-  //     headers:{
-  //       'Access-Control-Allow-Origin':'*'
-  //     },},).then(response => {
-  //     if (response.ok) {
-  //       response.json().then(json => {
-  //         console.log(json)
-  //         this.setState({ procedures: json });
-  //       });
-  //     }
-  //   });
-  // }
+    render() {
 
-  componentDidMount() {
-    this.state.loading = false
-  }
+        if (this.state.initial) {
+            return (
 
-  render() {
+                <React.Fragment>
 
-    if (this.state.initial) {
-      return (
+                    {/* Header Area - Essentially the Navbar and color gradient components*/}
+                    <ColorLayout>
+                        <NavigationBar>
+                        </NavigationBar>
+                        <Router>
+                            <Switch>
+                                {/* This is for the homepage city picture and heading text 'smarter healthcare etc' */}
+                                {/* <Route path = "PAGE-NAME" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
+                                <Route exact path="/" component={Home} />
+                            </Switch>
+                        </Router>
+                    </ColorLayout>
 
-        <React.Fragment>
-
-          {/* Header Area - Essentially the Navbar and color gradient components*/}
-          <ColorLayout>
-            <NavigationBar>
-            </NavigationBar>
-            <Router>
-              <Switch>
-                {/* This is for the homepage city picture and heading text 'smarter healthcare etc' */}
-                {/* <Route path = "PAGE-NAME" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
-                <Route exact path="/" component={Home} />
-              </Switch>
-            </Router>
-          </ColorLayout>
-
-        {/* Main page area, put your components in here <3 - LowerLayout is just a react container to keep things neat */}
-        {/* <Route path = "PAGE-NAME(Page you want component to appear on)" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
-        <LowerLayout>
-          <Router>
-            <Switch>
-              <Route exact path="/" component={HomepageSearch} />
-              <Route path="/about" component={About} />
-            </Switch>
-          </Router>
-          {/* <div style={{'margin-top':'1em'}} className="sweet-loading">
+                    {/* Main page area, put your components in here <3 - LowerLayout is just a react container to keep things neat */}
+                    {/* <Route path = "PAGE-NAME(Page you want component to appear on)" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
+                    <LowerLayout>
+                        <Router>
+                            <Switch>
+                                <Route exact path="/" component={HomepageSearch} />
+                                <Route path="/about" component={About} />
+                            </Switch>
+                        </Router>
+                        {/* <div style={{'margin-top':'1em'}} className="sweet-loading">
               <FadeLoader
                 css={override}
                 size={200}
@@ -123,26 +103,26 @@ class App extends Component {
                 loading={this.state.loading}
               />
             </div> */}
-          <Row>
-            <Col><h1 class="homeHeading">A smarter way to find affordable healthcare</h1></Col>
-            <Col><Image src={City} align="right" /></Col>
-            {/* Remove Linus \/\/\/    Uncomment the image /\/\/\ */}
-            {/*<Col><Image style={{'width':'300px'}} src={'https://kwize.com/pics/Linus-Torvalds-quote-about-talking-1c9797.jpg'} align="right"/></Col>*/}
-          </Row>
-        </LowerLayout>
+                        <Row>
+                            <Col><h1 class="homeHeading">A smarter way to find affordable healthcare</h1></Col>
+                            <Col><Image src={City} align="right" /></Col>
+                            {/* Remove Linus \/\/\/    Uncomment the image /\/\/\ */}
+                            {/*<Col><Image style={{'width':'300px'}} src={'https://kwize.com/pics/Linus-Torvalds-quote-about-talking-1c9797.jpg'} align="right"/></Col>*/}
+                        </Row>
+                    </LowerLayout>
 
-          {/* Main page area, put your components in here <3 - LowerLayout is just a react container to keep things neat */}
-          {/* <Route path = "PAGE-NAME(Page you want component to appear on)" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
-          <LowerLayout>
-            <Router>
-              <Switch>
-                <Route exact path="/" component={HomepageSearch} />
-                <Route path="/about" component={About} />
-                <Route path="/hospitals" component={HospitalsSelection} />
-                <Route path="/procedures" component={SearchBar} />
-              </Switch>
-            </Router>
-            {/* <div style={{'margin-top':'1em'}} className="sweet-loading">
+                    {/* Main page area, put your components in here <3 - LowerLayout is just a react container to keep things neat */}
+                    {/* <Route path = "PAGE-NAME(Page you want component to appear on)" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
+                    <LowerLayout>
+                        <Router>
+                            <Switch>
+                                <Route exact path="/" component={HomepageSearch} />
+                                <Route path="/about" component={About} />
+                                <Route path="/hospitals" component={HospitalsSelection} />
+                                <Route path="/procedures" component={SearchBar} />
+                            </Switch>
+                        </Router>
+                        {/* <div style={{'margin-top':'1em'}} className="sweet-loading">
                 <FadeLoader
                   css={override}
                   size={200}
@@ -151,29 +131,46 @@ class App extends Component {
                   loading={this.state.loading}
                 />
               </div> */}
-                      <Row>
-            <Col><h1 class="homeHeading">A smarter way to find affordable healthcare</h1></Col>
-            <Col><Image src={City} align="right" /></Col>
-            {/* Remove Linus \/\/\/    Uncomment the image /\/\/\ */}
-            {/*<Col><Image style={{'width':'300px'}} src={'https://kwize.com/pics/Linus-Torvalds-quote-about-talking-1c9797.jpg'} align="right"/></Col>*/}
-          </Row>
-          </LowerLayout>
+                        <Row>
+                            <Col><h1 class="homeHeading">A smarter way to find affordable healthcare</h1></Col>
+                            <Col><Image src={City} align="right" /></Col>
+                            {/* Remove Linus \/\/\/    Uncomment the image /\/\/\ */}
+                            {/*<Col><Image style={{'width':'300px'}} src={'https://kwize.com/pics/Linus-Torvalds-quote-about-talking-1c9797.jpg'} align="right"/></Col>*/}
+                        </Row>
+                    </LowerLayout>
 
-          {/* Its kinda obvious what this bit  does..*/}
-          <Footer>
-          </Footer>
+                    {/* Its kinda obvious what this bit  does..*/}
+                    <Footer>
+                    </Footer>
 
-        </React.Fragment>
+                </React.Fragment>
 
-      );
-    } else {
-      return (
-        <React.Fragment>
-          <p>"This will be the search"</p>
-        </React.Fragment>
-      );
+            );
+        } else {
+            return (
+                <React.Fragment>
+                    <div className={'container-fluid'}>
+                        <Row style={{ 'background': '#aaaaaa', height: '10vh' }} className={'align-items-center'}>
+                            <Col className={'col-12'}>
+                                <p>This is going to be the search bar.</p>
+                            </Col>
+                        </Row>
+
+                        <Row style={{ height: '90vh' }}>
+                            <div style={{ 'background': '#aaeeaa' }} className={'col-2'}>
+                                <p>Place for the cards</p>
+                            </div>
+
+                            <div style={{ 'background': '#eeaaaa' }} className={'col-10'}>
+                                <p>Map</p>
+                            </div>
+                        </Row>
+
+                    </div>
+                </React.Fragment>
+            );
+        }
     }
-  }
 }
 
 export default App;

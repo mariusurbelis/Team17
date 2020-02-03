@@ -41,7 +41,8 @@ export class Home extends Component {
         s4: false
     }
     callbackFunction = (childData) => {
-        this.setState({ s1: childData.searchMain,
+        this.setState({
+            s1: childData.searchMain,
             s2: childData.searchLocation,
             s3: childData.searchRadius,
             s4: childData.selectedOption,
@@ -50,26 +51,26 @@ export class Home extends Component {
 
     render() {
 
-        if (!this.state.s4){
+        if (!this.state.s4) {
             return (
-    
-                    <Styles>
-                        <NewSearch parentCallback={this.callbackFunction} />
-                        <Row style={{ background: "#32a852", }}>
-    
-                        </Row>
-                    </Styles>
-            )    
-        }else{
-            return(
-                
+
+                <Styles>
+                    <NewSearch parentCallback={this.callbackFunction} />
+                    <Row style={{ background: "#32a852", }}>
+
+                    </Row>
+                </Styles>
+            )
+        } else {
+            return (
+
                 <ul>
                     <li>{this.state.s1}</li>
                     <li>{this.state.s2}</li>
                     <li>{this.state.s3}</li>
                     <li>{this.state.s4}</li>
-                    </ul>
-        )
+                </ul>
+            )
         }
     }
 }
