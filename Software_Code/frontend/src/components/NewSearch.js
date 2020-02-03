@@ -4,15 +4,17 @@ import Col from 'react-bootstrap/Col';
 import styled from 'styled-components';
 
 
+
 const Styles = styled.div`
+
     --bg: #E0E0E0;
     --fg: #424242;
     --bd: #BDBDBD;
 
-    border-radius: 15px;
+    //border-radius: 14px;
     background: #220b5c;
     width: auto;
-    margin: 50px 0px 80px 0px;
+    //margin: 50px 0px 80px 0px;
     padding 30px;
 
     // .row {
@@ -32,11 +34,13 @@ const Styles = styled.div`
     .label {
         color: white;
         height: auto;
+        margin: 10px 0 0 0;
        width: 15%; 
     }
 
     .radio{
-        width 3%;
+        width: 3%;
+        margin: 17px 0px 0px 0px;
         
     }
 
@@ -103,9 +107,11 @@ var boxStyle = {
     width: '90%'
 }
 
+var hStyle;
 
 
-export default class NewSearch extends Component {    
+
+export default class NewSearch extends Component {
     constructor() {
         super();
         this.state = {
@@ -116,18 +122,34 @@ export default class NewSearch extends Component {
         }
     }
 
+    changeHStyle() {
+        if (this.props.home == true) {
+            hStyle = {
+                margin: '50px 0px 80px 0px',
+                width: "100%",
+                borderRadius: '14px',
+            }
+        } else {
+            hStyle = {
+                margin: '0px 0px 0px 0px',
+                width: "100%",
+                borderRadius: '0px'
+            }
+        }
+    }
+
     sendData = () => {
         this.props.parentCallback(this.state);
-   }
+    }
 
     handleSubmit = (event) => {
         this.sendData()
         event.preventDefault();
-        this.setState({ searchMain: "Submitted" })
-        
-        
+        this.setState({ searchMain: "Submitted" });
+
+
     }
-    
+
     handleOptionChange = changeEvent => {
         this.setState({
             selectedOption: changeEvent.target.value
@@ -146,29 +168,15 @@ export default class NewSearch extends Component {
     updateSearch(event) {
         this.setState({ search: event.target.value })
     }
-    
+
     render() {
+        this.changeHStyle()
         return (
-            <form onSubmit={this.handleSubmit}>
-                <Styles>
+            <form onSubmit={this.handleSubmit} style={{width: "100%"}}>
+                <Styles style={hStyle}>
                     {/* <label className="label">Search By: </label> */}
                     <Row>
-                        <input
-                            className="radio"
-                            type="radio"
-                            value="procCode"
-                            checked={this.state.selectedOption === "procCode"}
-                            onChange={this.handleOptionChange}
-                        />
-                        <label className="label">Procedure Code </label>
-                        <input
-                            className="radio"
-                            type="radio"
-                            value="procName"
-                            checked={this.state.selectedOption === "procName"}
-                            onChange={this.handleOptionChange}
-                        />
-                        <label className="label">Procedure Name </label>
+
                     </Row>
                     <Row>
                         <label className="smallLabel" style={{ width: '60%' }}>Search for procedure</label>
@@ -198,7 +206,24 @@ export default class NewSearch extends Component {
 
                     </Row>
                     <Row>
-                        <label style={{ width: '80%' }}></label>
+                        <input
+                            className="radio"
+                            type="radio"
+                            value="procCode"
+                            checked={this.state.selectedOption === "procCode"}
+                            onChange={this.handleOptionChange}
+                        />
+                        <label className="label">Procedure Code </label>
+                        <input
+                            className="radio"
+                            type="radio"
+                            value="procName"
+                            checked={this.state.selectedOption === "procName"}
+                            onChange={this.handleOptionChange}
+                        />
+                        <label className="label">Procedure Name </label>
+
+                        <label style={{ width: '44%' }}></label>
                         <input className={'butn'}
                             type="submit"
                             value="Submit"
@@ -206,10 +231,10 @@ export default class NewSearch extends Component {
                     </Row>
                 </Styles>
             </ form>
-                )
-            }
-        }
-        
+        )
+    }
+}
+
 {/* <Col>
 <input className="subSearch"
     type="text"

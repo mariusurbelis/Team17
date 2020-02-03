@@ -28,6 +28,7 @@ import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import City from './assets/city.png';
+import NewSearch from './components/NewSearch';
 
 
 // fetch('https://api.urbelis.dev/procedure', {mode: 'no-cors', method: 'GET'})
@@ -150,10 +151,11 @@ class App extends Component {
             return (
                 <React.Fragment>
                     <div className={'container-fluid'}>
-                        <Row style={{ 'background': '#aaaaaa', height: '10vh' }} className={'align-items-center'}>
-                            <Col className={'col-12'}>
-                                <p>This is going to be the search bar.</p>
-                            </Col>
+                        <Row style={{ 'background': '#aaaaaa' }} className={'align-items-center'} style={{width: 'auto'}}>
+                           
+                                <NewSearch home={false}/>
+                                
+                           
                         </Row>
 
                         <Row style={{ height: '90vh' }}>

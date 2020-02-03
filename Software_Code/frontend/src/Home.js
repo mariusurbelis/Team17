@@ -55,7 +55,7 @@ export class Home extends Component {
             return (
 
                 <Styles>
-                    <NewSearch parentCallback={this.callbackFunction} />
+                    <NewSearch home={true} parentCallback={this.callbackFunction} />
                     <Row style={{ background: "#32a852", }}>
 
                     </Row>
