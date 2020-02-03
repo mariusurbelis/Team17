@@ -158,11 +158,11 @@ class App extends Component {
                         </Row>
 
                         <Row style={{ height: '90vh' }}>
-                            <div style={{ 'background': '#aaeeaa' }} className={'col-2'}>
+                            <div className={'col-3 p-3'}>
                                 <ProcedureList procedures={this.state.procedures}></ProcedureList>
                             </div>
 
-                            <div style={{ 'background': '#eeaaaa' }} className={'col-10'}>
+                            <div style={{ 'background': '#eeaaaa' }} className={'col-9'}>
                                 <p>Map</p>
                             </div>
                         </Row>
