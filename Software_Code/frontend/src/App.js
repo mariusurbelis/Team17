@@ -105,9 +105,33 @@ class App extends Component {
             </Router>
           </ColorLayout>
 
-          {/* Version Bar -- The little grey bar just underneath the header */}
-          <Version>
-          </Version>
+        {/* Main page area, put your components in here <3 - LowerLayout is just a react container to keep things neat */}
+        {/* <Route path = "PAGE-NAME(Page you want component to appear on)" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
+        <LowerLayout>
+          <Router>
+            <Switch>
+              <Route exact path="/" component={HomepageSearch} />
+              <Route path="/about" component={About} />
+              <Route path="/hospitals" component={HospitalsSelection} />
+              <Route path="/procedures" component={SearchBar} />
+            </Switch>
+          </Router>
+          {/* <div style={{'margin-top':'1em'}} className="sweet-loading">
+              <FadeLoader
+                css={override}
+                size={200}
+                //size={"150px"} this also works
+                color={"#4287f5"}
+                loading={this.state.loading}
+              />
+            </div> */}
+          <Row>
+            <Col><h1 class="homeHeading">A smarter way to find affordable healthcare</h1></Col>
+            <Col><Image src={City} align="right" /></Col>
+            {/* Remove Linus \/\/\/    Uncomment the image /\/\/\ */}
+            {/*<Col><Image style={{'width':'300px'}} src={'https://kwize.com/pics/Linus-Torvalds-quote-about-talking-1c9797.jpg'} align="right"/></Col>*/}
+          </Row>
+        </LowerLayout>
 
           {/* Main page area, put your components in here <3 - LowerLayout is just a react container to keep things neat */}
           {/* <Route path = "PAGE-NAME(Page you want component to appear on)" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}

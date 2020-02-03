@@ -116,9 +116,15 @@ export default class NewSearch extends Component {
         }
     }
 
+    sendData = () => {
+        this.props.parentCallback(this.state);
+   }
+
     handleSubmit = (event) => {
+        this.sendData()
         event.preventDefault();
         this.setState({ searchMain: "Submitted" })
+        
         
     }
     
@@ -145,7 +151,7 @@ export default class NewSearch extends Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <Styles>
-                    <label className="label">Search By: </label>
+                    {/* <label className="label">Search By: </label> */}
                     <Row>
                         <input
                             className="radio"
