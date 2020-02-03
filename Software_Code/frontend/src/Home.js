@@ -36,11 +36,6 @@ export const Home = (props) =>(
         <Row style={{ background: "#32a852", }}>
           
         </Row>
-        <Row>
-        <Col><h1 class = "homeHeading">A smarter way to find affordable healthcare</h1></Col>
-            <Col><Image src={City} align="right"/></Col>
-            {/* Remove Linus \/\/\/    Uncomment the image /\/\/\ */}
-            {/*<Col><Image style={{'width':'300px'}} src={'https://kwize.com/pics/Linus-Torvalds-quote-about-talking-1c9797.jpg'} align="right"/></Col>*/}
-        </Row>
+
     </Styles>
 )
