@@ -61,7 +61,7 @@ class App extends Component {
       procedures: [],
       query: '',
       loading: true,
-      initial: false
+      initial: true
     }
   }
 
