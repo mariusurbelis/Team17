@@ -1,22 +1,84 @@
-# Sprint 1
+# Sprint 2
 
 All information about your first sprint should be put into this folder. Additionally, the information below should be updated to give a short summary of your daily scrum meetings.
 
 ---
 
-## Day [X] - Scrum Meeting summary
-The Scrum Master for this meeting was **Mike Crabb**
+## Day [1] 03/02/2020- Scrum Meeting summary
+The Scrum Master for this meeting was **Callum Darling**
 
 ### Members Present:
-Mike, Rachel, information
+Ruth Carnegie, Callum Darling, Peter Leslie, Marius Urbelis, Alfie Hippisley
 
 ### Members Not Present:
-Naughty Student 1, Naughty Student 2
+N/A
 
 ### Apologies:
-Ill Student 1.
+Daniel Blackley - Illness, Notified us beforehand. 
 
 ### Summary of Conversation:
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 ---
+## Day [2] 04/02/2020- Scrum Meeting summary
+The Scrum Master for this meeting was **Callum Darling**
+
+### Members Present:
+Ruth Carnegie, Callum Darling, Peter Leslie, Marius Urbelis, Alfie Hippisley
+
+### Members Not Present:
+N/A
+
+### Apologies:
+Daniel Blackley - Illness, Notified us beforehand. 
+
+### Summary of Conversation:
+
+---
+## Day [3] 03/02/2020- Scrum Meeting summary
+The Scrum Master for this meeting was **Callum Darling**
+
+### Members Present:
+Ruth Carnegie, Callum Darling, Peter Leslie, Marius Urbelis, Alfie Hippisley
+
+### Members Not Present:
+N/A
+
+### Apologies:
+Daniel Blackley - Illness, Notified us beforehand. 
+
+### Summary of Conversation:
+
+---
+
+## Day [4] 03/02/2020- Scrum Meeting summary
+The Scrum Master for this meeting was **Callum Darling**
+
+### Members Present:
+Ruth Carnegie, Callum Darling, Peter Leslie, Marius Urbelis, Alfie Hippisley
+
+### Members Not Present:
+N/A
+
+### Apologies:
+Daniel Blackley - Illness, Notified us beforehand. 
+
+### Summary of Conversation:
+
+---
+## Day [5] 03/02/2020- Scrum Meeting summary
+The Scrum Master for this meeting was **Callum Darling**
+
+### Members Present:
+Ruth Carnegie, Callum Darling, Peter Leslie, Marius Urbelis, Alfie Hippisley
+
+### Members Not Present:
+N/A
+
+### Apologies:
+Daniel Blackley - Illness, Notified us beforehand. 
+
+### Summary of Conversation:
+
+---
+
+
