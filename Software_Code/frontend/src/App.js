@@ -126,12 +126,12 @@ class App extends Component {
                 loading={this.state.loading}
               />
             </div> */}
-                    <Row>
-          <Col><h1 class="homeHeading">A smarter way to find affordable healthcare</h1></Col>
-          <Col><Image src={City} align="right" /></Col>
-          {/* Remove Linus \/\/\/    Uncomment the image /\/\/\ */}
-          {/*<Col><Image style={{'width':'300px'}} src={'https://kwize.com/pics/Linus-Torvalds-quote-about-talking-1c9797.jpg'} align="right"/></Col>*/}
-        </Row>
+          <Row>
+            <Col><h1 class="homeHeading">A smarter way to find affordable healthcare</h1></Col>
+            <Col><Image src={City} align="right" /></Col>
+            {/* Remove Linus \/\/\/    Uncomment the image /\/\/\ */}
+            {/*<Col><Image style={{'width':'300px'}} src={'https://kwize.com/pics/Linus-Torvalds-quote-about-talking-1c9797.jpg'} align="right"/></Col>*/}
+          </Row>
         </LowerLayout>
 
         {/* Its kinda obvious what this bit  does..*/}
