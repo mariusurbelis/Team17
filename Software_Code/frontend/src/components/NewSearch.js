@@ -112,7 +112,7 @@ export default class NewSearch extends Component {
             searchMain: "",
             searchLocation: "",
             searchRadius: "",
-            selectedOption: ""
+            selectedOption: "procCode"
         }
     }
 
