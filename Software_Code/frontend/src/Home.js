@@ -34,6 +34,10 @@ const Styles = styled.div`
 
 export class Home extends Component {
 
+    sendData = () => {
+        this.props.parentCallback(this.state);
+    }
+    
     state = {
         s1: "",
         s2: "",
@@ -47,6 +51,7 @@ export class Home extends Component {
             s3: childData.searchRadius,
             s4: childData.selectedOption,
         })
+        this.sendData()
     }
 
     render() {

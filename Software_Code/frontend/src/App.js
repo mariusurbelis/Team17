@@ -62,13 +62,28 @@ class App extends Component {
             procedures: [],
             query: '',
             loading: false,
-            initial: false
+            initial: false,
+            searchMain: "",
+            searchLocation: "",
+            searchRadius: "",
+            selectedOption: false
         }
     }
 
+    callbackFunction = (childData) => {
+        this.setState({
+            searchMain: childData.s1,
+            searchLocation: childData.s2,
+            searchRadius: childData.s3,
+            selectedOption: childData.s4
+        })
+        getProcedures()
+    }
+
+
     render() {
 
-        if (this.state.initial) {
+        if (!this.state.selectedOption) {
             return (
 
                 <React.Fragment>
@@ -81,7 +96,8 @@ class App extends Component {
                             <Switch>
                                 {/* This is for the homepage city picture and heading text 'smarter healthcare etc' */}
                                 {/* <Route path = "PAGE-NAME" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
-                                <Route exact path="/" component={Home} />
+                                {/* <Route exact path="/" component={Home} /> */}
+                                <Home parentCallback={this.callbackFunction}/>
                             </Switch>
                         </Router>
                     </ColorLayout>
