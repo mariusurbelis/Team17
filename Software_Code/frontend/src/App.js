@@ -15,6 +15,7 @@ import { NavigationBar } from './components/NavigationBar';
 import { HomepageSearch } from './components/HomepageSearch';
 import { LowerLayout } from './components/LowerLayout';
 import { Footer } from './components/Footer';
+import { CityBanner } from './components/CityBanner';
 
 import ProcedureList from './components/ProcedureList';
 import HospitalsMap from './components/HospitalsMap'
@@ -27,7 +28,6 @@ import { css } from "@emotion/core";
 import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import City from './assets/city.png';
 import NewSearch from './components/NewSearch';
 
 var locations = new Array(
@@ -120,17 +120,11 @@ class App extends Component {
                     {/* <Route path = "PAGE-NAME(Page you want component to appear on)" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
                     <LowerLayout>
                         <Router>
+                            
                             <Switch>
-                                <Route exact path="/" component={HomepageSearch} />
-                                <Route path="/about" component={About} />
-                                <Route path="/hospitals" component={HospitalsSelection} />
-                                <Route path="/procedures" component={SearchBar} />
+                                <Route exact path="/" component={CityBanner}/>
                             </Switch>
                         </Router>
-                        <Row>
-                            <Col><h1 class="homeHeading">A smarter way to find affordable healthcare</h1></Col>
-                            <Col><Image src={City} align="right" /></Col>
-                        </Row>
                     </LowerLayout>
 
                     {/* Its kinda obvious what this bit  does..*/}

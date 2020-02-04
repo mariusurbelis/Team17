@@ -18,7 +18,7 @@ const Styles = styled.div`
 export const Version = (props) => (
     <Styles>
         <footer className="footer">
-            <p>Sprint 1 Edition</p>
+            <p>Sprint 2 Edition</p>
         </footer>
     </Styles>
 )   
