@@ -3,10 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // These are for page navigation, components change depending page..
 import { Home } from './Home';
-//import { Hospitals } from './Hospitals';
-import { Procedures } from './Procedures';
 import { About } from './About';
-import { NoMatch } from './NoMatch';
 
 // These are for each UI component
 import { Version } from './components/Version';
