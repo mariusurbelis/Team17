@@ -56,7 +56,7 @@ class App extends Component {
             searchRadius: childData.searchRadius,
             selectedOption: childData.selectedOption
         })
-        this.setState({initial: false})
+        this.setState({ initial: false })
     }
 
     render() {
@@ -95,7 +95,7 @@ class App extends Component {
                     <LowerLayout>
                         <Router>
                             <Switch>
-                                <Route exact path="/" component={CityBanner}/>
+                                <Route exact path="/" component={CityBanner} />
                             </Switch>
                         </Router>
                     </LowerLayout>
@@ -110,7 +110,7 @@ class App extends Component {
         } else {
             if (!this.state.proceduresLoaded) {
                 this.getProcedures()
-                this.setState({proceduresLoaded: true})
+                this.setState({ proceduresLoaded: true })
             }
             return (
 
@@ -122,20 +122,17 @@ class App extends Component {
 
                     <div className={'container-fluid'}>
                         <Row style={{ 'background': '#aaaaaa', width: 'auto' }} className={'align-items-center'}>
-
                             <NewSearch home={false} />
-
-
                         </Row>
 
                         <Row style={{ height: '90vh' }}>
-                            <div className={'col-3 p-3'}>
+                            <Col sm={3} className={'p-3'}>
                                 <ProcedureList procedures={this.state.procedures}></ProcedureList>
-                            </div>
+                            </Col>
 
-                            <div style={{ 'background': '#eeaaaa' }} className={'col-9'}>
+                            <Col sm={9} style={{ 'background': '#eeaaaa' }}>
                                 <p>Map</p>
-                            </div>
+                            </Col>
                         </Row>
 
                     </div>
