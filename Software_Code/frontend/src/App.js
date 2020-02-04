@@ -121,7 +121,6 @@ class App extends Component {
                     {/* <Route path = "PAGE-NAME(Page you want component to appear on)" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
                     <LowerLayout>
                         <Router>
-                            
                             <Switch>
                                 <Route exact path="/" component={CityBanner}/>
                             </Switch>

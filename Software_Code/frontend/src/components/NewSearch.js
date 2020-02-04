@@ -7,12 +7,15 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
 
+
+background: rgb(11,156,219);
+    background: linear-gradient(162deg, rgba(11,156,219,1) 0%, rgba(128,219,120,1) 100%);
     --bg: #E0E0E0;
-    --fg: #424242;
+    --fg: grey;
     --bd: #BDBDBD;
 
     //border-radius: 14px;
-    background: #220b5c;
+    background: white;
     width: auto;
     //margin: 50px 0px 80px 0px;
     padding 30px;
@@ -25,14 +28,14 @@ const Styles = styled.div`
     // }
 
     .smallLabel {
-        color: white;
+        color: grey;
         font-weight: bold;
         font-size: small;
         padding-left: 4px;
     }
 
     .label {
-        color: white;
+        color: grey;
         height: auto;
         margin: 10px 0 0 0;
        width: 15%; 
