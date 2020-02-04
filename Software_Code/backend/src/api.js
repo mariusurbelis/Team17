@@ -94,6 +94,15 @@ app.get('/providers', function (req, res) {
     });
 });
 
+//check to get procedure ID
+app.get('/proceduresbyid', function (req, res) {
+    var id = req.query.id;
+    connection.query('select * from GPDProviders where GPDID=' + id + ' LIMIT 0,50', function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results));
+    });
+});
+
 // EXAMPLES BELOW
 
 /*
