@@ -50,6 +50,7 @@ class App extends Component {
         super(props);
         this.state = {
             procedures: [],
+            proceduresLoaded: false,
             query: '',
             loading: false,
             initial: true,
@@ -101,7 +102,7 @@ class App extends Component {
                                 {/* This is for the homepage city picture and heading text 'smarter healthcare etc' */}
                                 {/* <Route path = "PAGE-NAME" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
                                 {/* <Route exact path="/" component={Home} /> */}
-                                <Home parentCallback={this.callbackFunction2}/>
+                                <Home parentCallback={this.callbackFunction2} />
                             </Switch>
                         </Router>
                     </ColorLayout>
@@ -141,22 +142,25 @@ class App extends Component {
 
             );
         } else {
-            this.getProcedures()
+            if (!this.state.proceduresLoaded) {
+                this.getProcedures()
+                this.state.proceduresLoaded = true
+            }
             return (
-                
+
                 <React.Fragment>
                     <ul>
-                    <li >{this.state.searchMain}</li>
-                    <li >{this.state.searchLocation}</li>
-                    <li >{this.state.searchRadius}</li>
-                    <li >{this.state.selectedOption}</li>
-                </ul> 
+                        <li >{this.state.searchMain}</li>
+                        <li >{this.state.searchLocation}</li>
+                        <li >{this.state.searchRadius}</li>
+                        <li >{this.state.selectedOption}</li>
+                    </ul>
                     <div className={'container-fluid'}>
-                        <Row style={{ 'background': '#aaaaaa' }} className={'align-items-center'} style={{width: 'auto'}}>
-                           
-                                <NewSearch home={false}/>
-                                
-                           
+                        <Row style={{ 'background': '#aaaaaa' }} className={'align-items-center'} style={{ width: 'auto' }}>
+
+                            <NewSearch home={false} />
+
+
                         </Row>
 
                         <Row style={{ height: '90vh' }}>
