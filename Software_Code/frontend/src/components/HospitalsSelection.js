@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import HospitalSearchBar from './HospitalSearchBar';
 
-const state = "MO"
-const startLocation = {lat: 38.6545, lng: -90.3117}
+// const state = "MO"
+// const startLocation = {lat: 38.6545, lng: -90.3117}
 const Styles = styled.div`
     h1{
         color: grey;
@@ -23,19 +23,8 @@ const Styles = styled.div`
 // <HospitalsMap hospList={locations} hi={"40vh"} wi={"40vw"}/>
 export const HospitalsSelection = (props) => (
     <Styles>
-        <h1 class = "PageTitle"> Hospitals In Your Local Area </h1>
+        <h1 class="PageTitle"> Hospitals In Your Local Area </h1>
         <hr></hr>
         <HospitalSearchBar></HospitalSearchBar>
     </Styles>
-)   
-
-//        <Row>
-{/* <HospitalSearchBar/>
-//<Col>
-//<HospitalSelectionPanel startLocation={startLocation} stater={state} left={true}/> 
-//</Col>
-//<Col>
- // <HospitalSelectionPanel left={false}/>
- //   {/* <p>Loading...</p> */}
-//</Col>
-//</Row> */}
+)
