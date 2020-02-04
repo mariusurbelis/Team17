@@ -77,6 +77,15 @@ app.get('/payments', function (req, res) {
     });
 });
 
+//rest api to get locations
+app.get('/locations', function (req, res) {
+    var city = req.query.city;
+    connection.query('select * from Cities WHERE CityName =' + city, function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results));
+    });
+});
+
 //rest api to get all providers
 app.get('/providers', function (req, res) {
     connection.query('select * from Providers', function (error, results, fields) {
