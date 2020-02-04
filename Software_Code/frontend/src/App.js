@@ -15,6 +15,7 @@ import { NavigationBar } from './components/NavigationBar';
 import { HomepageSearch } from './components/HomepageSearch';
 import { LowerLayout } from './components/LowerLayout';
 import { Footer } from './components/Footer';
+import { CityBanner } from './components/CityBanner';
 
 import ProcedureList from './components/ProcedureList';
 import HospitalsMap from './components/HospitalsMap'
@@ -24,21 +25,17 @@ import SearchBar from './components/SearchBar';
 import FadeLoader from "react-spinners/FadeLoader";
 import { css } from "@emotion/core";
 
-// fetch('https://api.urbelis.dev/procedure', {mode: 'no-cors', method: 'GET'})
-//   .then((response) => {
-//     // return response.json();
-//     return response.text();
-//   })
-//   .then((myJson) => {
-//     console.log(myJson);
-//   });
+import Image from 'react-bootstrap/Image';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import NewSearch from './components/NewSearch';
 
 var locations = new Array(
-	["Dundee", { lat: 56.462002, lng: -2.970700 }],
-	["Dunde1", { lat: 57.462002, lng: -2.970700 }],
-	["Dunde2", { lat: 58.462002, lng: -2.970700 }],
-	["Dunde3", { lat: 59.462002, lng: -2.970700 }],
-	["Dunde4", { lat: 60.462002, lng: -2.970700 }],
+    ["Dundee", { lat: 56.462002, lng: -2.970700 }],
+    ["Dunde1", { lat: 57.462002, lng: -2.970700 }],
+    ["Dunde2", { lat: 58.462002, lng: -2.970700 }],
+    ["Dunde3", { lat: 59.462002, lng: -2.970700 }],
+    ["Dunde4", { lat: 60.462002, lng: -2.970700 }],
 )
 
 // Used for a loading spinner
@@ -49,87 +46,132 @@ const override = css`
 `;
 
 class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      procedures: [],
-      query: '',
-      loading: true
+    constructor(props) {
+        super(props);
+        this.state = {
+            procedures: [],
+            proceduresLoaded: false,
+            query: '',
+            loading: false,
+            initial: true,
+            searchMain: "",
+            searchLocation: "",
+            searchRadius: "",
+            selectedOption: false
+        }
     }
-  }
 
-  // componentDidMount() {
-  //   fetch('https://api.urbelis.dev/procedures?query=' + this.state.query, {
-  //     mode: 'cors',
-  //     method: 'GET',
-  //     headers:{
-  //       'Access-Control-Allow-Origin':'*'
-  //     },},).then(response => {
-  //     if (response.ok) {
-  //       response.json().then(json => {
-  //         console.log(json)
-  //         this.setState({ procedures: json });
-  //       });
-  //     }
-  //   });
-  // }
+    getProcedures = () => {
+        fetch('https://api.urbelis.dev/procedures?query=' + this.state.searchMain, {
+            mode: 'cors',
+            method: 'GET',
+            headers: {
+                'Access-Control-Allow-Origin': '*'
+            },
+        }).then(response => {
+            if (response.ok) {
+                response.json().then(data => this.setState({ 'procedures': data }))
+            }
+        });
+    }
 
-  componentDidMount() {
-    this.state.loading = false
-  }
+    callbackFunction2 = (childData) => {
+        console.log(childData)
+        this.setState({
+            searchMain: childData.searchMain,
+            searchLocation: childData.searchLocation,
+            searchRadius: childData.searchRadius,
+            selectedOption: childData.selectedOption
+        })
+        this.state.initial = false
+    }
 
-  render(){
-    return(
+    render() {
 
-      <React.Fragment>
+        if (this.state.initial) {
+            return (
 
-          {/* Header Area - Essentially the Navbar and color gradient components*/}
-          <ColorLayout>
-            <NavigationBar>
-            </NavigationBar>
-            <Router>
-              <Switch>
-                {/* This is for the homepage city picture and heading text 'smarter healthcare etc' */}
-                {/* <Route path = "PAGE-NAME" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
-                <Route exact path = "/" component = {Home}/>
-              </Switch>
-            </Router>
-          </ColorLayout>
+                <React.Fragment>
 
-          {/* Version Bar -- The little grey bar just underneath the header */}
-          <Version>
-          </Version>
+                    {/* Header Area - Essentially the Navbar and color gradient components*/}
+                    <ColorLayout>
+                        <NavigationBar>
+                        </NavigationBar>
+                        <Router>
+                            <Switch>
+                                {/* This is for the homepage city picture and heading text 'smarter healthcare etc' */}
+                                {/* <Route path = "PAGE-NAME" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
+                                {/* <Route exact path="/" component={Home} /> */}
+                                <Home parentCallback={this.callbackFunction2} />
+                            </Switch>
+                        </Router>
+                    </ColorLayout>
 
-          {/* Main page area, put your components in here <3 - LowerLayout is just a react container to keep things neat */}
-          {/* <Route path = "PAGE-NAME(Page you want component to appear on)" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
-          <LowerLayout>
-            <Router>
-            <Switch>
-              <Route exact path = "/" component = {HomepageSearch}/>
-              <Route path = "/about" component = {About}/>
-              <Route path = "/hospitals" component = {HospitalsSelection}/>
-              <Route path = "/procedures" component = {SearchBar}/>
-            </Switch>
-            </Router>
-            {/* <div style={{'margin-top':'1em'}} className="sweet-loading">
-              <FadeLoader
-                css={override}
-                size={200}
-                //size={"150px"} this also works
-                color={"#4287f5"}
-                loading={this.state.loading}
-              />
-            </div> */}
-          </LowerLayout>
+                    {/* Main page area, put your components in here <3 - LowerLayout is just a react container to keep things neat */}
+                    {/* <Route path = "PAGE-NAME(Page you want component to appear on)" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
+                    <LowerLayout>
+                        <Router>
+                            <Switch>
+                                <Route path="/about" component={About} />
+                            </Switch>
+                        </Router>
+                    </LowerLayout>
 
-          {/* Its kinda obvious what this bit  does..*/}
-        <Footer>
-        </Footer>
+                    {/* Main page area, put your components in here <3 - LowerLayout is just a react container to keep things neat */}
+                    {/* <Route path = "PAGE-NAME(Page you want component to appear on)" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
+                    <LowerLayout>
+                        <Router>
+                            
+                            <Switch>
+                                <Route exact path="/" component={CityBanner}/>
+                            </Switch>
+                        </Router>
+                    </LowerLayout>
 
-      </React.Fragment>
+                    {/* Its kinda obvious what this bit  does..*/}
+                    <Footer>
+                    </Footer>
 
-    );
-  }
+                </React.Fragment>
+
+            );
+        } else {
+            if (!this.state.proceduresLoaded) {
+                this.getProcedures()
+                this.state.proceduresLoaded = true
+            }
+            return (
+
+                <React.Fragment>
+                    <ul>
+                        <li >{this.state.searchMain}</li>
+                        <li >{this.state.searchLocation}</li>
+                        <li >{this.state.searchRadius}</li>
+                        <li >{this.state.selectedOption}</li>
+                    </ul>
+                    <div className={'container-fluid'}>
+                        <Row style={{ 'background': '#aaaaaa' }} className={'align-items-center'} style={{ width: 'auto' }}>
+
+                            <NewSearch home={false} />
+
+
+                        </Row>
+
+                        <Row style={{ height: '90vh' }}>
+                            <div className={'col-3 p-3'}>
+                                <ProcedureList procedures={this.state.procedures}></ProcedureList>
+                            </div>
+
+                            <div style={{ 'background': '#eeaaaa' }} className={'col-9'}>
+                                <p>Map</p>
+                            </div>
+                        </Row>
+
+                    </div>
+                </React.Fragment>
+            );
+        }
+    }
 }
 
 export default App;

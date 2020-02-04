@@ -3,16 +3,19 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import styled from 'styled-components';
 
+
+
 const Styles = styled.div`
+
     --bg: #E0E0E0;
     --fg: #424242;
     --bd: #BDBDBD;
 
-    border-radius: 15px;
+    //border-radius: 14px;
     background: #220b5c;
     width: auto;
-    margin: 0px 0px 10px 0px;
-    padding 40px;
+    //margin: 50px 0px 80px 0px;
+    padding 30px;
 
     // .row {
     //     margin: '0px 0px 10px 0px', 
@@ -31,11 +34,13 @@ const Styles = styled.div`
     .label {
         color: white;
         height: auto;
+        margin: 10px 0 0 0;
        width: 15%; 
     }
 
     .radio{
-        width 3%;
+        width: 3%;
+        margin: 17px 0px 0px 0px;
         
     }
 
@@ -52,7 +57,7 @@ const Styles = styled.div`
         border-bottom-left-radius: 9px;
     }  
     
-    .mainSearch2 {
+    .locSearch {
         width: 25%;
         background: var(--bg);
         color: var(--fg);
@@ -62,7 +67,7 @@ const Styles = styled.div`
         // padding-bottom: 17px;
         // padding-top: 17px;
     }
-    .mainSearch3 {
+    .radSearch {
         width: 15%;
         background: var(--bg);
         color: var(--fg);
@@ -102,78 +107,130 @@ var boxStyle = {
     width: '90%'
 }
 
+var hStyle;
+
 
 
 export default class NewSearch extends Component {
     constructor() {
         super();
         this.state = {
-            searchMain: " Search Main",
-            searchLocation: "Search Location",
-            searchRadius: "Search Radius",
+            searchMain: "",
+            searchLocation: "",
+            searchRadius: "",
             selectedOption: "procCode"
         }
     }
+
+    changeHStyle() {
+        if (this.props.home == true) {
+            hStyle = {
+                margin: '50px 0px 80px 0px',
+                width: "100%",
+                borderRadius: '14px',
+            }
+        } else {
+            hStyle = {
+                margin: '0px 0px 0px 0px',
+                width: "100%",
+                borderRadius: '0px'
+            }
+        }
+    }
+
+    sendData = () => {
+        this.props.parentCallback(this.state);
+    }
+
+    handleSubmit = (event) => {
+        this.sendData()
+        event.preventDefault();
+        this.setState({ searchMain: "Submitted" });
+
+
+    }
+
     handleOptionChange = changeEvent => {
         this.setState({
             selectedOption: changeEvent.target.value
         });
     };
 
+    updateMainSearch(event) {
+        this.setState({ searchMain: event.target.value })
+    }
+    updateLocSearch(event) {
+        this.setState({ searchLocation: event.target.value })
+    }
+    updateRadSearch(event) {
+        this.setState({ searchRadius: event.target.value })
+    }
     updateSearch(event) {
         this.setState({ search: event.target.value })
     }
+
     render() {
+        this.changeHStyle()
         return (
-            <Styles>
-                <label className="label">Search By: </label>
-                <Row>
-                    <input
-                        className="radio"
-                        type="radio"
-                        value="procCode"
-                        checked={this.state.selectedOption === "procCode"}
-                        onChange={this.handleOptionChange}
-                    />
-                    <label className="label">Procedure Code </label>
-                    <input
-                        className="radio"
-                        type="radio"
-                        value="procName"
-                        checked={this.state.selectedOption === "procName"}
-                        onChange={this.handleOptionChange}
-                    />
-                    <label className="label">Procedure Name </label>
-                </Row>
-                <Row>
-                    <label className="smallLabel" style={{width: '60%'}}>Search for procedure</label>
-                    <label className="smallLabel" style={{width: '25%'}}>(Optional) Enter Your City</label>
-                    <label className="smallLabel" style={{width: '15%'}}>Search Radius (KM)</label>
-                    
+            <form onSubmit={this.handleSubmit} style={{width: "100%"}}>
+                <Styles style={hStyle}>
+                    {/* <label className="label">Search By: </label> */}
+                    <Row>
 
-                </Row>
-                <Row>
-                    <input className="mainSearch"
-                        type="text"
-                        value={this.state.searchMain}
-                        onChange={this.updateSearch.bind(this)} />
+                    </Row>
+                    <Row>
+                        <label className="smallLabel" style={{ width: '60%' }}>Search for procedure</label>
+                        <label className="smallLabel" style={{ width: '25%' }}>(Optional) Enter Your City</label>
+                        <label className="smallLabel" style={{ width: '15%' }}>Search Radius (KM)</label>
 
-                    <input className="mainSearch2"
-                        type="text"
-                        value={this.state.searchLocation}
-                        onChange={this.updateSearch.bind(this)} />
 
-                    <input className="mainSearch3"
-                        type="text"
-                        value={this.state.searchRadius}
-                        onChange={this.updateSearch.bind(this)} />
+                    </Row>
+                    <Row>
+                        <input className="mainSearch"
+                            placeholder="Procedure name or DRG code"
+                            type="text"
+                            value={this.state.searchMain}
+                            onChange={this.updateMainSearch.bind(this)} />
 
-                </Row>
-                <Row>
-                    <label style={{width: '80%'}}></label>
-                        <input className={'butn'} type="submit" value="Submit" />
-                </Row>
-            </Styles>
+                        <input className="locSearch"
+                            placeholder="City or state"
+                            type="text"
+                            value={this.state.searchLocation}
+                            onChange={this.updateLocSearch.bind(this)} />
+
+                        <input className="radSearch"
+                            type="text"
+                            placeholder="Distance"
+                            value={this.state.searchRadius}
+                            onChange={this.updateRadSearch.bind(this)} />
+
+                    </Row>
+                    <Row>
+                        <input
+                            className="radio"
+                            type="radio"
+                            value="procCode"
+                            checked={this.state.selectedOption === "procCode"}
+                            onChange={this.handleOptionChange}
+                        />
+                        <label className="label">Procedure Code </label>
+                        <input
+                            className="radio"
+                            type="radio"
+                            value="procName"
+                            checked={this.state.selectedOption === "procName"}
+                            onChange={this.handleOptionChange}
+                        />
+                        <label className="label">Procedure Name </label>
+
+                        <label style={{ width: '44%' }}></label>
+                        <input className={'butn'}
+                            type="submit"
+                            value="Submit"
+                            onClick={this.handleSubmit} />
+                    </Row>
+                </Styles>
+            </ form>
         )
     }
 }
