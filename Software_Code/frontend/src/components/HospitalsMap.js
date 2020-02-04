@@ -16,7 +16,7 @@ var markers = []
 class HospitalsMap extends Component {
 
 	shouldComponentUpdate(nextProps, nextState) {
-		if(this.state.activeMarker != nextState.activeMarker){
+		if(this.state.activeMarker !== nextState.activeMarker){
 			return true;
 		}
 		return false;
@@ -48,7 +48,7 @@ class HospitalsMap extends Component {
 
 		var arrayLength = this.props.hospList.length;
 		for (var i = 0; i < arrayLength; i++) {
-			if(i==0){
+			if(i === 0){
 				markers.push(<Marker
 					position={this.props.hospList[i][1]}
 					onClick={this.onMarkerClick}

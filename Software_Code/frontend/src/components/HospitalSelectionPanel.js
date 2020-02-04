@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
-import ProcedureList from './ProcedureList';
 import ProvCard from './ProvCard'
 import HospitalsMap from '../components/HospitalsMap';
-import HospitalSearchBar from '../components/HospitalSearchBar'
 
-var locations = new Array(
-
-)
+var locations = new Array()
 
 var stateoid = 'CA'
 export default class HospitalSelectionPanel extends Component {
@@ -21,7 +17,7 @@ export default class HospitalSelectionPanel extends Component {
       var y=0;
       for(var i = 0; i < json.length; i++) {
         var obj = json[i];
-        if(obj.State==this.props.stater && y<500){
+        if(obj.State === this.props.stater && y<500){
           y++;
           var innerRecord = { lat: obj.Latitude, lng: obj.longitude }
           var record = [obj.ProviderName, innerRecord]
@@ -53,7 +49,7 @@ export default class HospitalSelectionPanel extends Component {
     render() {
       this.getProcedures()
         if (this.state.procedures) {
-            if(this.props.left == true){
+            if(this.props.left === true){
               this.getLocals()  
               console.log(this.state)
               return(

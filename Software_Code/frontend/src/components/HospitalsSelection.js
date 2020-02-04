@@ -1,31 +1,6 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import styled from 'styled-components';
-import HospitalsMap from '../components/HospitalsMap';
-import HospitalSelectionPanel from './HospitalSelectionPanel';
 import HospitalSearchBar from './HospitalSearchBar';
-
-
-
-// const con = mysql.createConnection({
-// 	host: "urbelis.dev",
-// 	user: "adminrootusername",
-// 	password: "adminrootpassword",
-// 	database: "agile"
-// });
-
-// con.connect(function(err) {
-// 	if (err) throw err;
-// 	console.log("connected!")
-
-// 	con.query("SELECT * FROM GPD", function (err, result, fields) {
-//     if (err) throw err;
-//     res = result;
-//     console.log(result);
-//   	});
-// });
 
 const state = "MO"
 const startLocation = {lat: 38.6545, lng: -90.3117}
