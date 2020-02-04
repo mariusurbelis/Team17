@@ -121,7 +121,6 @@ class App extends Component {
                     {/* <Route path = "PAGE-NAME(Page you want component to appear on)" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
                     <LowerLayout>
                         <Router>
-                            
                             <Switch>
                                 <Route exact path="/" component={CityBanner}/>
                             </Switch>
@@ -143,12 +142,11 @@ class App extends Component {
             return (
 
                 <React.Fragment>
-                    <ul>
-                        <li >{this.state.searchMain}</li>
-                        <li >{this.state.searchLocation}</li>
-                        <li >{this.state.searchRadius}</li>
-                        <li >{this.state.selectedOption}</li>
-                    </ul>
+                    <ColorLayout>
+                        <NavigationBar>
+                        </NavigationBar>
+                    </ColorLayout>
+
                     <div className={'container-fluid'}>
                         <Row style={{ 'background': '#aaaaaa' }} className={'align-items-center'} style={{ width: 'auto' }}>
 

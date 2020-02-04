@@ -13,7 +13,17 @@ const Styles = styled.div`
         padding-top : 50%;
         color: grey;
     }
+    .homeHeading2{
+        padding-top : 10%;
+        color: grey;
+    }
 
+    .footer {
+        flex-shrink: 0;
+        text-align: center;
+        background-color: grey;
+        color: white;
+    }
 
     img{
         padding-top :50px;
@@ -31,7 +41,7 @@ export const CityBanner = (props) => (
         </Row>
         <Row>
             <Col>
-                <h1 class = "homeHeading">Start Saving Money Today</h1>
+                <h1 class = "homeHeading2">Start Saving Money Today</h1>
                 <p>Using our super advanced AI search tools that are absolutly
                     not a bunch of IF statements, we can help you find the best
                     price for the healthcare you require. Simply enter your location
