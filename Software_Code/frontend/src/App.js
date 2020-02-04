@@ -111,14 +111,9 @@ class App extends Component {
                     <LowerLayout>
                         <Router>
                             <Switch>
-                                <Route exact path="/" component={HomepageSearch} />
                                 <Route path="/about" component={About} />
                             </Switch>
                         </Router>
-                        <Row>
-                            <Col><h1 class="homeHeading">A smarter way to find affordable healthcare</h1></Col>
-                            <Col><Image src={City} align="right" /></Col>
-                        </Row>
                     </LowerLayout>
 
                     {/* Main page area, put your components in here <3 - LowerLayout is just a react container to keep things neat */}
