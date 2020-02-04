@@ -19,7 +19,8 @@ export const Footer = (props) => (
     <Styles>
         <footer className="footer">
             <h2>helpme.io</h2>
-            <p>Made with love in Dundee ❤️</p>
+            <p>Made with love in Dundee</p>
+            <span aria-hidden="true">❤️</span>
         </footer>
     </Styles>
 )   

@@ -3,47 +3,20 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // These are for page navigation, components change depending page..
 import { Home } from './Home';
-//import { Hospitals } from './Hospitals';
-import { Procedures } from './Procedures';
 import { About } from './About';
-import { NoMatch } from './NoMatch';
 
 // These are for each UI component
-import { Version } from './components/Version';
 import { ColorLayout } from './components/ColorLayout';
 import { NavigationBar } from './components/NavigationBar';
-import { HomepageSearch } from './components/HomepageSearch';
 import { LowerLayout } from './components/LowerLayout';
 import { Footer } from './components/Footer';
 import { CityBanner } from './components/CityBanner';
 
 import ProcedureList from './components/ProcedureList';
-import HospitalsMap from './components/HospitalsMap'
-import { HospitalsSelection } from './components/HospitalsSelection';
-import SearchBar from './components/SearchBar';
 
-import FadeLoader from "react-spinners/FadeLoader";
-import { css } from "@emotion/core";
-
-import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import NewSearch from './components/NewSearch';
-
-var locations = new Array(
-    ["Dundee", { lat: 56.462002, lng: -2.970700 }],
-    ["Dunde1", { lat: 57.462002, lng: -2.970700 }],
-    ["Dunde2", { lat: 58.462002, lng: -2.970700 }],
-    ["Dunde3", { lat: 59.462002, lng: -2.970700 }],
-    ["Dunde4", { lat: 60.462002, lng: -2.970700 }],
-)
-
-// Used for a loading spinner
-const override = css`
-  display: block;
-  margin: 0 auto;
-  border-color: red;
-`;
 
 class App extends Component {
     constructor(props) {
@@ -83,7 +56,7 @@ class App extends Component {
             searchRadius: childData.searchRadius,
             selectedOption: childData.selectedOption
         })
-        this.state.initial = false
+        this.setState({ initial: false })
     }
 
     render() {
@@ -122,7 +95,7 @@ class App extends Component {
                     <LowerLayout>
                         <Router>
                             <Switch>
-                                <Route exact path="/" component={CityBanner}/>
+                                <Route exact path="/" component={CityBanner} />
                             </Switch>
                         </Router>
                     </LowerLayout>
@@ -137,7 +110,7 @@ class App extends Component {
         } else {
             if (!this.state.proceduresLoaded) {
                 this.getProcedures()
-                this.state.proceduresLoaded = true
+                this.setState({ proceduresLoaded: true })
             }
             return (
 
@@ -148,21 +121,18 @@ class App extends Component {
                     </ColorLayout>
 
                     <div className={'container-fluid'}>
-                        <Row style={{ 'background': '#aaaaaa' }} className={'align-items-center'} style={{ width: 'auto' }}>
-
+                        <Row style={{ 'background': '#aaaaaa', width: 'auto' }} className={'align-items-center'}>
                             <NewSearch home={false} />
-
-
                         </Row>
 
                         <Row style={{ height: '90vh' }}>
-                            <div className={'col-3 p-3'}>
+                            <Col sm={3} className={'p-3'}>
                                 <ProcedureList procedures={this.state.procedures}></ProcedureList>
-                            </div>
+                            </Col>
 
-                            <div style={{ 'background': '#eeaaaa' }} className={'col-9'}>
+                            <Col sm={9} style={{ 'background': '#eeaaaa' }}>
                                 <p>Map</p>
-                            </div>
+                            </Col>
                         </Row>
 
                     </div>

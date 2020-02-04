@@ -15,108 +15,108 @@ var markers = []
 
 class HospitalsMap extends Component {
 
-	shouldComponentUpdate(nextProps, nextState) {
-		if(this.state.activeMarker != nextState.activeMarker){
-			return true;
-		}
-		return false;
-	  }
-	//lobal locations = props.hospList
-	origin = this.props.hospList[0]
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.state.activeMarker !== nextState.activeMarker) {
+            return true;
+        }
+        return false;
+    }
+    //lobal locations = props.hospList
+    origin = this.props.hospList[0]
 
-	findDistancesFromCoord(lcat) {
-		var lo = lcat[0]
-		var gd = getDistance(this.props.hospList[0][1], lcat[1])
-		//return lo + ": " + gd / 1000 + "km"
-		return Math.round(gd / 1000) + "km"
-		//return getDistance(locations[0][1],locations[1][1])
-	}
+    findDistancesFromCoord(lcat) {
+        // var lo = lcat[0]
+        var gd = getDistance(this.props.hospList[0][1], lcat[1])
+        //return lo + ": " + gd / 1000 + "km"
+        return Math.round(gd / 1000) + "km"
+        //return getDistance(locations[0][1],locations[1][1])
+    }
 
-	printLocals() {
-		var arrayLength = this.props.hospList.length;
-		var finalProduct = "";
-		for (var i = 0; i < arrayLength; i++) {
-			finalProduct = finalProduct + this.findDistancesFromCoord(this.props.hospList[i]) + "<br>";
-		}
-		return finalProduct;
-	}
+    printLocals() {
+        var arrayLength = this.props.hospList.length;
+        var finalProduct = "";
+        for (var i = 0; i < arrayLength; i++) {
+            finalProduct = finalProduct + this.findDistancesFromCoord(this.props.hospList[i]) + "<br>";
+        }
+        return finalProduct;
+    }
 
-	marcPush() {
-		//markers.push(<Marker
-		//	position={origin[1]}
-		//	name={origin[0]} />);
+    marcPush() {
+        //markers.push(<Marker
+        //	position={origin[1]}
+        //	name={origin[0]} />);
 
-		var arrayLength = this.props.hospList.length;
-		for (var i = 0; i < arrayLength; i++) {
-			if(i==0){
-				markers.push(<Marker
-					position={this.props.hospList[i][1]}
-					onClick={this.onMarkerClick}
-					label={"You are Here"}
-					name={this.props.hospList[i][0]}
-					title={this.props.hospList[i][0]} />);
-			}else{
-			markers.push(<Marker
-				position={this.props.hospList[i][1]}
-				onClick={this.onMarkerClick}
-				label={this.findDistancesFromCoord(this.props.hospList[i])}
-				name={this.props.hospList[i][0]}
-				title={this.props.hospList[i][0]} />);
-			}
-		}
-	}
+        var arrayLength = this.props.hospList.length;
+        for (var i = 0; i < arrayLength; i++) {
+            if (i === 0) {
+                markers.push(<Marker
+                    position={this.props.hospList[i][1]}
+                    onClick={this.onMarkerClick}
+                    label={"You are Here"}
+                    name={this.props.hospList[i][0]}
+                    title={this.props.hospList[i][0]} />);
+            } else {
+                markers.push(<Marker
+                    position={this.props.hospList[i][1]}
+                    onClick={this.onMarkerClick}
+                    label={this.findDistancesFromCoord(this.props.hospList[i])}
+                    name={this.props.hospList[i][0]}
+                    title={this.props.hospList[i][0]} />);
+            }
+        }
+    }
 
-	state = {
-		showingInfoWindow: false,
-		activeMarker: {},
-		selectedPlace: {},
-	};
+    state = {
+        showingInfoWindow: false,
+        activeMarker: {},
+        selectedPlace: {},
+    };
 
-	onMarkerClick = (props, marker, e) =>
-		this.setState({
-			selectedPlace: props,
-			activeMarker: marker,
-			showingInfoWindow: true
-		});
+    onMarkerClick = (props, marker, e) =>
+        this.setState({
+            selectedPlace: props,
+            activeMarker: marker,
+            showingInfoWindow: true
+        });
 
-	onMapClicked = (props) => {
-		if (this.state.showingInfoWindow) {
-			this.setState({
-				showingInfoWindow: false,
-				activeMarker: null
-			})
-		}
-	};
+    onMapClicked = (props) => {
+        if (this.state.showingInfoWindow) {
+            this.setState({
+                showingInfoWindow: false,
+                activeMarker: null
+            })
+        }
+    };
 
-	render() {
-		return (
-			<>
-				<div style={{width: this.props.wi, height: this.props.hi }}>
-					<Map google={this.props.google}
-						onClick={this.onMapClicked}
-						initialCenter={this.props.hospList[0][1]}
-						zoom={11}
-						style={{width: this.props.wi, height: this.props.hi, backgroundColor: 'powderblue'}}
-					>
-						{this.marcPush()}
-						{markers}
-						<InfoWindow
-							marker={this.state.activeMarker}
-							visible={this.state.showingInfoWindow}>
-							<div>
-								<h1>{this.state.selectedPlace.name}</h1>
-							</div>
-						</InfoWindow>
-					</Map>
-				</div>
-			</>
-		)
-	}
+    render() {
+        return (
+            <>
+                <div style={{ width: this.props.wi, height: this.props.hi }}>
+                    <Map google={this.props.google}
+                        onClick={this.onMapClicked}
+                        initialCenter={this.props.hospList[0][1]}
+                        zoom={11}
+                        style={{ width: this.props.wi, height: this.props.hi, backgroundColor: 'powderblue' }}
+                    >
+                        {this.marcPush()}
+                        {markers}
+                        <InfoWindow
+                            marker={this.state.activeMarker}
+                            visible={this.state.showingInfoWindow}>
+                            <div>
+                                <h1>{this.state.selectedPlace.name}</h1>
+                            </div>
+                        </InfoWindow>
+                    </Map>
+                </div>
+            </>
+        )
+    }
 }
 // export class MapContainer extends React.Component { }
 export default GoogleApiWrapper({
-	// apiKey: 'AIzaSyBUGx7RRQurAj4RxZb0NzMNtOHzcUZZpVo'
-	apiKey: ''
+    // apiKey: 'AIzaSyBUGx7RRQurAj4RxZb0NzMNtOHzcUZZpVo'
+    apiKey: ''
 })(HospitalsMap);
 
 
