@@ -164,6 +164,7 @@ class App extends Component {
 
                             <div style={{ 'background': '#eeaaaa' }} className={'col-9'}>
                                 <p>Map</p>
+                                <HospitalsMap hospList={locations} wi={"90vw"} hi={"auto"}/>
                             </div>
                         </Row>
 
