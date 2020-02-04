@@ -34,18 +34,33 @@ Ruth was working on the product and sprint backlogs, as well as preparing the pr
 
 ---
 ## Day [2] 04/02/2020- Scrum Meeting summary
-The Scrum Master for this meeting was **Callum Darling**
+The Scrum Master for this meeting was **Ruth Carnegie**
 
 ### Members Present:
-Ruth Carnegie, Callum Darling, Peter Leslie, Marius Urbelis, Alfie Hippisley
+Ruth Carnegie, Callum Darling, Peter Leslie, Marius Urbelis, Alfie Hippisley, Daniel Blackley
 
 ### Members Not Present:
 N/A
 
 ### Apologies:
-Daniel Blackley - Illness, Notified us beforehand. 
+N/A
 
 ### Summary of Conversation:
+
+Since the last scrum, Marius and Callum have been working on getting the one page layout implemented into the application. This has included integrating all of our search features into one unified search bar and restructuring our old design. 
+
+Today, Marius will be working on updating the API and backend to properly process the given user input in the search bar. 
+
+Callum will be working on implementing the new map feature with our new front page. His only impediment 
+is the limitations of the map API, however today Daniel will be helping to solve this problem by creating a python to convert all the lines to work appropriately with the API. 
+
+Alfie has made tweaks to the design of the front end and today will be designing a new card for displaying our results. 
+
+Peter is then going to implement the cards for the application. 
+
+Ruth has updated the sprint and product backlog, completed the sprint retrospective and will be implementing the search by procedure ID.
+
+
 
 ---
 ## Day [3] 03/02/2020- Scrum Meeting summary
