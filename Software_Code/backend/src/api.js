@@ -80,7 +80,7 @@ app.get('/payments', function (req, res) {
 //rest api to get locations
 app.get('/locations', function (req, res) {
     var city = req.query.city;
-    connection.query('select * from Cities WHERE CityName =' + city, function (error, results, fields) {
+    connection.query('select * from Cities WHERE CityName=\'' + city + '\'', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
     });
