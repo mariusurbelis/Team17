@@ -48,6 +48,20 @@ class App extends Component {
         });
     }
 
+    getProceduresID = () => {
+        fetch('https://api.urbelis.dev/proceduresbyid?query' + this.state.searchMain, {
+            mode: 'cors',
+            method: 'GET',
+            headers: {
+                'Access-Control-Allow-Origin': '*'
+            },
+        }).then(response => {
+            if (response.ok) {
+                response.json().then(data => this.setState({ 'procedures': data }))
+            }
+        });
+    }
+    
     callbackFunction2 = (childData) => {
         console.log(childData)
         this.setState({
