@@ -124,6 +124,7 @@ class App extends Component {
         } else {
             if (!this.state.proceduresLoaded) {
                 this.getProcedures()
+                this.getProceduresID()
                 this.setState({ proceduresLoaded: true })
             }
             return (
