@@ -20,7 +20,6 @@ const Styles = styled.div`
         padding-top : 500px;
     }
 
-
     img{
         padding-top :50px;
         padding-bottom :50px;

@@ -30,12 +30,21 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import NewSearch from './components/NewSearch';
 
+
 var locations = new Array(
     ["Dundee", { lat: 56.462002, lng: -2.970700 }],
     ["Dunde1", { lat: 57.462002, lng: -2.970700 }],
     ["Dunde2", { lat: 58.462002, lng: -2.970700 }],
     ["Dunde3", { lat: 59.462002, lng: -2.970700 }],
     ["Dunde4", { lat: 60.462002, lng: -2.970700 }],
+)
+
+var addresses = new Array(
+    ["8 dundee street, dundee, dundee"],
+    ["cringe past cringe on the clock"],
+    [""],
+    [""],
+    [""]
 )
 
 // Used for a loading spinner
@@ -51,6 +60,8 @@ class App extends Component {
         this.state = {
             procedures: [],
             proceduresLoaded: false,
+            providers: [],
+            providersLoaded: false,
             query: '',
             loading: false,
             initial: true,
@@ -74,6 +85,22 @@ class App extends Component {
             }
         });
     }
+
+
+    getProviders = () => {
+        fetch('https://api.urbelis.dev/providers', {
+            mode: 'cors',
+            method: 'GET',
+            headers: {
+                'Access-Control-Allow-Origin': '*'
+            },
+        }).then(response => {
+            if (response.ok) {
+                response.json().then(data => this.setState({ 'providers': data }))
+            }
+        });
+    }
+
 
     callbackFunction2 = (childData) => {
         console.log(childData)
@@ -121,9 +148,9 @@ class App extends Component {
                     {/* <Route path = "PAGE-NAME(Page you want component to appear on)" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
                     <LowerLayout>
                         <Router>
-                            
+
                             <Switch>
-                                <Route exact path="/" component={CityBanner}/>
+                                <Route exact path="/" component={CityBanner} />
                             </Switch>
                         </Router>
                     </LowerLayout>
@@ -140,15 +167,14 @@ class App extends Component {
                 this.getProcedures()
                 this.state.proceduresLoaded = true
             }
+            if (!this.state.providersLoaded) {
+                this.getProviders()
+                this.state.providersLoaded = true
+            }
             return (
 
                 <React.Fragment>
-                    <ul>
-                        <li >{this.state.searchMain}</li>
-                        <li >{this.state.searchLocation}</li>
-                        <li >{this.state.searchRadius}</li>
-                        <li >{this.state.selectedOption}</li>
-                    </ul>
+
                     <div className={'container-fluid'}>
                         <Row style={{ 'background': '#aaaaaa' }} className={'align-items-center'} style={{ width: 'auto' }}>
 
@@ -159,12 +185,20 @@ class App extends Component {
 
                         <Row style={{ height: '90vh' }}>
                             <div className={'col-3 p-3'}>
+                                <ul>
+                                    <li >{this.state.searchMain}</li>
+                                    <li >{this.state.searchLocation}</li>
+                                    <li >{this.state.searchRadius}</li>
+                                    <li >{this.state.selectedOption}</li>
+                                </ul>
                                 <ProcedureList procedures={this.state.procedures}></ProcedureList>
+                                {/* {console.log(this.state.procedures)} */}
+                                {console.log(this.state.providers)}
                             </div>
 
-                            <div style={{ 'background': '#eeaaaa' }} className={'col-9'}>
-                                <p>Map</p>
-                                <HospitalsMap hospList={locations} wi={"90vw"} hi={"auto"}/>
+                            <div style={{ 'background': '#eeaaaa' }}>
+                                <HospitalsMap hospList={locations} wi={"74vw"} hi={"90vh"} addresses={addresses} 
+                                procedures={this.state.procedures} providers={this.state.providers}/>
                             </div>
                         </Row>
 

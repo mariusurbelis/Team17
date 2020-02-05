@@ -1,10 +1,13 @@
 import { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-maps-react';
 import React, { Component } from 'react';
 import getDistance from 'geolib/es/getDistance';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 // var origin = 
 //var origin = ["Dundee", { lat: 56.462002, lng: -2.970700 }]
 var markers = []
+var finalArray = []
 // var locations = new Array(
 // ["Dundee", { lat: 56.462002, lng: -2.970700 }],
 // ["Dunde1", { lat: 57.462002, lng: -2.970700 }],
@@ -13,14 +16,29 @@ var markers = []
 // ["Dunde4", { lat: 60.462002, lng: -2.970700 }],
 // )
 
+
 class HospitalsMap extends Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			selectedPlace:""
+			 }
+			this.processProcAndProv()
+		}
+	processProcAndProv(){
+		this.props.procedures.forEach((e1)=>this.props.providers.forEach((e2)=>{
+			if(e1){
+
+			}
+		}));
+	}
 
 	shouldComponentUpdate(nextProps, nextState) {
-		if(this.state.activeMarker != nextState.activeMarker){
+		if (this.state.activeMarker != nextState.activeMarker) {
 			return true;
 		}
 		return false;
-	  }
+	}
 	//lobal locations = props.hospList
 	origin = this.props.hospList[0]
 
@@ -48,20 +66,22 @@ class HospitalsMap extends Component {
 
 		var arrayLength = this.props.hospList.length;
 		for (var i = 0; i < arrayLength; i++) {
-			if(i==0){
+			if (i == 0) {
 				markers.push(<Marker
+					address={this.props.addresses[i]}
 					position={this.props.hospList[i][1]}
 					onClick={this.onMarkerClick}
 					label={"You are Here"}
 					name={this.props.hospList[i][0]}
 					title={this.props.hospList[i][0]} />);
-			}else{
-			markers.push(<Marker
-				position={this.props.hospList[i][1]}
-				onClick={this.onMarkerClick}
-				label={this.findDistancesFromCoord(this.props.hospList[i])}
-				name={this.props.hospList[i][0]}
-				title={this.props.hospList[i][0]} />);
+			} else {
+				markers.push(<Marker
+					address={this.props.addresses[i]}
+					position={this.props.hospList[i][1]}
+					onClick={this.onMarkerClick}
+					label={this.findDistancesFromCoord(this.props.hospList[i])}
+					name={this.props.hospList[i][0]}
+					title={this.props.hospList[i][0]} />);
 			}
 		}
 	}
@@ -90,26 +110,47 @@ class HospitalsMap extends Component {
 
 	render() {
 		return (
-			<>
-				<div style={{width: this.props.wi, height: this.props.hi }}>
+			<div>
+				<div style={{ width: this.props.wi, height: this.props.hi }}>
 					<Map google={this.props.google}
 						onClick={this.onMapClicked}
 						initialCenter={this.props.hospList[0][1]}
 						zoom={11}
-						style={{width: this.props.wi, height: this.props.hi, backgroundColor: 'powderblue'}}
+						style={{ width: this.props.wi, height: this.props.hi, backgroundColor: 'powderblue' }}
 					>
+
 						{this.marcPush()}
 						{markers}
 						<InfoWindow
+							boxStyle={{
+								background: '#4da351',
+								padding: "40px 40px 40px 40px",
+								width: "252px",
+								height: "40px"
+							}}
 							marker={this.state.activeMarker}
 							visible={this.state.showingInfoWindow}>
-							<div>
-								<h1>{this.state.selectedPlace.name}</h1>
-							</div>
+							<Row style={{ width: '20vw' }}>
+								<h5 style={{ margin: 'auto' }}>{this.state.selectedPlace.name}</h5>
+							</Row>
+							<hr />
+							<Row style={{ width: '20vw', padding: '15px' }}>
+								<h6>{this.state.selectedPlace.address}</h6>
+							</Row>
+							<Row>
+
+								<Col style={{ marginRight: 'auto' }}>
+									<p>{this.state.selectedPlace.label} away</p>
+								</Col>
+								<Col style={{ marginLeft: 'auto' }}>
+									<button onClick={console.log("Yee")}>See Details</button>
+								</Col>
+							</Row>
+
 						</InfoWindow>
 					</Map>
 				</div>
-			</>
+			</div>
 		)
 	}
 }
