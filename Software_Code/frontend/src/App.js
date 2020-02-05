@@ -23,7 +23,9 @@ class App extends Component {
         super(props);
         this.state = {
             procedures: [],
+            proceduresid: [],
             proceduresLoaded: false,
+            proceduresidLoaded: false,
             query: '',
             loading: false,
             initial: true,
@@ -57,7 +59,7 @@ class App extends Component {
             },
         }).then(response => {
             if (response.ok) {
-                response.json().then(data => this.setState({ 'procedures': data }))
+                response.json().then(data => this.setState({ 'proceduresid': data }))
             }
         });
     }
@@ -124,8 +126,11 @@ class App extends Component {
         } else {
             if (!this.state.proceduresLoaded) {
                 this.getProcedures()
-                this.getProceduresID()
                 this.setState({ proceduresLoaded: true })
+            }
+            else if(!this.state.proceduresidLoaded){
+                this.getProceduresID()
+                this.setState({proceduresidLoaded: true})
             }
             return (
 
