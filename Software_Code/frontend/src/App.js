@@ -23,7 +23,9 @@ class App extends Component {
         super(props);
         this.state = {
             procedures: [],
+            proceduresid: [],
             proceduresLoaded: false,
+            proceduresidLoaded: false,
             query: '',
             loading: false,
             initial: true,
@@ -48,6 +50,20 @@ class App extends Component {
         });
     }
 
+    getProceduresID = () => {
+        fetch('https://api.urbelis.dev/proceduresbyid?query' + this.state.searchMain, {
+            mode: 'cors',
+            method: 'GET',
+            headers: {
+                'Access-Control-Allow-Origin': '*'
+            },
+        }).then(response => {
+            if (response.ok) {
+                response.json().then(data => this.setState({ 'proceduresid': data }))
+            }
+        });
+    }
+    
     callbackFunction2 = (childData) => {
         console.log(childData)
         this.setState({
@@ -108,9 +124,13 @@ class App extends Component {
 
             );
         } else {
-            if (!this.state.proceduresLoaded) {
+            if (!this.state.proceduresLoaded && this.state.selectedOption != "procName") {
                 this.getProcedures()
                 this.setState({ proceduresLoaded: true })
+            }
+            else if(!this.state.proceduresidLoaded && this.state.selectedOption != "procCode"){
+                this.getProceduresID()
+                this.setState({proceduresidLoaded: true})
             }
             return (
 
