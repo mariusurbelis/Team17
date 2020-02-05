@@ -48,35 +48,39 @@ export class Card extends Component {
     render() {
         return (
             <Styles> 
-
-            <div style={{'margin-top': '1em', 'padding':'1em', backgroundColor: '#0b9cdb26'}} className={'row align-items-center'}>
-                <div className={'col-12'}>
-                    
-                    <div className={'row'}>
-                        <div style={{fontSize: '1.4em'}} className={'col-12'}>
-                            {this.props.card.DRGDefinition}
-                        </div>
-                    </div>
-
-                    <div style={{fontSize: '1em'}}  className={'row'}>
-                        <div className={'col-12'}>
-                            GPDID: {this.props.card.GPDID}
-                        </div>
-                    </div>
-
-                    <div style={{'margin-top':'1em'}} className={'row'}>
-                        <div className={'col-8'}>
-                            {this.props.card.ProviderName}
-                        </div>
-                        <div className={'col-4 text-center'}>
-                            ${this.props.card.TotalPayments}
-                        </div>
-                    </div>
-
-                </div>
+            <div style={{'margin-bottom': '1em', 'padding':'1em', backgroundColor: '#0b9cdb26'}}>
+             <div style={{fontSize: '1.4em', fontweight:600}} class="row row-cols-2">
+              
+              <div class="col"> <b>{this.props.card.ProviderName}</b></div>
+              
             </div>
 
-            </Styles>
+            <div class="row row-cols-2">
+                <div class="col">{this.props.card.DRGDefinition}</div>
+            </div>
+
+            <div class="row row-cols-2">
+                <div class="col"><b>GPDID Code: </b>{this.props.card.GPDID}</div>
+            </div>
+                
+            <div class="row row-cols-2">
+                <div class="col"><b>Average Price: </b></div>
+                <div class="col">${this.props.card.TotalPayments}</div>
+            </div>
+
+            <div class="row row-cols-2">
+                <div class="col"><b>Distance: </b></div>
+                <div class="col">256 Miles</div>
+            </div>
+
+            <div class="row row-cols-2">
+                <div class="col"><b>More information: </b></div>
+                <div class="col">BUTTON</div>
+            </div>
+
+        </div>
+     </Styles>
+
         )
     }
 }

@@ -77,9 +77,27 @@ app.get('/payments', function (req, res) {
     });
 });
 
+//rest api to get locations
+app.get('/locations', function (req, res) {
+    var city = req.query.city;
+    connection.query('select * from Cities WHERE CityName=\'' + city + '\'', function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results));
+    });
+});
+
 //rest api to get all providers
 app.get('/providers', function (req, res) {
     connection.query('select * from Providers', function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results));
+    });
+});
+
+//check to get procedure ID
+app.get('/proceduresbyid', function (req, res) {
+    var id = req.query.id;
+    connection.query('select * from GPDProviders where GPDID=' + id + ' LIMIT 0,50', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
     });

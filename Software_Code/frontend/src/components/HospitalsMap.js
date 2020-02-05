@@ -52,22 +52,22 @@ class HospitalsMap extends Component {
 	//lobal locations = props.hospList
 	origin = this.props.hospList[0]
 
-	findDistancesFromCoord(lcat) {
-		var lo = lcat[0]
-		var gd = getDistance(this.props.hospList[0][1], lcat[1])
-		//return lo + ": " + gd / 1000 + "km"
-		return Math.round(gd / 1000) + "km"
-		//return getDistance(locations[0][1],locations[1][1])
-	}
+    findDistancesFromCoord(lcat) {
+        // var lo = lcat[0]
+        var gd = getDistance(this.props.hospList[0][1], lcat[1])
+        //return lo + ": " + gd / 1000 + "km"
+        return Math.round(gd / 1000) + "km"
+        //return getDistance(locations[0][1],locations[1][1])
+    }
 
-	printLocals() {
-		var arrayLength = this.props.hospList.length;
-		var finalProduct = "";
-		for (var i = 0; i < arrayLength; i++) {
-			finalProduct = finalProduct + this.findDistancesFromCoord(this.props.hospList[i]) + "<br>";
-		}
-		return finalProduct;
-	}
+    printLocals() {
+        var arrayLength = this.props.hospList.length;
+        var finalProduct = "";
+        for (var i = 0; i < arrayLength; i++) {
+            finalProduct = finalProduct + this.findDistancesFromCoord(this.props.hospList[i]) + "<br>";
+        }
+        return finalProduct;
+    }
 
 	marcPush() {
 		var lab;
@@ -125,12 +125,12 @@ class HospitalsMap extends Component {
 		selectedPlace: {},
 	};
 
-	onMarkerClick = (props, marker, e) =>
-		this.setState({
-			selectedPlace: props,
-			activeMarker: marker,
-			showingInfoWindow: true
-		});
+    onMarkerClick = (props, marker, e) =>
+        this.setState({
+            selectedPlace: props,
+            activeMarker: marker,
+            showingInfoWindow: true
+        });
 
 	onMapClicked = (props) => {
 		if (this.state.showingInfoWindow) {
@@ -190,8 +190,8 @@ class HospitalsMap extends Component {
 }
 // export class MapContainer extends React.Component { }
 export default GoogleApiWrapper({
-	// apiKey: 'AIzaSyBUGx7RRQurAj4RxZb0NzMNtOHzcUZZpVo'
-	apiKey: ''
+    // apiKey: 'AIzaSyBUGx7RRQurAj4RxZb0NzMNtOHzcUZZpVo'
+    apiKey: ''
 })(HospitalsMap);
 
 

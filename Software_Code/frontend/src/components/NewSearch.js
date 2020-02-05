@@ -1,18 +1,17 @@
 import React, { Component } from 'react'
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import styled from 'styled-components';
-
-
 
 const Styles = styled.div`
 
-    --bg: #E0E0E0;
-    --fg: #424242;
-    --bd: #BDBDBD;
+background: rgb(11,156,219);
+    background: linear-gradient(162deg, rgba(11,156,219,1) 0%, rgba(128,219,120,1) 100%);
+    --bg: #F5F5F5;
+    --fg: grey;
+    --bd: #00A67B;
 
     //border-radius: 14px;
-    background: #220b5c;
+    background: white;
     width: auto;
     //margin: 50px 0px 80px 0px;
     padding 30px;
@@ -25,14 +24,14 @@ const Styles = styled.div`
     // }
 
     .smallLabel {
-        color: white;
+        color: grey;
         font-weight: bold;
         font-size: small;
         padding-left: 4px;
     }
 
     .label {
-        color: white;
+        color: grey;
         height: auto;
         margin: 10px 0 0 0;
        width: 15%; 
@@ -93,27 +92,25 @@ const Styles = styled.div`
     }  
 `;
 
-const butStyle = {
-    width: '10%'
-}
+// const butStyle = {
+//     width: '10%'
+// }
 
-var divStyle = {
-    background: 'yellow',
-    width: 'auto',
-    margin: '0px 0px 10px 0px',
-}
+// var divStyle = {
+//     background: 'yellow',
+//     width: 'auto',
+//     margin: '0px 0px 10px 0px',
+// }
 
-var boxStyle = {
-    width: '90%'
-}
+// var boxStyle = {
+//     width: '90%'
+// }
 
 var             hStyle = {
     margin: '50px 0px 80px 0px',
     width: "100%",
     borderRadius: '14px',
 }
-
-
 
 export default class NewSearch extends Component {
     constructor() {
@@ -127,7 +124,7 @@ export default class NewSearch extends Component {
     }
 
     changeHStyle() {
-        if (this.props.home == true) {
+        if (this.props.home === true) {
             hStyle = {
                 margin: '50px 0px 80px 0px',
                 width: "100%",
@@ -176,7 +173,7 @@ export default class NewSearch extends Component {
     render() {
         this.changeHStyle()
         return (
-            <form onSubmit={this.handleSubmit} style={{width: "100%"}}>
+            <form onSubmit={this.handleSubmit} style={{ width: "100%" }}>
                 <Styles style={hStyle}>
                     {/* <label className="label">Search By: </label> */}
                     <Row>
@@ -238,16 +235,3 @@ export default class NewSearch extends Component {
         )
     }
 }
-
-{/* <Col>
-<input className="subSearch"
-    type="text"
-    value={this.state.search}
-    onChange={this.updateSearch.bind(this)} />
-</Col>
-<Col>
-<input className="subSearch"
-    type="text"
-    value={this.state.search}
-    onChange={this.updateSearch.bind(this)} />
-</Col> */}

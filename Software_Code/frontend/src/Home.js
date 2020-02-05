@@ -1,12 +1,8 @@
 import React from 'react';
-import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { Container } from 'react-bootstrap';
 import NewSearch from './components/NewSearch';
 import styled from 'styled-components';
 import { Component } from 'react';
-import City from './assets/city.png';
 
 
 
@@ -27,9 +23,6 @@ const Styles = styled.div`
         align-content: right;   
     }
 `;
-
-var haveIUpdated = false;
-
 
 export class Home extends Component {
     constructor(props) {

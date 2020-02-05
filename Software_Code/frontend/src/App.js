@@ -3,29 +3,19 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // These are for page navigation, components change depending page..
 import { Home } from './Home';
-//import { Hospitals } from './Hospitals';
-import { Procedures } from './Procedures';
 import { About } from './About';
-import { NoMatch } from './NoMatch';
 
 // These are for each UI component
-import { Version } from './components/Version';
 import { ColorLayout } from './components/ColorLayout';
 import { NavigationBar } from './components/NavigationBar';
-import { HomepageSearch } from './components/HomepageSearch';
 import { LowerLayout } from './components/LowerLayout';
 import { Footer } from './components/Footer';
 import { CityBanner } from './components/CityBanner';
 
 import ProcedureList from './components/ProcedureList';
-import HospitalsMap from './components/HospitalsMap'
-import { HospitalsSelection } from './components/HospitalsSelection';
-import SearchBar from './components/SearchBar';
+import ProcedureIDList from './components/ProceduresIDList';
 
-import FadeLoader from "react-spinners/FadeLoader";
-import { css } from "@emotion/core";
 
-import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import NewSearch from './components/NewSearch';
@@ -46,22 +36,16 @@ var addresses = new Array(
     [""],
     [""]
 )
-
-// Used for a loading spinner
-const override = css`
-  display: block;
-  margin: 0 auto;
-  border-color: red;
-`;
-
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             procedures: [],
+            proceduresid: [],
             proceduresLoaded: false,
             providers: [],
             providersLoaded: false,
+            proceduresidLoaded: false,
             query: '',
             loading: false,
             initial: false,
@@ -86,6 +70,20 @@ class App extends Component {
         });
     }
 
+    getProceduresID = () => {
+        fetch('https://api.urbelis.dev/proceduresbyid?id=' + this.state.searchMain, {
+            mode: 'cors',
+            method: 'GET',
+            headers: {
+                'Access-Control-Allow-Origin': '*'
+            },
+        }).then(response => {
+            if (response.ok) {
+                response.json().then(data => this.setState({ 'proceduresid': data }))
+            }
+        });
+    }
+    
 
     getProviders = () => {
         fetch('https://api.urbelis.dev/providers', {
@@ -110,7 +108,7 @@ class App extends Component {
             searchRadius: childData.searchRadius,
             selectedOption: childData.selectedOption
         })
-        this.state.initial = false
+        this.setState({ initial: false })
     }
 
     render() {
@@ -148,7 +146,7 @@ class App extends Component {
                     {/* <Route path = "PAGE-NAME(Page you want component to appear on)" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
                     <LowerLayout>
                         <Router>
-
+                            
                             <Switch>
                                 <Route exact path="/" component={CityBanner} />
                             </Switch>
@@ -163,9 +161,13 @@ class App extends Component {
 
             );
         } else {
-            if (!this.state.proceduresLoaded) {
+            if (!this.state.proceduresLoaded && this.state.selectedOption === "procName") {
                 this.getProcedures()
-                this.state.proceduresLoaded = true
+                this.setState({ proceduresLoaded: true })
+            }
+            else if(!this.state.proceduresidLoaded && this.state.selectedOption === "procCode"){
+                this.getProceduresID()
+                this.setState({proceduresidLoaded: true})
             }
             if (!this.state.providersLoaded) {
                 this.getProviders()
@@ -187,8 +189,6 @@ class App extends Component {
                         <Row >
                             <div style={{ height: '85vh' }} className={'col-3 p-3 overflow-auto'}>
                                 <ProcedureList procedures={this.state.procedures}></ProcedureList>
-                                {console.log(this.state.procedures)}
-                                {/* {console.log(this.state.providers)} */}
                             </div>
 
                             <div className={'col-9 m-0 p-0'} style={{ 'background': '#eeaaaa' }}>
