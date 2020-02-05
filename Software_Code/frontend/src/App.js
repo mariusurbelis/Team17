@@ -192,13 +192,13 @@ class App extends Component {
                                     <li >{this.state.selectedOption}</li>
                                 </ul>
                                 <ProcedureList procedures={this.state.procedures}></ProcedureList>
-                                {/* {console.log(this.state.procedures)} */}
-                                {console.log(this.state.providers)}
+                                {console.log(this.state.procedures)}
+                                {/* {console.log(this.state.providers)} */}
                             </div>
 
                             <div style={{ 'background': '#eeaaaa' }}>
                                 <HospitalsMap hospList={locations} wi={"74vw"} hi={"90vh"} addresses={addresses} 
-                                procedures={this.state.procedures} providers={this.state.providers}/>
+                                procedures={this.state.procedures} providers={this.state.providers} location={null}/>
                             </div>
                         </Row>
 

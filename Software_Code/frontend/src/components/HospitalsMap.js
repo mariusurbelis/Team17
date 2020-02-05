@@ -21,23 +21,33 @@ class HospitalsMap extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			selectedPlace:""
-			 }
-			this.processProcAndProv()
+			selectedPlace: "",
+			reload: false
 		}
-	processProcAndProv(){
-		this.props.procedures.forEach((e1)=>this.props.providers.forEach((e2)=>{
-			if(e1){
-
+		this.processProcAndProv()
+	}
+	processProcAndProv() {
+		this.props.providers.forEach((e2) => this.props.procedures.forEach((e1) => {
+			if (e1.ProviderID === e2.ID) {
+				if (finalArray.indexOf(e2) === -1) {
+					finalArray.push(e2)
+					console.log(this.items);
+				}
 			}
 		}));
+		console.log("Final Array:")
+		console.log(finalArray)
+		this.marcPush()
 	}
 
 	shouldComponentUpdate(nextProps, nextState) {
 		if (this.state.activeMarker != nextState.activeMarker) {
 			return true;
 		}
-		return false;
+		if (this.state.reload){
+			return true;
+		}
+		return true;
 	}
 	//lobal locations = props.hospList
 	origin = this.props.hospList[0]
@@ -60,31 +70,54 @@ class HospitalsMap extends Component {
 	}
 
 	marcPush() {
-		//markers.push(<Marker
-		//	position={origin[1]}
-		//	name={origin[0]} />);
-
-		var arrayLength = this.props.hospList.length;
-		for (var i = 0; i < arrayLength; i++) {
-			if (i == 0) {
-				markers.push(<Marker
-					address={this.props.addresses[i]}
-					position={this.props.hospList[i][1]}
-					onClick={this.onMarkerClick}
-					label={"You are Here"}
-					name={this.props.hospList[i][0]}
-					title={this.props.hospList[i][0]} />);
-			} else {
-				markers.push(<Marker
-					address={this.props.addresses[i]}
-					position={this.props.hospList[i][1]}
-					onClick={this.onMarkerClick}
-					label={this.findDistancesFromCoord(this.props.hospList[i])}
-					name={this.props.hospList[i][0]}
-					title={this.props.hospList[i][0]} />);
+		var lab;
+		console.log("marker 1")
+		console.log(finalArray)
+		finalArray.forEach((e2) => {
+			console.log("marker 2")
+			console.log(e2)
+			if (this.props.location !== null){
+				lab = "You are here"
+			}else{
+				lab = e2.ProviderName.split(' ')[0]+ ' ' + e2.ProviderName.split(' ')[1]
+				//lab=this.findDistancesFromCoord(e2.Latitude, e2.longitude)
+				//lab = this.findDistancesFromCoord({lat: e2.Latitude, lng: e2.longitude})
 			}
-		}
+				markers.push(<Marker
+					address={e2.Address}
+					position={{lat: e2.Latitude, lng: e2.longitude}}
+					onClick={this.onMarkerClick}
+					label={lab}
+					name={e2.ProviderName}
+					title={e2.ProviderName} />);
+			
+		})
 	}
+	// markers.push(<Marker
+	// 	position={origin[1]}
+	// 	name={origin[0]} />);
+	// var arrayLength = this.props.hospList.length;
+	// 	for (var i = 0; i < arrayLength; i++) {
+	// 		if (i == 0) {
+	// 			markers.push(<Marker
+	// 				address={this.props.addresses[i]}
+	// 				position={this.props.hospList[i][1]}
+	// 				onClick={this.onMarkerClick}
+	// 				label={"You are Here"}
+	// 				name={this.props.hospList[i][0]}
+	// 				title={this.props.hospList[i][0]} />);
+	// 		} else {
+	// 			markers.push(<Marker
+	// 				address={this.props.addresses[i]}
+	// 				position={this.props.hospList[i][1]}
+	// 				onClick={this.onMarkerClick}
+	// 				label={this.findDistancesFromCoord(this.props.hospList[i])}
+	// 				name={this.props.hospList[i][0]}
+	// 				title={this.props.hospList[i][0]} />);
+	// 		}
+	// 	}
+	// }
+
 
 	state = {
 		showingInfoWindow: false,
@@ -106,6 +139,7 @@ class HospitalsMap extends Component {
 				activeMarker: null
 			})
 		}
+		this.processProcAndProv()
 	};
 
 	render() {
@@ -115,10 +149,10 @@ class HospitalsMap extends Component {
 					<Map google={this.props.google}
 						onClick={this.onMapClicked}
 						initialCenter={this.props.hospList[0][1]}
-						zoom={11}
+						zoom={4}
 						style={{ width: this.props.wi, height: this.props.hi, backgroundColor: 'powderblue' }}
 					>
-
+						{this.processProcAndProv()}
 						{this.marcPush()}
 						{markers}
 						<InfoWindow
@@ -130,21 +164,21 @@ class HospitalsMap extends Component {
 							}}
 							marker={this.state.activeMarker}
 							visible={this.state.showingInfoWindow}>
-							<Row style={{ width: '20vw' }}>
-								<h5 style={{ margin: 'auto' }}>{this.state.selectedPlace.name}</h5>
+							<Row style={{ width: '30vh', padding: '20px'}}>
+								<h4 style={{ margin: 'auto' }}>
+									{this.state.selectedPlace.name}
+								</h4>
 							</Row>
 							<hr />
-							<Row style={{ width: '20vw', padding: '15px' }}>
-								<h6>{this.state.selectedPlace.address}</h6>
+							<Row style={{ width: 'auto', padding: '20px'}}>
+								<h5>{this.state.selectedPlace.address} ahahah</h5>
 							</Row>
-							<Row>
+							<Row style={{ width: 'auto', padding: '20px'}}>
 
-								<Col style={{ marginRight: 'auto' }}>
-									<p>{this.state.selectedPlace.label} away</p>
-								</Col>
-								<Col style={{ marginLeft: 'auto' }}>
-									<button onClick={console.log("Yee")}>See Details</button>
-								</Col>
+								<div >
+									<button 
+									onClick={console.log("Yee")}>See Details</button>
+								</div>
 							</Row>
 
 						</InfoWindow>
