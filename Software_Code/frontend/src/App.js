@@ -13,6 +13,8 @@ import { Footer } from './components/Footer';
 import { CityBanner } from './components/CityBanner';
 
 import ProcedureList from './components/ProcedureList';
+import ProcedureIDList from './components/ProceduresIDList';
+
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -51,7 +53,7 @@ class App extends Component {
     }
 
     getProceduresID = () => {
-        fetch('https://api.urbelis.dev/proceduresbyid?query' + this.state.searchMain, {
+        fetch('https://api.urbelis.dev/proceduresbyid?id=' + this.state.searchMain, {
             mode: 'cors',
             method: 'GET',
             headers: {
@@ -124,11 +126,11 @@ class App extends Component {
 
             );
         } else {
-            if (!this.state.proceduresLoaded && this.state.selectedOption != "procName") {
+            if (!this.state.proceduresLoaded && this.state.selectedOption === "procName") {
                 this.getProcedures()
                 this.setState({ proceduresLoaded: true })
             }
-            else if(!this.state.proceduresidLoaded && this.state.selectedOption != "procCode"){
+            else if(!this.state.proceduresidLoaded && this.state.selectedOption === "procCode"){
                 this.getProceduresID()
                 this.setState({proceduresidLoaded: true})
             }
@@ -148,6 +150,7 @@ class App extends Component {
                         <Row style={{ height: '90vh' }}>
                             <Col sm={3} className={'p-3'}>
                                 <ProcedureList procedures={this.state.procedures}></ProcedureList>
+                                <ProcedureIDList proceduresid={this.state.proceduresid}></ProcedureIDList>
                             </Col>
 
                             <Col sm={9} style={{ 'background': '#eeaaaa' }}>
