@@ -64,7 +64,7 @@ class App extends Component {
             providersLoaded: false,
             query: '',
             loading: false,
-            initial: true,
+            initial: false,
             searchMain: "",
             searchLocation: "",
             searchRadius: "",
@@ -176,29 +176,24 @@ class App extends Component {
                 <React.Fragment>
 
                     <div className={'container-fluid'}>
-                        <Row style={{ 'background': '#aaaaaa' }} className={'align-items-center'} style={{ width: 'auto' }}>
+                        <Row style={{ 'background': '#aaaaaa' }} className={''}>
 
-                            <NewSearch home={false} />
-
+                            <Col style={{width: '100%'}} sm='12'>
+                                <NewSearch home={false} />
+                            </Col>
 
                         </Row>
 
-                        <Row style={{ height: '90vh' }}>
-                            <div className={'col-3 p-3'}>
-                                <ul>
-                                    <li >{this.state.searchMain}</li>
-                                    <li >{this.state.searchLocation}</li>
-                                    <li >{this.state.searchRadius}</li>
-                                    <li >{this.state.selectedOption}</li>
-                                </ul>
+                        <Row >
+                            <div style={{ height: '85vh' }} className={'col-3 p-3 overflow-auto'}>
                                 <ProcedureList procedures={this.state.procedures}></ProcedureList>
                                 {console.log(this.state.procedures)}
                                 {/* {console.log(this.state.providers)} */}
                             </div>
 
-                            <div style={{ 'background': '#eeaaaa' }}>
-                                <HospitalsMap hospList={locations} wi={"74vw"} hi={"90vh"} addresses={addresses} 
-                                procedures={this.state.procedures} providers={this.state.providers} location={null}/>
+                            <div className={'col-9 m-0 p-0'} style={{ 'background': '#eeaaaa' }}>
+                                <HospitalsMap hospList={locations} wi={"74vw"} hi={"90vh"} addresses={addresses}
+                                    procedures={this.state.procedures} providers={this.state.providers} />
                             </div>
                         </Row>
 
