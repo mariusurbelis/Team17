@@ -15,6 +15,7 @@ import { CityBanner } from './components/CityBanner';
 import ProcedureList from './components/ProcedureList';
 import ProcedureIDList from './components/ProceduresIDList';
 
+import HospitalsMap from './components/HospitalsMap'
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
