@@ -63,19 +63,30 @@ Ruth has updated the sprint and product backlog, completed the sprint retrospect
 
 
 ---
-## Day [3] 03/02/2020- Scrum Meeting summary
-The Scrum Master for this meeting was **Callum Darling**
+## Day [3] 05/02/2020- Scrum Meeting summary
+The Scrum Master for this meeting was **Ruth Carnegie**
 
 ### Members Present:
-Ruth Carnegie, Callum Darling, Peter Leslie, Marius Urbelis, Alfie Hippisley
+Ruth Carnegie, Callum Darling, Peter Leslie, Marius Urbelis, Alfie Hippisley, Daniel Blackley
 
 ### Members Not Present:
 N/A
 
 ### Apologies:
-Daniel Blackley - Illness, Notified us beforehand. 
+N/A
 
 ### Summary of Conversation:
+
+Since the last scrum, Daniel has created python scripts to aid the implementation of the map features and has begun developing scripts and UI features for the sorting of results.
+
+Marius has been dealing with issues with the server as it has crashed and he is currently in the process of restarting it.
+
+Peter has implemented the new card design and updated the information, today he will continue with the styling of the cards.
+
+Callum is continuing on with the implementation of the map and is working with Jest for our TDD. 
+
+Ruth has implemented the search by procedure code functionality and is now working on implementing search sorting features with Daniel. 
+
 
 ---
 
