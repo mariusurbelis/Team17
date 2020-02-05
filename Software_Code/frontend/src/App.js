@@ -124,11 +124,11 @@ class App extends Component {
 
             );
         } else {
-            if (!this.state.proceduresLoaded) {
+            if (!this.state.proceduresLoaded && this.state.selectedOption != "procName") {
                 this.getProcedures()
                 this.setState({ proceduresLoaded: true })
             }
-            else if(!this.state.proceduresidLoaded){
+            else if(!this.state.proceduresidLoaded && this.state.selectedOption != "procCode"){
                 this.getProceduresID()
                 this.setState({proceduresidLoaded: true})
             }
