@@ -58,7 +58,7 @@ class App extends Component {
     }
 
     getProcedures = () => {
-        fetch('https://api.urbelis.dev/procedures?query=' + this.state.searchMain + ',state=' + this.state.searchLocation, {
+        fetch('https://api.urbelis.dev/procedures?query=' + this.state.searchMain + '&state=' + this.state.searchLocation, {
             mode: 'cors',
             method: 'GET',
             headers: {
@@ -72,7 +72,7 @@ class App extends Component {
     }
 
     getProceduresID = () => {
-        fetch('https://api.urbelis.dev/proceduresbyid?id=' + this.state.searchMain + ',state=' + this.state.searchLocation, {
+        fetch('https://api.urbelis.dev/proceduresbyid?id=' + this.state.searchMain + '&state=' + this.state.searchLocation, {
             mode: 'cors',
             method: 'GET',
             headers: {
