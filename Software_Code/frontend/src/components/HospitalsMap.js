@@ -5,19 +5,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 
-// var origin = 
-//var origin = ["Dundee", { lat: 56.462002, lng: -2.970700 }]
 var markers = []
 var finalArray = []
-// var locations = new Array(
-// ["Dundee", { lat: 56.462002, lng: -2.970700 }],
-// ["Dunde1", { lat: 57.462002, lng: -2.970700 }],
-// ["Dunde2", { lat: 58.462002, lng: -2.970700 }],
-// ["Dunde3", { lat: 59.462002, lng: -2.970700 }],
-// ["Dunde4", { la2213t: 60.462002, lng: -2.970700 }],
 // )
-
-
 
 class HospitalsMap extends Component {
 	constructor(props) {
@@ -119,30 +109,7 @@ class HospitalsMap extends Component {
 
 		})
 	}
-	// markers.push(<Marker
-	// 	position={origin[1]}
-	// 	name={origin[0]} />);
-	// var arrayLength = this.props.hospList.length;
-	// 	for (var i = 0; i < arrayLength; i++) {
-	// 		if (i == 0) {
-	// 			markers.push(<Marker
-	// 				address={this.props.addresses[i]}
-	// 				position={this.props.hospList[i][1]}
-	// 				onClick={this.onMarkerClick}
-	// 				label={"You are Here"}
-	// 				name={this.props.hospList[i][0]}
-	// 				title={this.props.hospList[i][0]} />);
-	// 		} else {
-	// 			markers.push(<Marker
-	// 				address={this.props.addresses[i]}
-	// 				position={this.props.hospList[i][1]}
-	// 				onClick={this.onMarkerClick}
-	// 				label={this.findDistancesFromCoord(this.props.hospList[i])}
-	// 				name={this.props.hospList[i][0]}
-	// 				title={this.props.hospList[i][0]} />);
-	// 		}
-	// 	}
-	// }
+
 
 
 	state = {
