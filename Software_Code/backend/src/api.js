@@ -64,7 +64,7 @@ app.get('/', function (req, res) {
 app.get('/procedures', function (req, res) {
     var query = req.query.query;
     var state = req.query.state;
-    connection.query('select * from ProvidersIncreasing where DRGDefinition LIKE \'%' + query + '%\'' + ' AND State=' + state + ' LIMIT 0,50', function (error, results, fields) {
+    connection.query('select * from ProvidersIncreasing where DRGDefinition LIKE \'%' + query + '%\'' + ' AND State=\'' + state + '\' LIMIT 0,50', function (error, results, fields) {
         // connection.query('select * from GPDProviders where DRGDefinition LIKE \'%' + query + '%\'', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
@@ -75,7 +75,7 @@ app.get('/procedures', function (req, res) {
 app.get('/proceduresbyid', function (req, res) {
     var id = req.query.id;
     var state = req.query.state;
-    connection.query('select * from GPDProviders where GPDID=' + id + ' AND State=' + state + ' LIMIT 0,50', function (error, results, fields) {
+    connection.query('select * from ProvidersIncreasing where GPDID=' + id + ' AND State=\'' + state + '\' LIMIT 0,50', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
     });
