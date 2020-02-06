@@ -81,17 +81,27 @@ class HospitalsMap extends Component {
 			if (this.props.location !== null) {
 				lab = "You are here"
 			} else {
-				lab = e2.ProviderName.split(' ')[0] + ' ' + e2.ProviderName.split(' ')[1]
+				lab = e2.ProviderName.split(' ')[0] + ' ' + e2.ProviderName.split(' ')[1] + ' ' + e2.ProviderName.split(' ')[2]
 				//lab=this.findDistancesFromCoord(e2.Latitude, e2.longitude)
 				//lab = this.findDistancesFromCoord({lat: e2.Latitude, lng: e2.longitude})
 			}
+
 			markers.push(<Marker
 				address={e2.Address + ', ' + e2.City + ', ' + e2.State}
 				position={{ lat: e2.Latitude, lng: e2.longitude }}
 				onClick={this.onMarkerClick}
-				label={lab}
+				label={{
+					color: 'white',
+					icon: {
+						url: '/assets/h.png',
+					  },
+					text: lab,
+					fontFamily: "Arial",
+					fontSize: "14px",
+				}}
 				name={e2.ProviderName}
-				title={e2.ProviderName} />);
+				title={e2.ProviderName} 
+				hosp={e2}/>);
 
 		})
 	}
@@ -125,6 +135,7 @@ class HospitalsMap extends Component {
 		showingInfoWindow: false,
 		activeMarker: {},
 		selectedPlace: {},
+		map: {}
 	};
 
 	onMarkerClick = (props, marker, e) =>
@@ -154,6 +165,19 @@ class HospitalsMap extends Component {
 		}
 	}
 
+	handleZoomChanged(){
+		// this.state.map.setZoom(6);
+		console.log("Fix")
+	}
+
+	iterateZoom(){
+		this.setState({
+			zoom: this.state.zoom+1
+		})
+	}
+
+
+
 	render() {
 		return (
 			<div>
@@ -162,9 +186,12 @@ class HospitalsMap extends Component {
 					<Map google={this.props.google}
 						onClick={this.onMapClicked}
 						initialCenter={this.initCen()}
-						zoom={4}
+						zoom={9}
 						style={{ width: this.props.wi, height: this.props.hi, backgroundColor: 'powderblue' }}
+						onZoomChanged={this.handleZoomChanged()}
+						ref={this.state.map}
 					>
+
 
 						{this.marcPush()}
 						{markers}
