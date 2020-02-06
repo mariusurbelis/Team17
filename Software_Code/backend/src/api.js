@@ -67,7 +67,7 @@ app.get('/procedures', function (req, res) {
     var zip = req.query.zip;
     connection.query('select * from ProvidersIncreasing where DRGDefinition LIKE \'%' + query + '%\'' + '', function (error, results, fields) {
 
-        // if (error) throw error;
+        if (error) throw error;
         var lat, lon
 
         let rawdata = fs.readFileSync('./src/zips.json');
@@ -119,6 +119,22 @@ app.get('/proceduresbyid', function (req, res) {
     var state = req.query.state;
     connection.query('select * from ProvidersIncreasing where GPDID=' + id + ' AND State=\'' + state + '\' LIMIT 0,50', function (error, results, fields) {
         if (error) throw error;
+        var lat, lon
+
+        let rawdata = fs.readFileSync('./src/zips.json');
+        let zipCodes = JSON.parse(rawdata);
+
+        zipCodes.coordinates.forEach(function (item, index) {
+            if (item.zip === zip) {
+                lat = item.lat
+                lon = item.lon
+            }
+        });
+
+        results.forEach(function (item, index) {
+            item.distance = distance(item.Latitude, item.longitude, lat, lon);
+        });
+
         res.end(JSON.stringify(results));
     });
 });
