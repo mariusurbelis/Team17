@@ -80,7 +80,7 @@ class App extends Component {
             },
         }).then(response => {
             if (response.ok) {
-                response.json().then(data => this.setState({ 'proceduresid': data }))
+                response.json().then(data => this.setState({ 'procedures': data }))
             }
         });
     }
@@ -194,7 +194,7 @@ class App extends Component {
 
                             <div className={'col-9 m-0 p-0 pr-1'}>
                                 <HospitalsMap hospList={locations} wi={"99%"} hi={"100%"} addresses={addresses}
-                                    procedures={this.state.procedures} providers={this.state.providers} />
+                                    procedures={this.state.procedures} providers={this.state.providers} location={null} />
                             </div>
                         </Row>
 

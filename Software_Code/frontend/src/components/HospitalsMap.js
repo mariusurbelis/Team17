@@ -13,8 +13,9 @@ var finalArray = []
 // ["Dunde1", { lat: 57.462002, lng: -2.970700 }],
 // ["Dunde2", { lat: 58.462002, lng: -2.970700 }],
 // ["Dunde3", { lat: 59.462002, lng: -2.970700 }],
-// ["Dunde4", { lat: 60.462002, lng: -2.970700 }],
+// ["Dunde4", { la2213t: 60.462002, lng: -2.970700 }],
 // )
+
 
 
 class HospitalsMap extends Component {
@@ -44,7 +45,7 @@ class HospitalsMap extends Component {
 		if (this.state.activeMarker != nextState.activeMarker) {
 			return true;
 		}
-		if (this.state.reload){
+		if (this.state.reload) {
 			return true;
 		}
 		return true;
@@ -52,22 +53,22 @@ class HospitalsMap extends Component {
 	//lobal locations = props.hospList
 	origin = this.props.hospList[0]
 
-    findDistancesFromCoord(lcat) {
-        // var lo = lcat[0]
-        var gd = getDistance(this.props.hospList[0][1], lcat[1])
-        //return lo + ": " + gd / 1000 + "km"
-        return Math.round(gd / 1000) + "km"
-        //return getDistance(locations[0][1],locations[1][1])
-    }
+	findDistancesFromCoord(lcat) {
+		var lo = lcat[0]
+		var gd = getDistance(this.props.hospList[0][1], lcat[1])
+		//return lo + ": " + gd / 1000 + "km"
+		return Math.round(gd / 1000) + "km"
+		//return getDistance(locations[0][1],locations[1][1])
+	}
 
-    printLocals() {
-        var arrayLength = this.props.hospList.length;
-        var finalProduct = "";
-        for (var i = 0; i < arrayLength; i++) {
-            finalProduct = finalProduct + this.findDistancesFromCoord(this.props.hospList[i]) + "<br>";
-        }
-        return finalProduct;
-    }
+	// printLocals() {
+	// 	var arrayLength = this.props.hospList.length;
+	// 	var finalProduct = "";
+	// 	for (var i = 0; i < arrayLength; i++) {
+	// 		finalProduct = finalProduct + this.findDistancesFromCoord(this.props.hospList[i]) + "<br>";
+	// 	}
+	// 	return finalProduct;
+	// }
 
 	marcPush() {
 		var lab;
@@ -76,21 +77,21 @@ class HospitalsMap extends Component {
 		finalArray.forEach((e2) => {
 			console.log("marker 2")
 			console.log(e2)
-			if (this.props.location !== null){
+			if (this.props.location !== null) {
 				lab = "You are here"
-			}else{
-				lab = e2.ProviderName.split(' ')[0]+ ' ' + e2.ProviderName.split(' ')[1]
+			} else {
+				lab = e2.ProviderName.split(' ')[0] + ' ' + e2.ProviderName.split(' ')[1]
 				//lab=this.findDistancesFromCoord(e2.Latitude, e2.longitude)
 				//lab = this.findDistancesFromCoord({lat: e2.Latitude, lng: e2.longitude})
 			}
-				markers.push(<Marker
-					address={e2.Address}
-					position={{lat: e2.Latitude, lng: e2.longitude}}
-					onClick={this.onMarkerClick}
-					label={lab}
-					name={e2.ProviderName}
-					title={e2.ProviderName} />);
-			
+			markers.push(<Marker
+				address={e2.Address + ', ' + e2.City + ', ' + e2.State}
+				position={{ lat: e2.Latitude, lng: e2.longitude }}
+				onClick={this.onMarkerClick}
+				label={lab}
+				name={e2.ProviderName}
+				title={e2.ProviderName} />);
+
 		})
 	}
 	// markers.push(<Marker
@@ -125,12 +126,12 @@ class HospitalsMap extends Component {
 		selectedPlace: {},
 	};
 
-    onMarkerClick = (props, marker, e) =>
-        this.setState({
-            selectedPlace: props,
-            activeMarker: marker,
-            showingInfoWindow: true
-        });
+	onMarkerClick = (props, marker, e) =>
+		this.setState({
+			selectedPlace: props,
+			activeMarker: marker,
+			showingInfoWindow: true
+		});
 
 	onMapClicked = (props) => {
 		if (this.state.showingInfoWindow) {
@@ -142,17 +143,28 @@ class HospitalsMap extends Component {
 		this.processProcAndProv()
 	};
 
+	initCen() {
+		if (finalArray.length > 0) {
+			return { lat: finalArray[0].Latitude, lng: finalArray[0].longitude }
+		} else if (this.props.location !== null) {
+			return this.props.location
+		}else {
+				return { lat: 40.7128, lng: -74.0060 }	
+		}
+	}
+
 	render() {
 		return (
 			<div>
 				<div style={{ width: this.props.wi, height: this.props.hi }}>
+					{this.processProcAndProv()}
 					<Map google={this.props.google}
 						onClick={this.onMapClicked}
-						initialCenter={this.props.hospList[0][1]}
+						initialCenter={this.initCen()}
 						zoom={4}
 						style={{ width: this.props.wi, height: this.props.hi, backgroundColor: 'powderblue' }}
 					>
-						{this.processProcAndProv()}
+
 						{this.marcPush()}
 						{markers}
 						<InfoWindow
@@ -164,20 +176,20 @@ class HospitalsMap extends Component {
 							}}
 							marker={this.state.activeMarker}
 							visible={this.state.showingInfoWindow}>
-							<Row style={{ width: '30vh', padding: '20px'}}>
+							<Row style={{ width: 'auto', padding: '20px' }}>
 								<h4 style={{ margin: 'auto' }}>
 									{this.state.selectedPlace.name}
 								</h4>
 							</Row>
 							<hr />
-							<Row style={{ width: 'auto', padding: '20px'}}>
-								<h5>{this.state.selectedPlace.address} ahahah</h5>
+							<Row style={{ width: 'auto', padding: '20px' }}>
+								<h5>{this.state.selectedPlace.address}</h5>
 							</Row>
-							<Row style={{ width: 'auto', padding: '20px'}}>
+							<Row style={{ width: 'auto', padding: '20px' }}>
 
 								<div >
-									<button 
-									onClick={console.log("Yee")}>See Details</button>
+									<button
+										onClick={console.log("Yee")}>See Details</button>
 								</div>
 							</Row>
 
@@ -190,8 +202,8 @@ class HospitalsMap extends Component {
 }
 // export class MapContainer extends React.Component { }
 export default GoogleApiWrapper({
-    // apiKey: 'AIzaSyBUGx7RRQurAj4RxZb0NzMNtOHzcUZZpVo'
-    apiKey: ''
+	// apiKey: 'AIzaSyBUGx7RRQurAj4RxZb0NzMNtOHzcUZZpVo'
+	apiKey: ''
 })(HospitalsMap);
 
 
