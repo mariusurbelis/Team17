@@ -43,6 +43,12 @@ background: rgb(11,156,219);
         
     }
 
+    .radio2{
+        width: 3%;
+        margin: 17px 0px 0px 0px;
+        
+    }
+
     .mainSearch {
         width: 60%;
         background: var(--bg);
@@ -115,7 +121,8 @@ export default class NewSearch extends Component {
             searchMain: "",
             searchLocation: "",
             searchRadius: "",
-            selectedOption: "procCode"
+            selectedOption: "procCode",
+            selectedSort: "incPrice"
         }
     }
 
@@ -153,6 +160,12 @@ export default class NewSearch extends Component {
         });
     };
 
+    handleSortChange = changeEvent => {
+        this.setState({
+            selectedSort: changeEvent.target.value
+        });
+    };
+
     updateMainSearch(event) {
         this.setState({ searchMain: event.target.value })
     }
@@ -179,8 +192,6 @@ export default class NewSearch extends Component {
                         <label className="smallLabel" style={{ width: '60%' }}>Search for procedure</label>
                         <label className="smallLabel" style={{ width: '25%' }}>(Optional) Enter Your City</label>
                         <label className="smallLabel" style={{ width: '15%' }}>Search Radius (KM)</label>
-
-
                     </Row>
                     <Row>
                         <input className="mainSearch"
@@ -201,10 +212,13 @@ export default class NewSearch extends Component {
                             value={this.state.searchRadius}
                             onChange={this.updateRadSearch.bind(this)} />
 
+                        
+
                     </Row>
                     <Row>
                         <input
                             className="radio"
+                            name="codeName"
                             type="radio"
                             value="procCode"
                             checked={this.state.selectedOption === "procCode"}
@@ -213,6 +227,7 @@ export default class NewSearch extends Component {
                         <label className="label">Procedure Code </label>
                         <input
                             className="radio"
+                            name="codeName"
                             type="radio"
                             value="procName"
                             checked={this.state.selectedOption === "procName"}
@@ -225,6 +240,27 @@ export default class NewSearch extends Component {
                             type="submit"
                             value="Submit"
                             onClick={this.handleSubmit} />
+
+                        <input
+                            className="radio2"
+                            name="decIncr"
+                            type="radio"
+                            value="decrPrice"
+                            checked={this.state.selectedSort === "decrPrice"}
+                            onChange={this.handleSortChange}
+                        />
+                        <label className="label">Sort by Decreasing Price </label>
+
+                        <input
+                            className="radio2"
+                            name="Clark"
+                            type="radio"
+                            value="incrPrice"
+                            checked={this.state.selectedSort === "incrPrice"}
+                            onChange={this.handleSortChange}
+                        />
+                        <label className="label">Sort by Increasing Price </label>
+                        
                     </Row>
                 </Styles>
             </ form>
