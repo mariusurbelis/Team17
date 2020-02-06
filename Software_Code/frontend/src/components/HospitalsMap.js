@@ -74,6 +74,17 @@ class HospitalsMap extends Component {
 	// 	return finalProduct;
 	// }
 
+	splitProvName(name){
+		var fName = ''
+		var sName = name.split(' ')
+		for(var i=0; i<3; i++){
+			if(sName[i]!="undefined"){
+				fName += sName[i]+' '
+			}
+		}
+		return fName
+	}
+
 	marcPush() {
 		var lab;
 		console.log("marker 1")
@@ -85,7 +96,7 @@ class HospitalsMap extends Component {
 			if (this.props.location !== null) {
 				lab = "You are here"
 			} else {
-				lab = e2.ProviderName.split(' ')[0] + ' ' + e2.ProviderName.split(' ')[1] + ' ' + e2.ProviderName.split(' ')[2]
+				lab = this.splitProvName(e2.ProviderName)  
 				//lab=this.findDistancesFromCoord(e2.Latitude, e2.longitude)
 				//lab = this.findDistancesFromCoord({lat: e2.Latitude, lng: e2.longitude})
 			}
