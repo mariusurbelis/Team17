@@ -119,7 +119,6 @@ class App extends Component {
 
         if (this.state.initial) {
             return (
-
                 <React.Fragment>
 
                     {/* Header Area - Essentially the Navbar and color gradient components*/}
@@ -184,14 +183,14 @@ class App extends Component {
                     <div className={'container-fluid'}>
                         <Row className={''}>
 
-                            <Col style={{width: '100%'}} sm='12'>
+                            <Col style={{width: '100%' , background: 'white'}} sm='12' >
                                 <NewSearch home={false} parentCallback={this.callbackFunction2} />
                             </Col>
 
                         </Row>
 
                         <Row >
-                            <div style={{ height: '80vh' }} className={'col-3 p-3 overflow-auto'}>
+                            <div style={{ height: '80vh'}} className={'col-3 p-3 overflow-auto'}>
                                 <ProcedureList procedures={this.state.procedures}></ProcedureList>
                             </div>
 

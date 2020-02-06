@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import styled from 'styled-components';
+
+
 
 const Styles = styled.div`
 
-background: rgb(11,156,219);
-    background: linear-gradient(162deg, rgba(11,156,219,1) 0%, rgba(128,219,120,1) 100%);
-    --bg: #F5F5F5;
-    --fg: grey;
-    --bd: #00A67B;
+    --bg: white;
+    --fg: #424242;
+    --bd: #BDBDBD;
 
     //border-radius: 14px;
-    background: white;
+    background: #ffffff65;
     width: auto;
     //margin: 50px 0px 80px 0px;
     padding 30px;
@@ -24,26 +25,20 @@ background: rgb(11,156,219);
     // }
 
     .smallLabel {
-        color: grey;
+        color: white;
         font-weight: bold;
         font-size: small;
         padding-left: 4px;
     }
 
     .label {
-        color: grey;
+        color: white;
         height: auto;
         margin: 10px 0 0 0;
        width: 15%; 
     }
 
     .radio{
-        width: 3%;
-        margin: 17px 0px 0px 0px;
-        
-    }
-
-    .radio2{
         width: 3%;
         margin: 17px 0px 0px 0px;
         
@@ -98,25 +93,23 @@ background: rgb(11,156,219);
     }  
 `;
 
-// const butStyle = {
-//     width: '10%'
-// }
-
-// var divStyle = {
-//     background: 'yellow',
-//     width: 'auto',
-//     margin: '0px 0px 10px 0px',
-// }
-
-// var boxStyle = {
-//     width: '90%'
-// }
-
-var             hStyle = {
-    margin: '50px 0px 80px 0px',
-    width: "100%",
-    borderRadius: '14px',
+const butStyle = {
+    width: '10%'
 }
+
+var divStyle = {
+    background: 'yellow',
+    width: 'auto',
+    margin: '0px 0px 10px 0px',
+}
+
+var boxStyle = {
+    width: '90%'
+}
+
+var hStyle;
+
+
 
 export default class NewSearch extends Component {
     constructor() {
@@ -125,13 +118,12 @@ export default class NewSearch extends Component {
             searchMain: "",
             searchLocation: "",
             searchRadius: "",
-            selectedOption: "procCode",
-            selectedSort: "incPrice"
+            selectedOption: "procCode"
         }
     }
 
     changeHStyle() {
-        if (this.props.home === true) {
+        if (this.props.home == true) {
             hStyle = {
                 margin: '50px 0px 80px 0px',
                 width: "100%",
@@ -153,7 +145,7 @@ export default class NewSearch extends Component {
     handleSubmit = (event) => {
         this.sendData()
         event.preventDefault();
-        // this.setState({ searchMain: "Submitted" });
+        this.setState({ searchMain: "Submitted" });
 
 
     }
@@ -161,12 +153,6 @@ export default class NewSearch extends Component {
     handleOptionChange = changeEvent => {
         this.setState({
             selectedOption: changeEvent.target.value
-        });
-    };
-
-    handleSortChange = changeEvent => {
-        this.setState({
-            selectedSort: changeEvent.target.value
         });
     };
 
@@ -186,7 +172,7 @@ export default class NewSearch extends Component {
     render() {
         this.changeHStyle()
         return (
-            <form onSubmit={this.handleSubmit} style={{ width: "100%" }}>
+            <form onSubmit={this.handleSubmit} style={{width: "100%"}}>
                 <Styles style={hStyle}>
                     {/* <label className="label">Search By: </label> */}
                     <Row>
@@ -196,6 +182,8 @@ export default class NewSearch extends Component {
                         <label className="smallLabel" style={{ width: '60%' }}>Search for procedure</label>
                         <label className="smallLabel" style={{ width: '25%' }}>(Optional) Enter Your City</label>
                         <label className="smallLabel" style={{ width: '15%' }}>Search Radius (KM)</label>
+
+
                     </Row>
                     <Row>
                         <input className="mainSearch"
@@ -216,13 +204,10 @@ export default class NewSearch extends Component {
                             value={this.state.searchRadius}
                             onChange={this.updateRadSearch.bind(this)} />
 
-                        
-
                     </Row>
                     <Row>
                         <input
                             className="radio"
-                            name="codeName"
                             type="radio"
                             value="procCode"
                             checked={this.state.selectedOption === "procCode"}
@@ -231,7 +216,6 @@ export default class NewSearch extends Component {
                         <label className="label">Procedure Code </label>
                         <input
                             className="radio"
-                            name="codeName"
                             type="radio"
                             value="procName"
                             checked={this.state.selectedOption === "procName"}
@@ -244,30 +228,22 @@ export default class NewSearch extends Component {
                             type="submit"
                             value="Submit"
                             onClick={this.handleSubmit} />
-
-                        <input
-                            className="radio2"
-                            name="decIncr"
-                            type="radio"
-                            value="decrPrice"
-                            checked={this.state.selectedSort === "decrPrice"}
-                            onChange={this.handleSortChange}
-                        />
-                        <label className="label">Sort by Decreasing Price </label>
-
-                        <input
-                            className="radio2"
-                            name="Clark"
-                            type="radio"
-                            value="incrPrice"
-                            checked={this.state.selectedSort === "incrPrice"}
-                            onChange={this.handleSortChange}
-                        />
-                        <label className="label">Sort by Increasing Price </label>
-                        
                     </Row>
                 </Styles>
             </ form>
         )
     }
 }
+
+{/* <Col>
+<input className="subSearch"
+    type="text"
+    value={this.state.search}
+    onChange={this.updateSearch.bind(this)} />
+</Col>
+<Col>
+<input className="subSearch"
+    type="text"
+    value={this.state.search}
+    onChange={this.updateSearch.bind(this)} />
+</Col> */}
