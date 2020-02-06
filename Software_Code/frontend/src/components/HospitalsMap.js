@@ -26,17 +26,17 @@ class HospitalsMap extends Component {
 			if (e1.ProviderID === e2.ID) {
 				if (finalArray.indexOf(e2) === -1) {
 					finalArray.push(e2)
-					console.log(this.items);
+					// console.log(this.items);
 				}
 			}
 		}));
-		console.log("Final Array:")
-		console.log(finalArray)
+		// console.log("Final Array:")
+		// console.log(finalArray)
 		this.marcPush()
 	}
 
 	shouldComponentUpdate(nextProps, nextState) {
-		if (this.state.activeMarker != nextState.activeMarker) {
+		if (this.state.activeMarker !== nextState.activeMarker) {
 			return true;
 		}
 		if (this.state.reload) {
@@ -48,7 +48,7 @@ class HospitalsMap extends Component {
 	origin = this.props.hospList[0]
 
 	findDistancesFromCoord(lcat) {
-		var lo = lcat[0]
+		// var lo = lcat[0]
 		var gd = getDistance(this.props.hospList[0][1], lcat[1])
 		//return lo + ": " + gd / 1000 + "km"
 		return Math.round(gd / 1000) + "km"
@@ -77,12 +77,12 @@ class HospitalsMap extends Component {
 
 	marcPush() {
 		var lab;
-		console.log("marker 1")
-		console.log(finalArray)
+		// console.log("marker 1")
+		// console.log(finalArray)
 		markers = []
 		finalArray.forEach((e2) => {
-			console.log("marker 2")
-			console.log(e2)
+			// console.log("marker 2")
+			// console.log(e2)
 			if (this.props.location !== null) {
 				lab = "You are here"
 			} else {
@@ -148,7 +148,7 @@ class HospitalsMap extends Component {
 
 	handleZoomChanged(){
 		// this.state.map.setZoom(6);
-		console.log("Fix")
+		// console.log("Fix")
 	}
 
 	iterateZoom(){

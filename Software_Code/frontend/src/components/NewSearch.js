@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+// import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+// import Col from 'react-bootstrap/Col';
 import styled from 'styled-components';
 
 
@@ -35,13 +36,12 @@ const Styles = styled.div`
         color: grey;
         height: auto;
         margin: 10px 0 0 0;
-       width: 15%; 
+        width: 15%;
     }
 
     .radio{
         width: 3%;
-        margin: 17px 0px 0px 0px;
-        
+        margin: 17px 0px 0px 0px;   
     }
 
     .mainSearch {
@@ -93,23 +93,7 @@ const Styles = styled.div`
     }  
 `;
 
-const butStyle = {
-    width: '10%'
-}
-
-var divStyle = {
-    background: 'yellow',
-    width: 'auto',
-    margin: '0px 0px 10px 0px',
-}
-
-var boxStyle = {
-    width: '90%'
-}
-
 var hStyle;
-
-
 
 export default class NewSearch extends Component {
     constructor() {
@@ -118,12 +102,12 @@ export default class NewSearch extends Component {
             searchMain: "",
             searchLocation: "",
             searchRadius: "",
-            selectedOption: "procCode"
+            selectedOption: "WTF",
         }
     }
 
     changeHStyle() {
-        if (this.props.home == true) {
+        if (this.props.home === true) {
             hStyle = {
                 margin: '50px 0px 80px 0px',
                 width: "100%",
@@ -143,37 +127,49 @@ export default class NewSearch extends Component {
     }
 
     handleSubmit = (event) => {
-        this.sendData()
+
+        console.log('Submit handling')
         event.preventDefault();
-        this.setState({ searchMain: "Submitted" });
+        this.sendData()
 
-
+        // this.setState({ searchMain: "Submitted" });
     }
 
-    handleOptionChange = changeEvent => {
-        console.log(changeEvent.target.value)
-        this.setState({
-            selectedOption: changeEvent.target.value
-        });
-    };
+    updateMainSelectedOption() {
+        if (isNaN(this.state.searchMain)) {
+            console.log('Input as procedure name detected')
+            this.setState({
+                selectedOption: 'procName',
+            });
+        } else {
+            console.log('Input as procedure code detected')
+            this.setState({
+                selectedOption: 'procCode',
+            });
+        }
+    }
 
     updateMainSearch(event) {
+        this.updateMainSelectedOption()
         this.setState({ searchMain: event.target.value })
     }
     updateLocSearch(event) {
-            this.setState({ searchLocation: event.target.value })
+        this.updateMainSelectedOption()
+        this.setState({ searchLocation: event.target.value })
     }
     updateRadSearch(event) {
+        this.updateMainSelectedOption()
         this.setState({ searchRadius: event.target.value })
     }
     updateSearch(event) {
+        this.updateMainSelectedOption()
         this.setState({ search: event.target.value })
     }
 
     render() {
         this.changeHStyle()
         return (
-            <form onSubmit={this.handleSubmit} style={{width: "100%"}}>
+            <form onSubmit={this.handleSubmit} style={{ width: "100%" }}>
                 <Styles style={hStyle}>
                     {/* <label className="label">Search By: </label> */}
                     <Row>
@@ -183,9 +179,8 @@ export default class NewSearch extends Component {
                         <label className="smallLabel" style={{ width: '60%' }}>Search for procedure</label>
                         <label className="smallLabel" style={{ width: '25%' }}>(Optional) Enter Your City</label>
                         <label className="smallLabel" style={{ width: '15%' }}>Search Radius (KM)</label>
-
-
                     </Row>
+
                     <Row>
                         <input className="mainSearch"
                             placeholder="Procedure name or DRG code"
@@ -207,7 +202,7 @@ export default class NewSearch extends Component {
 
                     </Row>
                     <Row>
-                        <input
+                        {/* <input
                             className="radio"
                             type="radio"
                             value="procCode"
@@ -222,7 +217,7 @@ export default class NewSearch extends Component {
                             checked={this.state.selectedOption === "procName"}
                             onChange={this.handleOptionChange}
                         />
-                        <label className="label">Procedure Name </label>
+                        <label className="label">Procedure Name </label> */}
 
                         <label style={{ width: '44%' }}></label>
                         <input className={'butn'}
@@ -236,15 +231,17 @@ export default class NewSearch extends Component {
     }
 }
 
-{/* <Col>
-<input className="subSearch"
-    type="text"
-    value={this.state.search}
-    onChange={this.updateSearch.bind(this)} />
-</Col>
-<Col>
-<input className="subSearch"
-    type="text"
-    value={this.state.search}
-    onChange={this.updateSearch.bind(this)} />
-</Col> */}
+// {
+//     <Col>
+//         <input className="subSearch"
+//             type="text"
+//             value={this.state.search}
+//             onChange={this.updateSearch.bind(this)} />
+//     </Col>
+//         <Col>
+//             <input className="subSearch"
+//                 type="text"
+//                 value={this.state.search}
+//                 onChange={this.updateSearch.bind(this)} />
+//         </Col> 
+// }
