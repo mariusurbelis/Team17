@@ -106,7 +106,11 @@ background: rgb(11,156,219);
 //     width: '90%'
 // }
 
-var hStyle;
+var             hStyle = {
+    margin: '50px 0px 80px 0px',
+    width: "100%",
+    borderRadius: '14px',
+}
 
 export default class NewSearch extends Component {
     constructor() {
@@ -157,7 +161,7 @@ export default class NewSearch extends Component {
         this.setState({ searchMain: event.target.value })
     }
     updateLocSearch(event) {
-        this.setState({ searchLocation: event.target.value })
+            this.setState({ searchLocation: event.target.value })
     }
     updateRadSearch(event) {
         this.setState({ searchRadius: event.target.value })
