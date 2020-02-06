@@ -92,8 +92,8 @@ app.get('/procedures', function (req, res) {
 app.get('/proceduresminmax', function (req, res) {
     var query = req.query.query;
     var state = req.query.state;
-    var min = req.min.state;
-    var max = req.max.state;
+    var min = req.query.min;
+    var max = req.query.max;
     connection.query('select * from ProvidersIncreasing where DRGDefinition LIKE \'%' + query + '%\'' + ' AND State=\'' + state + ' AND TotalPayments BETWEEN ' + min + ' AND ' + max + ' LIMIT 0,50', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
@@ -104,8 +104,8 @@ app.get('/proceduresminmax', function (req, res) {
 app.get('/proceduresbyidminmax', function (req, res) {
     var id = req.query.id;
     var state = req.query.state;
-    var min = req.min.state;
-    var max = req.max.state;
+    var min = req.query.min;
+    var max = req.query.max;
     connection.query('select * from ProvidersIncreasing where GPDID=' + id + ' AND State=\'' + state +  ' AND TotalPayments BETWEEN ' + min + ' AND ' + max + ' LIMIT 0,50', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
@@ -214,29 +214,5 @@ app.delete('/customer', function (req, res) {
     res.end('Record has been deleted!');
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-                        <Col sm='2'>
-                            <input className="minSearch"
-                                type="text"
-                                placeholder="Minimum"
-                                onChange={this.updateMinSearch.bind(this)} />
-                        </Col>
-                        
-                        <Col sm='2'>
-                            <input className="maxSearch"
-                                type="text"
-                                placeholder="Maximum"
-                                onChange={this.updateMaxSearch.bind(this)} />
-                        </Col>
 
 */
