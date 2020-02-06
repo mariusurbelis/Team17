@@ -28,6 +28,6 @@ it("matches snapshot", () => {
         console.log("called back")
     }
     const tree = renderer.create(<HospitalSelectionPanel></HospitalSelectionPanel>)
-    // expect(tree).toMatchSnapshot();
-    expect(true).toBeTruthy();
+    expect(tree).toMatchSnapshot();
+    // expect(true).toBeTruthy();
 })
