@@ -78,7 +78,7 @@ class HospitalsMap extends Component {
 		var fName = ''
 		var sName = name.split(' ')
 		for(var i=0; i<3; i++){
-			if(sName[i]!="undefined"){
+			if(sName[i]!==undefined){
 				fName += sName[i]+' '
 			}
 		}
