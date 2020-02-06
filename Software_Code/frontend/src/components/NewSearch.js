@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
 
-    --bg: white;
+    --bg: F5F5F%;
     --fg: #424242;
     --bd: #BDBDBD;
 
@@ -25,14 +25,14 @@ const Styles = styled.div`
     // }
 
     .smallLabel {
-        color: white;
+        color: grey;
         font-weight: bold;
         font-size: small;
         padding-left: 4px;
     }
 
     .label {
-        color: white;
+        color: grey;
         height: auto;
         margin: 10px 0 0 0;
        width: 15%; 
@@ -151,6 +151,7 @@ export default class NewSearch extends Component {
     }
 
     handleOptionChange = changeEvent => {
+        console.log(changeEvent.target.value)
         this.setState({
             selectedOption: changeEvent.target.value
         });
