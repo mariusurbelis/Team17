@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="sc-AykKC eKFqan"
+>
+  <div
+    className="row align-items-center"
+    style={
+      Object {
+        "backgroundColor": "#0b9cdb26",
+        "margin-top": "1em",
+      }
+    }
+  >
+    <div
+      className="col-12"
+      style={
+        Object {
+          "padding-top": "1em",
+        }
+      }
+    >
+      <p
+        style={
+          Object {
+            "fontSize": "1em",
+          }
+        }
+      >
+        <b>
+          test
+        </b>
+      </p>
+      <p
+        style={
+          Object {
+            "fontSize": "0.8em",
+          }
+        }
+      >
+        , 
+      </p>
+    </div>
+  </div>
+</div>
+`;
