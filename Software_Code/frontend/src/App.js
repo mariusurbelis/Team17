@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // These are for page navigation, components change depending page..
-import { Home } from './Home';
 import { About } from './About';
 
 // These are for each UI component
@@ -13,7 +12,7 @@ import { Footer } from './components/Footer';
 import { CityBanner } from './components/CityBanner';
 
 import ProcedureList from './components/ProcedureList';
-import ProcedureIDList from './components/ProceduresIDList';
+// import ProcedureIDList from './components/ProceduresIDList';
 
 import HospitalsMap from './components/HospitalsMap'
 
@@ -22,21 +21,10 @@ import Col from 'react-bootstrap/Col';
 import NewSearch from './components/NewSearch';
 
 
-var locations = new Array(
-    ["Dundee", { lat: 56.462002, lng: -2.970700 }],
-    ["Dunde1", { lat: 57.462002, lng: -2.970700 }],
-    ["Dunde2", { lat: 58.462002, lng: -2.970700 }],
-    ["Dunde3", { lat: 59.462002, lng: -2.970700 }],
-    ["Dunde4", { lat: 60.462002, lng: -2.970700 }],
-)
+var locations = ""
 
-var addresses = new Array(
-    ["8 dundee street, dundee, dundee"],
-    ["cringe past cringe on the clock"],
-    [""],
-    [""],
-    [""]
-)
+var addresses = ""
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -53,7 +41,7 @@ class App extends Component {
             searchMain: "",
             searchLocation: "",
             searchRadius: "",
-            selectedOption: false
+            selectedOption: "procName"
         }
     }
 
@@ -84,7 +72,6 @@ class App extends Component {
             }
         });
     }
-    
 
     getProviders = () => {
         fetch('https://api.urbelis.dev/providers', {
@@ -100,17 +87,18 @@ class App extends Component {
         });
     }
 
-
     callbackFunction2 = (childData) => {
         console.log(childData)
         this.setState({
             searchMain: childData.searchMain,
             searchLocation: childData.searchLocation,
             searchRadius: childData.searchRadius,
-            selectedOption: childData.selectedOption
+            selectedOption: childData.selectedOption,
         })
-        this.setState({ proceduresLoaded: false, proceduresidLoaded: false, providersLoaded: false })
-        this.setState({ initial: false })
+        // alert('APP.js: ' + this.state.selectedOption)
+        this.setState({ proceduresLoaded: false, proceduresidLoaded: false, providersLoaded: false, initial: false })
+
+        console.log('Initial: ' + this.state.initial)
 
         // this.getProcedures()
     }
@@ -119,21 +107,15 @@ class App extends Component {
 
         if (this.state.initial) {
             return (
-
                 <React.Fragment>
 
                     {/* Header Area - Essentially the Navbar and color gradient components*/}
                     <ColorLayout>
                         <NavigationBar>
                         </NavigationBar>
-                        <Router>
-                            <Switch>
-                                {/* This is for the homepage city picture and heading text 'smarter healthcare etc' */}
-                                {/* <Route path = "PAGE-NAME" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
-                                {/* <Route exact path="/" component={Home} /> */}
-                                <Home parentCallback={this.callbackFunction2} />
-                            </Switch>
-                        </Router>
+
+                        <NewSearch home={true} parentCallback={this.callbackFunction2} />
+                        <Row style={{ background: "#32a852", }}></Row>
                     </ColorLayout>
 
                     {/* Main page area, put your components in here <3 - LowerLayout is just a react container to keep things neat */}
@@ -150,7 +132,7 @@ class App extends Component {
                     {/* <Route path = "PAGE-NAME(Page you want component to appear on)" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
                     <LowerLayout>
                         <Router>
-                            
+
                             <Switch>
                                 <Route exact path="/" component={CityBanner} />
                             </Switch>
@@ -169,13 +151,13 @@ class App extends Component {
                 this.getProcedures()
                 this.setState({ proceduresLoaded: true })
             }
-            else if(!this.state.proceduresidLoaded && this.state.selectedOption === "procCode"){
+            else if (!this.state.proceduresidLoaded && this.state.selectedOption === "procCode") {
                 this.getProceduresID()
-                this.setState({proceduresidLoaded: true})
+                this.setState({ proceduresidLoaded: true })
             }
             if (!this.state.providersLoaded) {
                 this.getProviders()
-                this.state.providersLoaded = true
+                this.setState({providersLoaded: true})
             }
             return (
 
@@ -184,7 +166,7 @@ class App extends Component {
                     <div className={'container-fluid'}>
                         <Row className={''}>
 
-                            <Col style={{width: '100%'}} sm='12'>
+                            <Col style={{ width: '100%', background: 'white' }} sm='12' >
                                 <NewSearch home={false} parentCallback={this.callbackFunction2} />
                             </Col>
 

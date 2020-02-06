@@ -13,3 +13,13 @@ describe('Addition', () => {
     expect(2 + 2).toBe(4);
   });
 });
+
+
+
+// describe('App component', () => {
+//   it('starts with a count of 0', () => {
+//     const wrapper = shallow(<App />);
+//     const text = wrapper.find('ProcedureList').text();
+//     expect(true).toBe(true);
+//   });
+// });

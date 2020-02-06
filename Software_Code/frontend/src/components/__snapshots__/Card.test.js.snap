@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="sc-AykKC JXmus"
+>
+  <div
+    style={
+      Object {
+        "backgroundColor": "1#dcdde1",
+        "border": "1px solid",
+        "margin-bottom": "1em",
+        "padding": "1em",
+      }
+    }
+  >
+    <div
+      class="row row-cols-2"
+      style={
+        Object {
+          "fontSize": "1.4em",
+          "fontweight": 600,
+        }
+      }
+    >
+      <div
+        class="col"
+      >
+         
+        <b>
+          test driven development
+        </b>
+      </div>
+    </div>
+    <div
+      class="row row-cols-2"
+    >
+      <div
+        class="col"
+      >
+        testDefinition
+      </div>
+    </div>
+    <div
+      class="row row-cols-2"
+    >
+      <div
+        class="col"
+      >
+        <b>
+          GPDID Code: 
+        </b>
+        GDPID Test
+      </div>
+    </div>
+    <div
+      class="row row-cols-2"
+    >
+      <div
+        class="col"
+      >
+        <b>
+          Average Price: 
+        </b>
+      </div>
+      <div
+        class="col"
+      >
+        $
+        10909
+      </div>
+    </div>
+    <div
+      class="row row-cols-2"
+    >
+      <div
+        class="col"
+      >
+        <b>
+          Distance: 
+        </b>
+      </div>
+      <div
+        class="col"
+      >
+        256 Miles
+      </div>
+    </div>
+    <div
+      class="row row-cols-2"
+    >
+      <div
+        class="col"
+      >
+        <b>
+          More information: 
+        </b>
+      </div>
+      <div
+        class="col"
+      >
+        BUTTON
+      </div>
+    </div>
+  </div>
+</div>
+`;

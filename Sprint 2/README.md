@@ -91,18 +91,28 @@ Ruth has implemented the search by procedure code functionality and is now worki
 ---
 
 ## Day [4] 03/02/2020- Scrum Meeting summary
-The Scrum Master for this meeting was **Callum Darling**
+The Scrum Master for this meeting was **Ruth Carnegie**
 
 ### Members Present:
-Ruth Carnegie, Callum Darling, Peter Leslie, Marius Urbelis, Alfie Hippisley
+Ruth Carnegie, Callum Darling, Marius Urbelis, Daniel Blackley
 
 ### Members Not Present:
-N/A
+Peter Leslie
+Alfie Hippisley
 
 ### Apologies:
-Daniel Blackley - Illness, Notified us beforehand. 
+N/A
 
 ### Summary of Conversation:
+
+
+Marius has been working on fixing API and server issues as well as making changes to elements of the UI to ecnane it's appearance. 
+
+Callum has been working on fixes for the map, including having hospital names disappear when the user scrolls out on the map.
+
+Daniel has been creating python scripts to enhance the fuctionality of the DB and fixing co-ordinates input for the map functionality, as well as implementing search functionality. 
+
+Ruth has been editing the documentation for the product backlog, sprint retrospective and backlog and helping with the search functionality. 
 
 ---
 ## Day [5] 03/02/2020- Scrum Meeting summary
