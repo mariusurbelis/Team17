@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <p>
+    Enter Your State Letters (e.g. TX)
+  </p>
+  <label>
+    <div
+      className="sc-AykKD dYdugU"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col"
+        >
+          <input
+            className="form-control"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          className="col"
+        >
+          <input
+            className="btn btn-info"
+            type="submit"
+            value="Submit"
+          />
+        </div>
+      </div>
+    </div>
+  </label>
+</form>
+`;

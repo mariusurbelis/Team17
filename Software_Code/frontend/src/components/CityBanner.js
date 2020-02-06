@@ -41,10 +41,8 @@ export const CityBanner = (props) => (
         <Row>
             <Col>
                 <h1 class = "homeHeading2">Start Saving Money Today</h1>
-                <p>Using our super advanced AI search tools that are absolutly
-                    not a bunch of IF statements, we can help you find the best
-                    price for the healthcare you require. Simply enter your location
-                    and the name/code of the procedure and hit search.
+                <p>Using our price comparison tools to make sure that the hospitals 
+                    don't have the upper hand. Informed consumers are free consumers
                 </p>
             </Col>
         </Row>

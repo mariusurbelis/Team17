@@ -90,6 +90,7 @@ class HospitalsMap extends Component {
 				//lab=this.findDistancesFromCoord(e2.Latitude, e2.longitude)
 				//lab = this.findDistancesFromCoord({lat: e2.Latitude, lng: e2.longitude})
 			}
+
 			markers.push(<Marker
 				address={e2.Address + ', ' + e2.City + ', ' + e2.State}
 				position={{ lat: e2.Latitude, lng: e2.longitude }}
