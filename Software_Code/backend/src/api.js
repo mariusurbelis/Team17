@@ -70,7 +70,7 @@ app.get('/procedures', function (req, res) {
         // if (error) throw error;
         var lat, lon
 
-        let rawdata = fs.readFileSync('./zips.json');
+        let rawdata = fs.readFileSync('./src/zips.json');
         let zipCodes = JSON.parse(rawdata);
 
         zipCodes.coordinates.forEach(function (item, index) {
