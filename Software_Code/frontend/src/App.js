@@ -109,7 +109,10 @@ class App extends Component {
             searchRadius: childData.searchRadius,
             selectedOption: childData.selectedOption
         })
+        this.setState({ proceduresLoaded: false, proceduresidLoaded: false, providersLoaded: false })
         this.setState({ initial: false })
+
+        // this.getProcedures()
     }
 
     render() {
@@ -182,7 +185,7 @@ class App extends Component {
                         <Row className={''}>
 
                             <Col style={{width: '100%'}} sm='12'>
-                                <NewSearch home={false} />
+                                <NewSearch home={false} parentCallback={this.callbackFunction2} />
                             </Col>
 
                         </Row>
