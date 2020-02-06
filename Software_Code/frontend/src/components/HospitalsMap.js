@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import getDistance from 'geolib/es/getDistance';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 
 // var origin = 
 //var origin = ["Dundee", { lat: 56.462002, lng: -2.970700 }]
@@ -148,8 +149,8 @@ class HospitalsMap extends Component {
 			return { lat: finalArray[0].Latitude, lng: finalArray[0].longitude }
 		} else if (this.props.location !== null) {
 			return this.props.location
-		}else {
-				return { lat: 40.7128, lng: -74.0060 }	
+		} else {
+			return { lat: 40.7128, lng: -74.0060 }
 		}
 	}
 
@@ -176,23 +177,19 @@ class HospitalsMap extends Component {
 							}}
 							marker={this.state.activeMarker}
 							visible={this.state.showingInfoWindow}>
-							<Row style={{ width: 'auto', padding: '20px' }}>
-								<h4 style={{ margin: 'auto' }}>
-									{this.state.selectedPlace.name}
-								</h4>
-							</Row>
-							<hr />
-							<Row style={{ width: 'auto', padding: '20px' }}>
-								<h5>{this.state.selectedPlace.address}</h5>
-							</Row>
-							<Row style={{ width: 'auto', padding: '20px' }}>
+							<Container>
+								<Row>
+									<Col style={{fontSize: '1em'}} sm='12'>
+										<b>{this.state.selectedPlace.name}</b>
+									</Col>
+								</Row>
+								<Row>
+									<Col style={{fontSize: '0.8em'}} sm='12'>
+										{this.state.selectedPlace.address}
+									</Col>
+								</Row>
 
-								<div >
-									<button
-										onClick={console.log("Yee")}>See Details</button>
-								</div>
-							</Row>
-
+							</Container>
 						</InfoWindow>
 					</Map>
 				</div>
