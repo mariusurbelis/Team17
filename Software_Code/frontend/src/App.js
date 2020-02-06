@@ -49,7 +49,7 @@ class App extends Component {
             proceduresidLoaded: false,
             query: '',
             loading: false,
-            initial: false,
+            initial: true,
             searchMain: "",
             searchLocation: "",
             searchRadius: "",
@@ -179,7 +179,7 @@ class App extends Component {
                 <React.Fragment>
 
                     <div className={'container-fluid'}>
-                        <Row style={{ 'background': '#aaaaaa' }} className={''}>
+                        <Row className={''}>
 
                             <Col style={{width: '100%'}} sm='12'>
                                 <NewSearch home={false} />
@@ -188,17 +188,18 @@ class App extends Component {
                         </Row>
 
                         <Row >
-                            <div style={{ height: '85vh' }} className={'col-3 p-3 overflow-auto'}>
+                            <div style={{ height: '80vh' }} className={'col-3 p-3 overflow-auto'}>
                                 <ProcedureList procedures={this.state.procedures}></ProcedureList>
                             </div>
 
-                            <div className={'col-9 m-0 p-0'} style={{ 'background': '#eeaaaa' }}>
-                                <HospitalsMap hospList={locations} wi={"74vw"} hi={"90vh"} addresses={addresses}
+                            <div className={'col-9 m-0 p-0 pr-1'}>
+                                <HospitalsMap hospList={locations} wi={"99%"} hi={"100%"} addresses={addresses}
                                     procedures={this.state.procedures} providers={this.state.providers} />
                             </div>
                         </Row>
 
                     </div>
+
                 </React.Fragment>
             );
         }
