@@ -153,7 +153,7 @@ export default class NewSearch extends Component {
     handleSubmit = (event) => {
         this.sendData()
         event.preventDefault();
-        this.setState({ searchMain: "Submitted" });
+        // this.setState({ searchMain: "Submitted" });
 
 
     }
