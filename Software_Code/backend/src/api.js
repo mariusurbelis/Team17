@@ -63,8 +63,19 @@ app.get('/', function (req, res) {
 //rest api to get all procedures
 app.get('/procedures', function (req, res) {
     var query = req.query.query;
-    connection.query('select * from ProvidersIncreasing where DRGDefinition LIKE \'%' + query + '%\' LIMIT 0,500', function (error, results, fields) {
+    var state = req.query.state;
+    connection.query('select * from ProvidersIncreasing where DRGDefinition LIKE \'%' + query + '%\'' + ' AND State=' + state + ' LIMIT 0,50', function (error, results, fields) {
         // connection.query('select * from GPDProviders where DRGDefinition LIKE \'%' + query + '%\'', function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results));
+    });
+});
+
+//check to get procedure ID
+app.get('/proceduresbyid', function (req, res) {
+    var id = req.query.id;
+    var state = req.query.state;
+    connection.query('select * from GPDProviders where GPDID=' + id + ' AND State=' + state + ' LIMIT 0,50', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
     });
@@ -90,15 +101,6 @@ app.get('/locations', function (req, res) {
 //rest api to get all providers
 app.get('/providers', function (req, res) {
     connection.query('select * from Providers', function (error, results, fields) {
-        if (error) throw error;
-        res.end(JSON.stringify(results));
-    });
-});
-
-//check to get procedure ID
-app.get('/proceduresbyid', function (req, res) {
-    var id = req.query.id;
-    connection.query('select * from GPDProviders where GPDID=' + id + ' LIMIT 0,50', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
     });
