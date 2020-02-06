@@ -26,9 +26,12 @@ class HospitalsMap extends Component {
 			selectedPlace: "",
 			reload: false
 		}
+		markers = []
+		finalArray = []
 		this.processProcAndProv()
 	}
 	processProcAndProv() {
+		finalArray = []
 		this.props.providers.forEach((e2) => this.props.procedures.forEach((e1) => {
 			if (e1.ProviderID === e2.ID) {
 				if (finalArray.indexOf(e2) === -1) {
@@ -75,6 +78,7 @@ class HospitalsMap extends Component {
 		var lab;
 		console.log("marker 1")
 		console.log(finalArray)
+		markers = []
 		finalArray.forEach((e2) => {
 			console.log("marker 2")
 			console.log(e2)
@@ -85,7 +89,6 @@ class HospitalsMap extends Component {
 				//lab=this.findDistancesFromCoord(e2.Latitude, e2.longitude)
 				//lab = this.findDistancesFromCoord({lat: e2.Latitude, lng: e2.longitude})
 			}
-
 			markers.push(<Marker
 				address={e2.Address + ', ' + e2.City + ', ' + e2.State}
 				position={{ lat: e2.Latitude, lng: e2.longitude }}
