@@ -59,10 +59,9 @@ export default class HospitalSelectionPanel extends Component {
             }
             console.log(this.props.stater)
             return this.state.procedures.map((card) => (
-                <ProvCard state={stateoid} card={card} key={card.id} locations={locations} />
-
-
-            )
+               <ProvCard state={stateoid} card={card} key={card.id} locations={locations}/>
+              
+                )
             );
 
         } else {

@@ -15,11 +15,28 @@ import { CityBanner } from './components/CityBanner';
 import ProcedureList from './components/ProcedureList';
 import ProcedureIDList from './components/ProceduresIDList';
 
+import HospitalsMap from './components/HospitalsMap'
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import NewSearch from './components/NewSearch';
 
+
+var locations = new Array(
+    ["Dundee", { lat: 56.462002, lng: -2.970700 }],
+    ["Dunde1", { lat: 57.462002, lng: -2.970700 }],
+    ["Dunde2", { lat: 58.462002, lng: -2.970700 }],
+    ["Dunde3", { lat: 59.462002, lng: -2.970700 }],
+    ["Dunde4", { lat: 60.462002, lng: -2.970700 }],
+)
+
+var addresses = new Array(
+    ["8 dundee street, dundee, dundee"],
+    ["cringe past cringe on the clock"],
+    [""],
+    [""],
+    [""]
+)
 class App extends Component {
     constructor(props) {
         super(props);
@@ -27,6 +44,8 @@ class App extends Component {
             procedures: [],
             proceduresid: [],
             proceduresLoaded: false,
+            providers: [],
+            providersLoaded: false,
             proceduresidLoaded: false,
             query: '',
             loading: false,
@@ -61,11 +80,27 @@ class App extends Component {
             },
         }).then(response => {
             if (response.ok) {
-                response.json().then(data => this.setState({ 'proceduresid': data }))
+                response.json().then(data => this.setState({ 'procedures': data }))
             }
         });
     }
     
+
+    getProviders = () => {
+        fetch('https://api.urbelis.dev/providers', {
+            mode: 'cors',
+            method: 'GET',
+            headers: {
+                'Access-Control-Allow-Origin': '*'
+            },
+        }).then(response => {
+            if (response.ok) {
+                response.json().then(data => this.setState({ 'providers': data }))
+            }
+        });
+    }
+
+
     callbackFunction2 = (childData) => {
         console.log(childData)
         this.setState({
@@ -112,6 +147,7 @@ class App extends Component {
                     {/* <Route path = "PAGE-NAME(Page you want component to appear on)" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
                     <LowerLayout>
                         <Router>
+                            
                             <Switch>
                                 <Route exact path="/" component={CityBanner} />
                             </Switch>
@@ -134,31 +170,36 @@ class App extends Component {
                 this.getProceduresID()
                 this.setState({proceduresidLoaded: true})
             }
+            if (!this.state.providersLoaded) {
+                this.getProviders()
+                this.state.providersLoaded = true
+            }
             return (
 
                 <React.Fragment>
-                    <ColorLayout>
-                        <NavigationBar>
-                        </NavigationBar>
-                    </ColorLayout>
 
                     <div className={'container-fluid'}>
-                        <Row style={{ 'background': '#aaaaaa', width: 'auto' }} className={'align-items-center'}>
-                            <NewSearch home={false} />
+                        <Row className={''}>
+
+                            <Col style={{width: '100%'}} sm='12'>
+                                <NewSearch home={false} />
+                            </Col>
+
                         </Row>
 
-                        <Row style={{ height: '90vh' }}>
-                            <Col sm={3} className={'p-3'}>
+                        <Row >
+                            <div style={{ height: '80vh' }} className={'col-3 p-3 overflow-auto'}>
                                 <ProcedureList procedures={this.state.procedures}></ProcedureList>
-                                <ProcedureIDList proceduresid={this.state.proceduresid}></ProcedureIDList>
-                            </Col>
+                            </div>
 
-                            <Col sm={9} style={{ 'background': '#eeaaaa' }}>
-                                <p>Map</p>
-                            </Col>
+                            <div className={'col-9 m-0 p-0 pr-1'}>
+                                <HospitalsMap hospList={locations} wi={"99%"} hi={"100%"} addresses={addresses}
+                                    procedures={this.state.procedures} providers={this.state.providers} location={null} />
+                            </div>
                         </Row>
 
                     </div>
+
                 </React.Fragment>
             );
         }
