@@ -4,6 +4,8 @@ var express = require('express');
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
 
+const fs = require('fs');
+
 var app = express();
 
 app.use(cors());
@@ -52,8 +54,7 @@ app.use(function (req, res, next) {
 //end body-parser configuration
 
 //create app server
-var server = app.listen(3000, function () {
-});
+var server = app.listen(3000, function () { });
 
 //rest api to get all procedures
 app.get('/', function (req, res) {
@@ -63,10 +64,26 @@ app.get('/', function (req, res) {
 //rest api to get all procedures
 app.get('/procedures', function (req, res) {
     var query = req.query.query;
-    var state = req.query.state;
-    connection.query('select * from ProvidersIncreasing where DRGDefinition LIKE \'%' + query + '%\'' + ' AND State=\'' + state + '\' LIMIT 0,50', function (error, results, fields) {
-        // connection.query('select * from GPDProviders where DRGDefinition LIKE \'%' + query + '%\'', function (error, results, fields) {
-        if (error) throw error;
+    var zip = req.query.zip;
+    connection.query('select * from ProvidersIncreasing where DRGDefinition LIKE \'%' + query + '%\'' + '', function (error, results, fields) {
+
+        // if (error) throw error;
+        var lat, lon
+
+        let rawdata = fs.readFileSync('zips.json');
+        let zipCodes = JSON.parse(rawdata);
+
+        zipCodes.coordinates.forEach(function (item, index) {
+            if (item.zip === zip) {
+                lat = item.lat
+                lon = item.lon
+            }
+        });
+
+        results.forEach(function (item, index) {
+            item.distance = distance(item.Latitude, item.longitude, lat, lon);
+        });
+
         res.end(JSON.stringify(results));
     });
 });
@@ -105,6 +122,27 @@ app.get('/providers', function (req, res) {
         res.end(JSON.stringify(results));
     });
 });
+
+function distance(lat1, lon1, lat2, lon2) {
+    if ((lat1 == lat2) && (lon1 == lon2)) {
+        return 0;
+    }
+    else {
+        var radlat1 = Math.PI * lat1 / 180;
+        var radlat2 = Math.PI * lat2 / 180;
+        var theta = lon1 - lon2;
+        var radtheta = Math.PI * theta / 180;
+        var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+        if (dist > 1) {
+            dist = 1;
+        }
+        dist = Math.acos(dist);
+        dist = dist * 180 / Math.PI;
+        dist = dist * 60 * 1.1515;
+
+        return dist;
+    }
+}
 
 // EXAMPLES BELOW
 
