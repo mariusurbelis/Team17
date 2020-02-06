@@ -32,6 +32,11 @@ const Styles = styled.div`
         width: 80%;
     }
 
+    :hover {
+        background-color: #273c75;
+        color: white;
+		cursor: pointer;
+
 `;
 
 export class Card extends Component {
@@ -48,7 +53,7 @@ export class Card extends Component {
     render() {
         return (
             <Styles> 
-            <div style={{'margin-bottom': '1em', 'padding':'1em', backgroundColor: '#0b9cdb00', border: '1px solid'}}>
+            <div style={{'margin-bottom': '1em', 'padding':'1em', backgroundColor: '1#dcdde1', border: '1px solid'}}>
              <div style={{fontSize: '1.4em', fontweight:600}} class="row row-cols-2">
               
               <div class="col"> <b>{this.props.card.ProviderName}</b></div>
