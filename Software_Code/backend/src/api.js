@@ -88,6 +88,31 @@ app.get('/procedures', function (req, res) {
     });
 });
 
+//rest api to get all procedures
+app.get('/proceduresminmax', function (req, res) {
+    var query = req.query.query;
+    var state = req.query.state;
+    var min = req.min.state;
+    var max = req.max.state;
+    connection.query('select * from ProvidersIncreasing where DRGDefinition LIKE \'%' + query + '%\'' + ' AND State=\'' + state + ' AND TotalPayments BETWEEN ' + min + ' AND ' + max + ' LIMIT 0,50', function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results));
+    });
+});
+
+//check to get procedure ID
+app.get('/proceduresbyidminmax', function (req, res) {
+    var id = req.query.id;
+    var state = req.query.state;
+    var min = req.min.state;
+    var max = req.max.state;
+    connection.query('select * from ProvidersIncreasing where GPDID=' + id + ' AND State=\'' + state +  ' AND TotalPayments BETWEEN ' + min + ' AND ' + max + ' LIMIT 0,50', function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results));
+    });
+});
+
+
 //check to get procedure ID
 app.get('/proceduresbyid', function (req, res) {
     var id = req.query.id;
@@ -189,4 +214,29 @@ app.delete('/customer', function (req, res) {
     res.end('Record has been deleted!');
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+                        <Col sm='2'>
+                            <input className="minSearch"
+                                type="text"
+                                placeholder="Minimum"
+                                onChange={this.updateMinSearch.bind(this)} />
+                        </Col>
+                        
+                        <Col sm='2'>
+                            <input className="maxSearch"
+                                type="text"
+                                placeholder="Maximum"
+                                onChange={this.updateMaxSearch.bind(this)} />
+                        </Col>
+
 */
