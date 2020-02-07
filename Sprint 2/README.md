@@ -116,18 +116,27 @@ Ruth has been editing the documentation for the product backlog, sprint retrospe
 
 ---
 ## Day [5] 03/02/2020- Scrum Meeting summary
-The Scrum Master for this meeting was **Callum Darling**
+The Scrum Master for this meeting was **Ruth Carnegie**
 
 ### Members Present:
-Ruth Carnegie, Callum Darling, Peter Leslie, Marius Urbelis, Alfie Hippisley
+Ruth Carnegie, Callum Darling, Peter Leslie, Marius Urbelis
 
 ### Members Not Present:
-N/A
+Alfie Hippisley
+Daniel Blackley
 
 ### Apologies:
-Daniel Blackley - Illness, Notified us beforehand. 
+
 
 ### Summary of Conversation:
+
+Since the last scrum, Marius has created a system to append distances between hospitals and an entered location. Today he will be implemnting small fixes to the application. 
+
+Since the last scrum, Callum has added a filter to the front end to allow to filter propely by ZIP code. He was also implementing fixes for the final presentation. 
+
+Daniel has implemented a feature to allow users to set a maximum price for their procedures search, whilst also making changes to the UI.
+
+Ruth has completed the sprint retrospective documentation, TTD report as well as the finalisation of the sprint and product backlog. She also made tweaks to UI elements. 
 
 ---
 
