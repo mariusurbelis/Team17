@@ -153,16 +153,6 @@ class App extends Component {
         if (this.state.initial) {
             return (
                 <React.Fragment>
-
-                    <div className="sweet-loading">
-                        <FadeLoader
-                            css={overrideFullScreen}
-                            size={200}
-                            color={"#123abc"}
-                            loading={this.state.loading}
-                        />
-                    </div>
-
                     {/* Header Area - Essentially the Navbar and color gradient components*/}
                     <ColorLayout>
                         <NavigationBar>
