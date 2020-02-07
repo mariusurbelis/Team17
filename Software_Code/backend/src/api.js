@@ -175,29 +175,6 @@ app.get('/proceduresbyid', function (req, res) {
     });
 });
 
-//rest api to get all procedures
-app.get('/proceduresminmax', function (req, res) {
-    var query = req.query.query;
-    var state = req.query.state;
-    var min = req.query.min;
-    var max = req.query.max;
-    connection.query('select * from ProvidersIncreasing where DRGDefinition LIKE \'%' + query + '%\'' + ' AND State=\'' + state + ' AND TotalPayments BETWEEN ' + min + ' AND ' + max + ' LIMIT 0,50', function (error, results, fields) {
-        if (error) throw error;
-        res.end(JSON.stringify(results));
-    });
-});
-
-//check to get procedure ID
-app.get('/proceduresbyidminmax', function (req, res) {
-    var id = req.query.id;
-    var state = req.query.state;
-    var min = req.query.min;
-    var max = req.query.max;
-    connection.query('select * from ProvidersIncreasing where GPDID=' + id + ' AND State=\'' + state +  ' AND TotalPayments BETWEEN ' + min + ' AND ' + max + ' LIMIT 0,50', function (error, results, fields) {
-        if (error) throw error;
-        res.end(JSON.stringify(results));
-    });
-});
 
 //rest api to get all payments
 app.get('/payments', function (req, res) {
