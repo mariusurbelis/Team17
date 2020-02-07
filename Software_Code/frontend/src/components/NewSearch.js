@@ -101,6 +101,8 @@ export default class NewSearch extends Component {
             searchLocation: "",
             searchRadius: "",
             selectedOption: "",
+            searchMin: "0",
+            searchMax: "99999999999999999",
         }
     }
 
@@ -154,6 +156,14 @@ export default class NewSearch extends Component {
         this.updateMainSelectedOption()
         this.setState({ searchRadius: event.target.value })
     }
+    updateMaxSearch(event) {
+        this.updateMainSelectedOption()
+        this.setState({ searchMax: event.target.value })
+    }
+    updateMinSearch(event) {
+        this.updateMainSelectedOption()
+        this.setState({ searchMin: event.target.value })
+    }
     updateSearch(event) {
         this.updateMainSelectedOption()
         this.setState({ search: event.target.value })
@@ -186,7 +196,7 @@ export default class NewSearch extends Component {
 
                     <Row>
 
-                        <Col sm='8'>
+                        <Col sm='4'>
                             <input className="mainSearch"
                                 placeholder="Procedure name or DRG code"
                                 type="text"
@@ -199,6 +209,19 @@ export default class NewSearch extends Component {
                                 type="text"
                                 onChange={this.updateLocSearch.bind(this)}
                                 />
+                        </Col>
+
+                        <Col sm='2'>
+                            <input className="radSearch"
+                                type="text"
+                                placeholder="Minimum"
+                                onChange={this.updateMinSearch.bind(this)} />
+                        </Col>
+                        <Col sm='2'>
+                            <input className="radSearch"
+                                type="text"
+                                placeholder="Maximum"
+                                onChange={this.updateMaxSearch.bind(this)} />
                         </Col>
 
                         <Col sm='2'>

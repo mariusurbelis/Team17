@@ -8,6 +8,7 @@ import Cross from '../assets/cross.png'
 
 var markers = []
 var finalArray = []
+var icon = Cross
 // )
 
 class HospitalsMap extends Component {
@@ -87,8 +88,9 @@ class HospitalsMap extends Component {
 			// console.log(e2)
 			if (!this.state.markOn) {
 				lab = " "
+				icon = Cross
 			} else {
-				
+				icon = " "
 				lab = this.splitProvName(e2.ProviderName)  
 				// lab= "B"
 				//lab=this.findDistancesFromCoord(e2.Latitude, e2.longitude)
@@ -100,19 +102,20 @@ class HospitalsMap extends Component {
 				position={{ lat: e2.Latitude, lng: e2.longitude }}
 				onClick={this.onMarkerClick}
 				label={{
-					color: '#cccccc',
+					color: '#0f0f0f',
 					text: lab,
 					fontFamily: "Arial",
 					fontSize: "16px",
+					fontWeight: 'bold'
 				}}
 				name={e2.ProviderName}
 				title={e2.ProviderName}
 				hosp={e2}
 
 				icon={{
-					url: Cross,
-					anchor: new this.props.google.maps.Point(32, 32),
-					scaledSize: new this.props.google.maps.Size(32, 32)
+					url: icon,
+					anchor: new this.props.google.maps.Point(20, 20),
+					scaledSize: new this.props.google.maps.Size(20, 20)
 				}}
 
 				 />);
