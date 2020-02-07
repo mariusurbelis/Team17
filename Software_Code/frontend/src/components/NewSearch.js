@@ -27,7 +27,7 @@ const Styles = styled.div`
     // }
 
     .smallLabel {
-        color: grey;
+        color: white;
         font-weight: bold;
         font-size: small;
         padding-left: 4px;
@@ -50,7 +50,7 @@ const Styles = styled.div`
         height: 3em;
         background: var(--bg);
         color: var(--fg);
-        border: 3px solid var(--bd);
+        border: 3px solid #0E9DD9;
         border-radius: 9px;
         border-width: 2px;
         padding: 12px;
@@ -61,7 +61,7 @@ const Styles = styled.div`
         height: 3em;
         padding: 1em;
         border-width: 2px;
-        border: 3px solid var(--bd);
+        border: 3px solid #0E9DD9;
         border-radius: 9px;
         background: var(--bg);
         cursor: pointer;
@@ -72,7 +72,7 @@ const Styles = styled.div`
         background: var(--bg);
         height: 3em;
         color: var(--fg);
-        border: 3px solid var(--bd);
+        border: 2px solid #0E9DD9;
         border-width: 2px;
         border-radius: 9px;
         padding: 12px;
@@ -82,7 +82,7 @@ const Styles = styled.div`
         width: 100%;
         background: var(--bg);
         color: var(--fg);
-        border: 2px solid var(--bd);
+        border: 2px solid #0E9DD9;
         padding-bottom: 10px;
         padding-top: 10px;
         margin: 0px;
