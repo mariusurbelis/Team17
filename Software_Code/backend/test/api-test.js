@@ -1,8 +1,8 @@
 const app = require('../src/api.js')
 const { assert } = require('chai');
-var request = require('supertest')
-, app = require('../test/api-test.js')
 var expect  = require('chai').expect;
+
+var api = require('../src/api');
 
 describe('API', function() {
   it("connects to the database", function () {
@@ -22,9 +22,14 @@ describe('Array', function () {
     assert.isFalse(x);
   });
 
-  request('https://urbelis.dev/providers', function (error, response, body) {
-    // expect(body).to.be("")
-    expect(error).to.be("")
-    console.log(body);
-  });
+describe('#distance()', function() {
+  it('distance should be zero', function() {
+    expect(Math.round(api.distance(0, 0, 0, 0))).to.equal(0);
+  })
+
+  it('distance should be zero', function() {
+    expect(Math.round(api.distance(23, 32, 32, 23))).to.equal(830);
+  })
+})
+
 });

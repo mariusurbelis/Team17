@@ -175,7 +175,7 @@ export default class NewSearch extends Component {
                         </Col>
 
                         <Col sm='2'>
-                            <label className="smallLabel">State</label>
+                            <label className="smallLabel">ZIP code</label>
                         </Col>
 
                         <Col sm='2'>

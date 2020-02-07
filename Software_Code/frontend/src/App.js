@@ -116,33 +116,33 @@ class App extends Component {
             selectedOption: childData.selectedOption,
         })
         // alert('APP.js: ' + this.state.selectedOption)
-        this.setState({ proceduresLoaded: false, proceduresidLoaded: false, providersLoaded: false, initial: false, proceduresFiltered: false})
+        this.setState({ proceduresLoaded: false, proceduresidLoaded: false, providersLoaded: false, initial: false, proceduresFiltered: false })
 
         console.log('Initial: ' + this.state.initial)
 
         // this.getProcedures()
     }
 
-    filterProcs(){
+    filterProcs() {
         console.log("oldProcs")
         console.log(this.state.procedures)
         // if (!this.state.proceduresLoaded && !this.state.proceduresidLoaded){
         //     return false
         // }
         var rad = parseInt(this.state.searchLocation)
-        if(!isNaN(rad)){
+        if (!isNaN(rad)) {
             rad = 100
         }
         var newProcs = []
         // var newProcs = JSON.parse(JSON.stringify(this.state.procedures));
         // console.log(newProcs)
         this.state.procedures.forEach((proc) => {
-                 if(parseInt(proc.distance) < rad){
-                     console.log("bang")
-                     newProcs.push(proc)
-                 }
+            if (parseInt(proc.distance) < rad) {
+                console.log("bang")
+                newProcs.push(proc)
+            }
         })
-        this.setState({procedures: newProcs})
+        this.setState({ procedures: newProcs })
         // proceduresFiltered: true})
         console.log("newProcs")
         console.log(newProcs)
@@ -203,23 +203,25 @@ class App extends Component {
             }
             if (!this.state.providersLoaded) {
                 this.getProviders()
-                this.setState({providersLoaded: true})
+                this.setState({ providersLoaded: true })
                 // this.filterProcs()
             }
-            
-            if (!this.state.proceduresFiltered && this.state.procedures.length>0){
+
+            if (!this.state.proceduresFiltered && this.state.procedures.length > 0) {
                 this.filterProcs()
-                this.setState({proceduresFiltered: true})
+                this.setState({ proceduresFiltered: true })
             }
-            
+
             return (
 
                 <React.Fragment>
+                    
+
                     <div className={'container-fluid'}>
 
                         <Row className={''}>
 
-                            <Col style={{ width: '100%', background: 'white' }} sm='12' >
+                            <Col sm='12' >
                                 <NewSearch home={false} parentCallback={this.callbackFunction2} />
                             </Col>
 
