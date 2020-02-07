@@ -4,9 +4,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { css } from "@emotion/core";
 import FadeLoader from "react-spinners/FadeLoader";
 
-// These are for page navigation, components change depending page..
-import { About } from './About';
-
 // These are for each UI component
 import { ColorLayout } from './components/ColorLayout';
 import { NavigationBar } from './components/NavigationBar';
@@ -28,16 +25,6 @@ const override = css`
     margin: 200px auto;
     background: white;
     border-color: red;
-`;
-
-const overrideFullScreen = css`
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    // transform: translate(-50%, -50%);
 `;
 
 var locations = ""
@@ -144,10 +131,12 @@ class App extends Component {
         var newProcs = []
 
         this.state.procedures.forEach((proc) => {
-                 if(parseInt(proc.distance) < rad){
+                var procDis = parseInt(proc.distance) 
+                 if(procDis < rad){
                      newProcs.push(proc)
-                     if(proc.distance<shortestDistance){
+                     if(procDis<shortestDistance){
                          closestLoc = {lat: proc.Latitude, lng: proc.longitude}
+                         shortestDistance = procDis
                      }
                  }
         })
@@ -155,8 +144,8 @@ class App extends Component {
         this.setState({procedures: newProcs,
         shortestLoc: closestLoc})
 
-        this.state.procedures = newProcs;
-        this.state.shortestLoc = closestLoc;        
+        // this.state.procedures = newProcs;
+        // this.state.shortestLoc = closestLoc;        
 
         console.log("newProcs / state.procs")
         console.log(newProcs)

@@ -83,25 +83,7 @@ Array [
         </div>
         <div
           class="col"
-        >
-          256 Miles
-        </div>
-      </div>
-      <div
-        class="row row-cols-2"
-      >
-        <div
-          class="col"
-        >
-          <b>
-            More information: 
-          </b>
-        </div>
-        <div
-          class="col"
-        >
-          BUTTON
-        </div>
+        />
       </div>
     </div>
   </div>,
@@ -186,25 +168,7 @@ Array [
         </div>
         <div
           class="col"
-        >
-          256 Miles
-        </div>
-      </div>
-      <div
-        class="row row-cols-2"
-      >
-        <div
-          class="col"
-        >
-          <b>
-            More information: 
-          </b>
-        </div>
-        <div
-          class="col"
-        >
-          BUTTON
-        </div>
+        />
       </div>
     </div>
   </div>,
