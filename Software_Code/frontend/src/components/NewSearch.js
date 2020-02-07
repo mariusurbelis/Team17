@@ -180,12 +180,16 @@ export default class NewSearch extends Component {
                     </Row>
                     <Row>
 
-                        <Col sm='8'>
+                        <Col sm='6'>
                             <label className="smallLabel">Search for procedure</label>
                         </Col>
 
                         <Col sm='2'>
                             <label className="smallLabel">ZIP code</label>
+                        </Col>
+
+                        <Col sm='2'>
+                            <label className="smallLabel">Max Price</label>
                         </Col>
 
                         <Col sm='2'>
@@ -196,7 +200,7 @@ export default class NewSearch extends Component {
 
                     <Row>
 
-                        <Col sm='4'>
+                        <Col sm='6'>
                             <input className="mainSearch"
                                 placeholder="Procedure name or DRG code"
                                 type="text"
@@ -209,13 +213,6 @@ export default class NewSearch extends Component {
                                 type="text"
                                 onChange={this.updateLocSearch.bind(this)}
                                 />
-                        </Col>
-
-                        <Col sm='2'>
-                            <input className="radSearch"
-                                type="text"
-                                placeholder="Minimum"
-                                onChange={this.updateMinSearch.bind(this)} />
                         </Col>
                         <Col sm='2'>
                             <input className="radSearch"
