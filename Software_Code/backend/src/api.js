@@ -112,7 +112,6 @@ app.get('/proceduresbyidminmax', function (req, res) {
 
     connection.query('select * from ProvidersIncreasing where GPDID=' + id + ' AND State=\'' + state +  ' AND TotalPayments BETWEEN ' + min + ' AND ' + max + ' LIMIT 0,50', function (error, results, fields) {
         if (error) throw error;
-        res.end(JSON.stringify(results));
     });
 });
 
@@ -120,8 +119,8 @@ app.get('/proceduresbyidminmax', function (req, res) {
 //check to get procedure ID
 app.get('/proceduresbyid', function (req, res) {
     var id = req.query.id;
-    var state = req.query.state;
-    connection.query('select * from ProvidersIncreasing where GPDID=' + id + ' AND State=\'' + state + '\' LIMIT 0,50', function (error, results, fields) {
+    var zip = req.query.zip;
+    connection.query('select * from ProvidersIncreasing where GPDID=' + id, function (error, results, fields) {
         if (error) throw error;
         var lat, lon
 
@@ -139,6 +138,30 @@ app.get('/proceduresbyid', function (req, res) {
             item.distance = distance(item.Latitude, item.longitude, lat, lon);
         });
 
+        res.end(JSON.stringify(results));
+    });
+});
+
+//rest api to get all procedures
+app.get('/proceduresminmax', function (req, res) {
+    var query = req.query.query;
+    var state = req.query.state;
+    var min = req.query.min;
+    var max = req.query.max;
+    connection.query('select * from ProvidersIncreasing where DRGDefinition LIKE \'%' + query + '%\'' + ' AND State=\'' + state + ' AND TotalPayments BETWEEN ' + min + ' AND ' + max + ' LIMIT 0,50', function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results));
+    });
+});
+
+//check to get procedure ID
+app.get('/proceduresbyidminmax', function (req, res) {
+    var id = req.query.id;
+    var state = req.query.state;
+    var min = req.query.min;
+    var max = req.query.max;
+    connection.query('select * from ProvidersIncreasing where GPDID=' + id + ' AND State=\'' + state +  ' AND TotalPayments BETWEEN ' + min + ' AND ' + max + ' LIMIT 0,50', function (error, results, fields) {
+        if (error) throw error;
         res.end(JSON.stringify(results));
     });
 });
