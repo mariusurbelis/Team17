@@ -49,12 +49,14 @@ class App extends Component {
             searchRadius: "",
             selectedOption: "procName",
             proceduresFiltered: false,
-            shortestLoc: null
+            shortestLoc: null,
+            min: "0",
+            max: "999999999"
         }
     }
 
     getProcedures = () => {
-        fetch('https://api.urbelis.dev/procedures?query=' + this.state.searchMain + '&zip=' + this.state.searchLocation, {
+        fetch('https://api.urbelis.dev/proceduresminmax?query=' + this.state.searchMain + '&zip=' + this.state.searchLocation + '&min=' + this.state.min + '&max=' + this.state.max, {
             mode: 'cors',
             method: 'GET',
             headers: {
@@ -69,7 +71,8 @@ class App extends Component {
     }
 
     getProceduresID = () => {
-        fetch('https://api.urbelis.dev/proceduresbyid?id=' + this.state.searchMain + '&zip=' + this.state.searchLocation, {
+        console.log('https://api.urbelis.dev/proceduresbyid?id=' + this.state.searchMain + '&zip=' + this.state.searchLocation + '&min=' + this.state.min + '&max=' + this.state.max)
+        fetch('https://api.urbelis.dev/proceduresbyidminmax?id=' + this.state.searchMain + '&zip=' + this.state.searchLocation + '&min=' + this.state.min + '&max=' + this.state.max, {
             mode: 'cors',
             method: 'GET',
             headers: {
@@ -106,7 +109,10 @@ class App extends Component {
             searchLocation: childData.searchLocation,
             searchRadius: childData.searchRadius,
             selectedOption: childData.selectedOption,
+            min: childData.searchMin,
+            max: childData.searchMax,
         })
+
         // alert('APP.js: ' + this.state.selectedOption)
         this.setState({ proceduresLoaded: false, proceduresidLoaded: false, providersLoaded: false, initial: false, proceduresFiltered: false, procedures: []})
 
