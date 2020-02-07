@@ -61,7 +61,8 @@ class App extends Component {
             searchLocation: "",
             searchRadius: "",
             selectedOption: "procName",
-            proceduresFiltered: false
+            proceduresFiltered: false,
+            shortestLoc: null
         }
     }
 
@@ -76,6 +77,7 @@ class App extends Component {
             if (response.ok) {
                 response.json().then(data => this.setState({ 'procedures': data }))
             }
+            this.filterProcs()
         });
     }
 
@@ -89,6 +91,7 @@ class App extends Component {
         }).then(response => {
             if (response.ok) {
                 response.json().then(data => this.setState({ 'procedures': data }))
+                this.filterProcs()
             }
         });
     }
@@ -103,7 +106,9 @@ class App extends Component {
         }).then(response => {
             if (response.ok) {
                 response.json().then(data => this.setState({ 'providers': data, 'loading': false }))
+                this.filterProcs()
             }
+            
         });
     }
 
@@ -116,36 +121,48 @@ class App extends Component {
             selectedOption: childData.selectedOption,
         })
         // alert('APP.js: ' + this.state.selectedOption)
-        this.setState({ proceduresLoaded: false, proceduresidLoaded: false, providersLoaded: false, initial: false, proceduresFiltered: false})
+        this.setState({ proceduresLoaded: false, proceduresidLoaded: false, providersLoaded: false, initial: false, proceduresFiltered: false, procedures: []})
 
         console.log('Initial: ' + this.state.initial)
 
         // this.getProcedures()
     }
 
-    filterProcs(){
+    filterProcs() {
         console.log("oldProcs")
         console.log(this.state.procedures)
-        // if (!this.state.proceduresLoaded && !this.state.proceduresidLoaded){
         //     return false
-        // }
-        var rad = parseInt(this.state.searchLocation)
-        if(!isNaN(rad)){
+
+        var shortestDistance=10000;
+        var closestLoc;
+        var rad = parseInt(this.state.searchRadius)
+        console.log("rad")
+        console.log(rad)
+        if(isNaN(rad)){
             rad = 100
         }
         var newProcs = []
-        // var newProcs = JSON.parse(JSON.stringify(this.state.procedures));
-        // console.log(newProcs)
+
         this.state.procedures.forEach((proc) => {
                  if(parseInt(proc.distance) < rad){
-                     console.log("bang")
                      newProcs.push(proc)
+                     if(proc.distance<shortestDistance){
+                         closestLoc = {lat: proc.Latitude, lng: proc.longitude}
+                     }
                  }
         })
-        this.setState({procedures: newProcs})
-        // proceduresFiltered: true})
-        console.log("newProcs")
+
+        this.setState({procedures: newProcs,
+        shortestLoc: closestLoc})
+
+        this.state.procedures = newProcs;
+        this.state.shortestLoc = closestLoc;        
+
+        console.log("newProcs / state.procs")
         console.log(newProcs)
+        console.log(this.state.procedures)
+        // this.setState({procedures: newProcs})
+        // console.log(this.state.procedures)
     }
 
     render() {
@@ -191,35 +208,43 @@ class App extends Component {
 
             );
         } else {
-            if (!this.state.proceduresLoaded && this.state.selectedOption === "procName") {
-                this.getProcedures()
-                this.setState({ proceduresLoaded: true })
-                // this.filterProcs()
-            }
-            else if (!this.state.proceduresidLoaded && this.state.selectedOption === "procCode") {
-                this.getProceduresID()
-                this.setState({ proceduresidLoaded: true })
-                // this.filterProcs()
-            }
-            if (!this.state.providersLoaded) {
-                this.getProviders()
-                this.setState({providersLoaded: true})
-                // this.filterProcs()
-            }
             
             if (!this.state.proceduresFiltered && this.state.procedures.length>0){
                 this.filterProcs()
                 this.setState({proceduresFiltered: true})
             }
+
+            if (!this.state.proceduresLoaded && this.state.selectedOption === "procName") {
+                this.getProcedures()
+                this.setState({ proceduresLoaded: true })
+                this.filterProcs()
+            }
+            else if (!this.state.proceduresidLoaded && this.state.selectedOption === "procCode") {
+                this.getProceduresID()
+                this.setState({ proceduresidLoaded: true })
+                this.filterProcs()
+            }
+            if (!this.state.providersLoaded) {
+                this.getProviders()
+                this.setState({providersLoaded: true})
+                
+            }
+
+            if (!this.state.proceduresFiltered && this.state.procedures.length>0){
+                this.filterProcs()
+                this.setState({ proceduresFiltered: true })
+            }
             
             return (
 
                 <React.Fragment>
+                    
+
                     <div className={'container-fluid'}>
 
                         <Row className={''}>
 
-                            <Col style={{ width: '100%', background: 'white' }} sm='12' >
+                            <Col sm='12' >
                                 <NewSearch home={false} parentCallback={this.callbackFunction2} />
                             </Col>
 
@@ -241,8 +266,9 @@ class App extends Component {
                             </div>
 
                             <div className={'col-9 m-0 p-0 pr-1'}>
+                                {/* {this.getProviders()} */}
                                 <HospitalsMap hospList={locations} wi={"99%"} hi={"100%"} addresses={addresses}
-                                    procedures={this.state.procedures} providers={this.state.providers} location={null} />
+                                    procedures={this.state.procedures} providers={this.state.providers} location={this.state.shortestLoc} />
                             </div>
                         </Row>
 

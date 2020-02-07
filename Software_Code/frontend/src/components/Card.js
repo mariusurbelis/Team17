@@ -75,10 +75,6 @@ export class Card extends Component {
         <div class="col">{this.props.card.distance}</div>
             </div>
 
-            <div class="row row-cols-2">
-                <div class="col"><b>More information: </b></div>
-                <div class="col">BUTTON</div>
-            </div>
 
         </div>
      </Styles>
