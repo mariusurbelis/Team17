@@ -64,12 +64,12 @@ class HospitalsMap extends Component {
 	// 	return finalProduct;
 	// }
 
-	splitProvName(name){
+	splitProvName(name) {
 		var fName = ''
 		var sName = name.split(' ')
-		for(var i=0; i<3; i++){
-			if(sName[i]!==undefined){
-				fName += sName[i]+' '
+		for (var i = 0; i < 3; i++) {
+			if (sName[i] !== undefined) {
+				fName += sName[i] + ' '
 			}
 		}
 		return fName
@@ -82,7 +82,7 @@ class HospitalsMap extends Component {
 		markers = []
 		finalArray.forEach((e2) => {
 
-				lab = this.splitProvName(e2.ProviderName)  
+			lab = this.splitProvName(e2.ProviderName)
 
 
 			markers.push(<Marker
@@ -91,16 +91,21 @@ class HospitalsMap extends Component {
 				onClick={this.onMarkerClick}
 				label={{
 					color: 'white',
-					icon: {
-						url: '/assets/h.png',
-					  },
 					text: lab,
 					fontFamily: "Arial",
 					fontSize: "14px",
 				}}
 				name={e2.ProviderName}
-				title={e2.ProviderName} 
-				hosp={e2}/>);
+				title={e2.ProviderName}
+				hosp={e2}
+
+				icon={{
+					url: "../assets/cross.png",
+					anchor: new google.maps.Point(32, 32),
+					scaledSize: new google.maps.Size(64, 64)
+				}} />)
+
+				;
 
 		})
 	}
@@ -143,12 +148,12 @@ class HospitalsMap extends Component {
 		}
 	}
 
-	handleZoomChanged(){
+	handleZoomChanged() {
 		// this.state.map.setZoom(6);
 		console.log("Fix")
 	}
 
-	iterateZoom(){
+	iterateZoom() {
 		console.log("ZOOM")
 		// this.setState({
 		// 	zoom: this.state.zoom+1
@@ -169,7 +174,7 @@ class HospitalsMap extends Component {
 						style={{ width: this.props.wi, height: this.props.hi, backgroundColor: 'powderblue' }}
 						onDragend={this.handleZoomChanged()}
 						ref={this.state.map}
-						
+
 					>
 
 
@@ -186,12 +191,12 @@ class HospitalsMap extends Component {
 							visible={this.state.showingInfoWindow}>
 							<Container>
 								<Row>
-									<Col style={{fontSize: '1em'}} sm='12'>
+									<Col style={{ fontSize: '1em' }} sm='12'>
 										<b>{this.state.selectedPlace.name}</b>
 									</Col>
 								</Row>
 								<Row>
-									<Col style={{fontSize: '0.8em'}} sm='12'>
+									<Col style={{ fontSize: '0.8em' }} sm='12'>
 										{this.state.selectedPlace.address}
 									</Col>
 								</Row>

@@ -27,9 +27,10 @@ describe('#distance()', function() {
     expect(Math.round(api.distance(0, 0, 0, 0))).to.equal(0);
   })
 
-  it('distance should be zero', function() {
+  it('distance should be 830', function() {
     expect(Math.round(api.distance(23, 32, 32, 23))).to.equal(830);
   })
+
 })
 
 });
