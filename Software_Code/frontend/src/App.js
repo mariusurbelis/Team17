@@ -41,12 +41,13 @@ class App extends Component {
             searchMain: "",
             searchLocation: "",
             searchRadius: "",
-            selectedOption: "procName"
+            selectedOption: "procName",
+            proceduresFiltered: false
         }
     }
 
     getProcedures = () => {
-        fetch('https://api.urbelis.dev/procedures?query=' + this.state.searchMain + '&state=' + this.state.searchLocation, {
+        fetch('https://api.urbelis.dev/procedures?query=' + this.state.searchMain + '&zip=' + this.state.searchLocation, {
             mode: 'cors',
             method: 'GET',
             headers: {
@@ -60,7 +61,7 @@ class App extends Component {
     }
 
     getProceduresID = () => {
-        fetch('https://api.urbelis.dev/proceduresbyid?id=' + this.state.searchMain + '&state=' + this.state.searchLocation, {
+        fetch('https://api.urbelis.dev/proceduresbyid?id=' + this.state.searchMain + '&zip=' + this.state.searchLocation, {
             mode: 'cors',
             method: 'GET',
             headers: {
@@ -96,11 +97,36 @@ class App extends Component {
             selectedOption: childData.selectedOption,
         })
         // alert('APP.js: ' + this.state.selectedOption)
-        this.setState({ proceduresLoaded: false, proceduresidLoaded: false, providersLoaded: false, initial: false })
+        this.setState({ proceduresLoaded: false, proceduresidLoaded: false, providersLoaded: false, initial: false, proceduresFiltered: false})
 
         console.log('Initial: ' + this.state.initial)
 
         // this.getProcedures()
+    }
+
+    filterProcs(){
+        console.log("oldProcs")
+        console.log(this.state.procedures)
+        // if (!this.state.proceduresLoaded && !this.state.proceduresidLoaded){
+        //     return false
+        // }
+        var rad = parseInt(this.state.searchLocation)
+        if(!isNaN(rad)){
+            rad = 100
+        }
+        var newProcs = []
+        // var newProcs = JSON.parse(JSON.stringify(this.state.procedures));
+        // console.log(newProcs)
+        this.state.procedures.forEach((proc) => {
+                 if(parseInt(proc.distance) < rad){
+                     console.log("bang")
+                     newProcs.push(proc)
+                 }
+        })
+        this.setState({procedures: newProcs})
+        // proceduresFiltered: true})
+        console.log("newProcs")
+        console.log(newProcs)
     }
 
     render() {
@@ -150,15 +176,24 @@ class App extends Component {
             if (!this.state.proceduresLoaded && this.state.selectedOption === "procName") {
                 this.getProcedures()
                 this.setState({ proceduresLoaded: true })
+                // this.filterProcs()
             }
             else if (!this.state.proceduresidLoaded && this.state.selectedOption === "procCode") {
                 this.getProceduresID()
                 this.setState({ proceduresidLoaded: true })
+                // this.filterProcs()
             }
             if (!this.state.providersLoaded) {
                 this.getProviders()
                 this.setState({providersLoaded: true})
+                // this.filterProcs()
             }
+            
+            if (!this.state.proceduresFiltered && this.state.procedures.length>0){
+                this.filterProcs()
+                this.setState({proceduresFiltered: true})
+            }
+            
             return (
 
                 <React.Fragment>
