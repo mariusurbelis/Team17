@@ -59,6 +59,7 @@ const Styles = styled.div`
     .locSearch {
         width: 100%;
         height: 3em;
+        padding: 1em;
         border-width: 2px;
         border-radius: 9px;
         background: var(--bg);
@@ -168,30 +169,30 @@ export default class NewSearch extends Component {
                     </Row>
                     <Row>
 
-                        <Col sm='6'>
+                        <Col sm='8'>
                             <label className="smallLabel">Search for procedure</label>
                         </Col>
 
-                        <Col sm='4'>
+                        <Col sm='2'>
                             <label className="smallLabel">State</label>
                         </Col>
 
                         <Col sm='2'>
-                            <label className="smallLabel">Search Radius (KM)</label>
+                            <label className="smallLabel">Search Radius (Miles)</label>
                         </Col>
 
                     </Row>
 
                     <Row>
 
-                        <Col sm='6'>
+                        <Col sm='8'>
                             <input className="mainSearch"
                                 placeholder="Procedure name or DRG code"
                                 type="text"
                                 onChange={this.updateMainSearch.bind(this)} />
                         </Col>
 
-                        <Col sm='4' className={'p-0'}>
+                        <Col sm='2'>
                             <input className="locSearch"
                                 placeholder="Zip code"
                                 type="text"
@@ -207,9 +208,8 @@ export default class NewSearch extends Component {
                         </Col>
 
                     </Row>
-                    <Row>
-                        <Col sm='12' className={'text-right'}>
-                            <label></label>
+                    <Row className={'align-items-right'}>
+                        <Col className={'offset-8'} sm='4'>
                             <input className={'butn'}
                                 type="submit"
                                 value="Submit"

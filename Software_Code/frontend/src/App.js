@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import { css } from "@emotion/core";
+import FadeLoader from "react-spinners/FadeLoader";
+
 // These are for page navigation, components change depending page..
 import { About } from './About';
 
@@ -20,6 +23,22 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import NewSearch from './components/NewSearch';
 
+const override = css`
+    display: block;
+    margin: 200px auto;
+    background: white;
+    border-color: red;
+`;
+
+const overrideFullScreen = css`
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    // transform: translate(-50%, -50%);
+`;
 
 var locations = ""
 
@@ -36,17 +55,18 @@ class App extends Component {
             providersLoaded: false,
             proceduresidLoaded: false,
             query: '',
-            loading: false,
+            loading: true,
             initial: true,
             searchMain: "",
             searchLocation: "",
             searchRadius: "",
-            selectedOption: "procName"
+            selectedOption: "procName",
+            proceduresFiltered: false
         }
     }
 
     getProcedures = () => {
-        fetch('https://api.urbelis.dev/procedures?query=' + this.state.searchMain + '&state=' + this.state.searchLocation, {
+        fetch('https://api.urbelis.dev/procedures?query=' + this.state.searchMain + '&zip=' + this.state.searchLocation, {
             mode: 'cors',
             method: 'GET',
             headers: {
@@ -60,7 +80,7 @@ class App extends Component {
     }
 
     getProceduresID = () => {
-        fetch('https://api.urbelis.dev/proceduresbyid?id=' + this.state.searchMain + '&state=' + this.state.searchLocation, {
+        fetch('https://api.urbelis.dev/proceduresbyid?id=' + this.state.searchMain + '&zip=' + this.state.searchLocation, {
             mode: 'cors',
             method: 'GET',
             headers: {
@@ -82,7 +102,7 @@ class App extends Component {
             },
         }).then(response => {
             if (response.ok) {
-                response.json().then(data => this.setState({ 'providers': data }))
+                response.json().then(data => this.setState({ 'providers': data, 'loading': false }))
             }
         });
     }
@@ -96,11 +116,36 @@ class App extends Component {
             selectedOption: childData.selectedOption,
         })
         // alert('APP.js: ' + this.state.selectedOption)
-        this.setState({ proceduresLoaded: false, proceduresidLoaded: false, providersLoaded: false, initial: false })
+        this.setState({ proceduresLoaded: false, proceduresidLoaded: false, providersLoaded: false, initial: false, proceduresFiltered: false})
 
         console.log('Initial: ' + this.state.initial)
 
         // this.getProcedures()
+    }
+
+    filterProcs(){
+        console.log("oldProcs")
+        console.log(this.state.procedures)
+        // if (!this.state.proceduresLoaded && !this.state.proceduresidLoaded){
+        //     return false
+        // }
+        var rad = parseInt(this.state.searchLocation)
+        if(!isNaN(rad)){
+            rad = 100
+        }
+        var newProcs = []
+        // var newProcs = JSON.parse(JSON.stringify(this.state.procedures));
+        // console.log(newProcs)
+        this.state.procedures.forEach((proc) => {
+                 if(parseInt(proc.distance) < rad){
+                     console.log("bang")
+                     newProcs.push(proc)
+                 }
+        })
+        this.setState({procedures: newProcs})
+        // proceduresFiltered: true})
+        console.log("newProcs")
+        console.log(newProcs)
     }
 
     render() {
@@ -108,7 +153,6 @@ class App extends Component {
         if (this.state.initial) {
             return (
                 <React.Fragment>
-
                     {/* Header Area - Essentially the Navbar and color gradient components*/}
                     <ColorLayout>
                         <NavigationBar>
@@ -150,20 +194,29 @@ class App extends Component {
             if (!this.state.proceduresLoaded && this.state.selectedOption === "procName") {
                 this.getProcedures()
                 this.setState({ proceduresLoaded: true })
+                // this.filterProcs()
             }
             else if (!this.state.proceduresidLoaded && this.state.selectedOption === "procCode") {
                 this.getProceduresID()
                 this.setState({ proceduresidLoaded: true })
+                // this.filterProcs()
             }
             if (!this.state.providersLoaded) {
                 this.getProviders()
                 this.setState({providersLoaded: true})
+                // this.filterProcs()
             }
+            
+            if (!this.state.proceduresFiltered && this.state.procedures.length>0){
+                this.filterProcs()
+                this.setState({proceduresFiltered: true})
+            }
+            
             return (
 
                 <React.Fragment>
-
                     <div className={'container-fluid'}>
+
                         <Row className={''}>
 
                             <Col style={{ width: '100%', background: 'white' }} sm='12' >
@@ -175,6 +228,16 @@ class App extends Component {
                         <Row >
                             <div style={{ height: '80vh' }} className={'col-3 p-3 overflow-auto'}>
                                 <ProcedureList procedures={this.state.procedures}></ProcedureList>
+
+                                <div className="sweet-loading">
+                                    <FadeLoader
+                                        css={override}
+                                        size={200}
+                                        color={"#123abc"}
+                                        loading={this.state.loading}
+                                    />
+                                </div>
+
                             </div>
 
                             <div className={'col-9 m-0 p-0 pr-1'}>

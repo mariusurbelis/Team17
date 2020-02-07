@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components';
 
-
 const Styles = styled.div`
 
     .checkBtn {
@@ -48,8 +47,6 @@ export class Card extends Component {
         }
     }
 
-    
-    
     render() {
         return (
             <Styles> 
@@ -90,25 +87,6 @@ export class Card extends Component {
     }
 }
 
-// var modal = document.getElementById("myModal");
-
-// var checkBtn = document.getElementById("myBtn");
-
-// var span = document.getElementsByClassName("close")[0];
-
-// checkBtn.onclick = function(){
-//     modal.style.display = "block";
-// }
-
-// span.onclick = function() {
-//     modal.style.display = "none";
-// }
-
-// window.onclick = function(event){
-//     if(event.target === modal){
-//         modal.style.display = "none";
-//     }
-// }
 Card.propTypes = {
     card: PropTypes.object.isRequired
 }
