@@ -81,15 +81,9 @@ class HospitalsMap extends Component {
 		// console.log(finalArray)
 		markers = []
 		finalArray.forEach((e2) => {
-			// console.log("marker 2")
-			// console.log(e2)
-			if (this.props.location !== null) {
-				lab = "You are here"
-			} else {
+
 				lab = this.splitProvName(e2.ProviderName)  
-				//lab=this.findDistancesFromCoord(e2.Latitude, e2.longitude)
-				//lab = this.findDistancesFromCoord({lat: e2.Latitude, lng: e2.longitude})
-			}
+
 
 			markers.push(<Marker
 				address={e2.Address + ', ' + e2.City + ', ' + e2.State}
@@ -138,6 +132,8 @@ class HospitalsMap extends Component {
 	};
 
 	initCen() {
+		console.log("Location:")
+		console.log(this.props.location)
 		if (finalArray.length > 0) {
 			return { lat: finalArray[0].Latitude, lng: finalArray[0].longitude }
 		} else if (this.props.location !== null) {
@@ -149,13 +145,14 @@ class HospitalsMap extends Component {
 
 	handleZoomChanged(){
 		// this.state.map.setZoom(6);
-		// console.log("Fix")
+		console.log("Fix")
 	}
 
 	iterateZoom(){
-		this.setState({
-			zoom: this.state.zoom+1
-		})
+		console.log("ZOOM")
+		// this.setState({
+		// 	zoom: this.state.zoom+1
+		// })
 	}
 
 
@@ -170,8 +167,9 @@ class HospitalsMap extends Component {
 						initialCenter={this.initCen()}
 						zoom={9}
 						style={{ width: this.props.wi, height: this.props.hi, backgroundColor: 'powderblue' }}
-						onZoomChanged={this.handleZoomChanged()}
+						onDragend={this.handleZoomChanged()}
 						ref={this.state.map}
+						
 					>
 
 
