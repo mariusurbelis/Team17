@@ -100,10 +100,11 @@ class HospitalsMap extends Component {
 				position={{ lat: e2.Latitude, lng: e2.longitude }}
 				onClick={this.onMarkerClick}
 				label={{
-					color: '#cccccc',
+					color: '#0f0f0f',
 					text: lab,
 					fontFamily: "Arial",
 					fontSize: "16px",
+					fontWeight: 'bold'
 				}}
 				name={e2.ProviderName}
 				title={e2.ProviderName}
@@ -111,8 +112,8 @@ class HospitalsMap extends Component {
 
 				icon={{
 					url: Cross,
-					anchor: new this.props.google.maps.Point(32, 32),
-					scaledSize: new this.props.google.maps.Size(32, 32)
+					anchor: new this.props.google.maps.Point(20, 20),
+					scaledSize: new this.props.google.maps.Size(20, 20)
 				}}
 
 				 />);
