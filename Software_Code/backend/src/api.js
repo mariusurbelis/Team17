@@ -106,7 +106,7 @@ app.get('/proceduresbyidminmax', function (req, res) {
     var state = req.query.state;
     var min = req.query.min;
     var max = req.query.max;
-    connection.query('select * from ProvidersIncreasing where GPDID=' + id + ' AND State=\'' + state +  ' AND TotalPayments BETWEEN ' + min + ' AND ' + max + ' LIMIT 0,50', function (error, results, fields) {
+    connection.query('select * from ProvidersIncreasing where GPDID=' + id + ' AND State=\'' + state +  '\' AND TotalPayments BETWEEN ' + min + ' AND ' + max + ' LIMIT 0,50', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
     });
