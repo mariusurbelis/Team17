@@ -72,7 +72,7 @@ export class Card extends Component {
 
             <div class="row row-cols-2">
                 <div class="col"><b>Distance: </b></div>
-                <div class="col">256 Miles</div>
+        <div class="col">{this.props.card.distance}</div>
             </div>
 
             <div class="row row-cols-2">
