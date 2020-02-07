@@ -61,7 +61,7 @@ const Styles = styled.div`
         height: 3em;
         padding: 1em;
         border-width: 2px;
-        border: 3px solid #0E9DD9;
+        border: 2px solid #0E9DD9;
         border-radius: 9px;
         background: var(--bg);
         cursor: pointer;
