@@ -4,6 +4,7 @@ import getDistance from 'geolib/es/getDistance';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import Cross from '../assets/cross.png'
 
 var markers = []
 var finalArray = []
@@ -99,23 +100,22 @@ class HospitalsMap extends Component {
 				position={{ lat: e2.Latitude, lng: e2.longitude }}
 				onClick={this.onMarkerClick}
 				label={{
-					color: 'white',
+					color: '#cccccc',
 					text: lab,
 					fontFamily: "Arial",
-					fontSize: "14px",
+					fontSize: "16px",
 				}}
 				name={e2.ProviderName}
 				title={e2.ProviderName}
 				hosp={e2}
 
-				// icon={{
-				// 	url: "../assets/cross.png",
-				// 	anchor: new google.maps.Point(32, 32),
-				// 	scaledSize: new google.maps.Size(64, 64)
-				// }} 
-				/>)
+				icon={{
+					url: Cross,
+					anchor: new this.props.google.maps.Point(32, 32),
+					scaledSize: new this.props.google.maps.Size(32, 32)
+				}}
 
-				;
+				 />);
 
 		})
 	}
