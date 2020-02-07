@@ -35,12 +35,12 @@ const Styles = styled.div`
 export const CityBanner = (props) => (
     <Styles>
         <Row>
-            <Col><h1 class="homeHeading">A smarter way to find affordable healthcare</h1></Col>
+            <Col><h1 className="homeHeading">A smarter way to find affordable healthcare</h1></Col>
             <Col><Image src={City} align="right" /></Col>
         </Row>
         <Row>
             <Col>
-                <h1 class = "homeHeading2">Start Saving Money Today</h1>
+                <h1 className = "homeHeading2">Start Saving Money Today</h1>
                 <p>Using our price comparison tools to make sure that the hospitals 
                     don't have the upper hand. Informed consumers are free consumers
                 </p>

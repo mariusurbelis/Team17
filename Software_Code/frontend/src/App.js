@@ -181,13 +181,7 @@ class App extends Component {
 
                     {/* Main page area, put your components in here <3 - LowerLayout is just a react container to keep things neat */}
                     {/* <Route path = "PAGE-NAME(Page you want component to appear on)" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
-                    <LowerLayout>
-                        <Router>
-                            <Switch>
-                                <Route path="/about" component={About} />
-                            </Switch>
-                        </Router>
-                    </LowerLayout>
+
 
                     {/* Main page area, put your components in here <3 - LowerLayout is just a react container to keep things neat */}
                     {/* <Route path = "PAGE-NAME(Page you want component to appear on)" component = {"NAME-OF-COMPONENT,NAME-OF-COMPONENT-2, etc etc"}/> */}
