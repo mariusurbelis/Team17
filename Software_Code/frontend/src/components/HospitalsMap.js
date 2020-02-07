@@ -108,11 +108,12 @@ class HospitalsMap extends Component {
 				title={e2.ProviderName}
 				hosp={e2}
 
-				icon={{
-					url: "../assets/cross.png",
-					anchor: new google.maps.Point(32, 32),
-					scaledSize: new google.maps.Size(64, 64)
-				}} />)
+				// icon={{
+				// 	url: "../assets/cross.png",
+				// 	anchor: new google.maps.Point(32, 32),
+				// 	scaledSize: new google.maps.Size(64, 64)
+				// }} 
+				/>)
 
 				;
 
@@ -158,13 +159,14 @@ class HospitalsMap extends Component {
 	};
 
 	initCen() {
-		if (finalArray.length > 0) {
-			return { lat: finalArray[0].Latitude, lng: finalArray[0].longitude }
-		} else if (this.props.location !== null) {
-			return this.props.location
-		} else {
-			return { lat: 40.7128, lng: -74.0060 }
-		}
+		return { lat: 38.2700, lng: -100.8603 }
+		// if (finalArray.length > 0) {
+		// 	return { lat: finalArray[0].Latitude, lng: finalArray[0].longitude }
+		// } else if (this.props.location !== null) {
+		// 	return this.props.location
+		// } else {
+		// 	return { lat: 38.2700, lng: -100.8603 }
+		// }
 	}
 
 	handleZoomChanged() {
@@ -189,7 +191,7 @@ class HospitalsMap extends Component {
 					<Map google={this.props.google}
 						onClick={this.onMapClicked}
 						initialCenter={this.initCen()}
-						zoom={3}
+						zoom={5}
 						style={{ width: this.props.wi, height: this.props.hi, backgroundColor: 'powderblue' }}
 						onZoomChanged={this.handleZoomChanged()}
 						ref={this.state.map}

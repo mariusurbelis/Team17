@@ -144,10 +144,12 @@ class App extends Component {
         var newProcs = []
 
         this.state.procedures.forEach((proc) => {
-                 if(parseInt(proc.distance) < rad){
+                var procDis = parseInt(proc.distance) 
+                 if(procDis < rad){
                      newProcs.push(proc)
-                     if(proc.distance<shortestDistance){
+                     if(procDis<shortestDistance){
                          closestLoc = {lat: proc.Latitude, lng: proc.longitude}
+                         shortestDistance = procDis
                      }
                  }
         })
