@@ -14,7 +14,8 @@ class HospitalsMap extends Component {
 		super(props)
 		this.state = {
 			selectedPlace: "",
-			reload: false
+			reload: false,
+			marksOn: false
 		}
 		markers = []
 		finalArray = []
@@ -81,9 +82,17 @@ class HospitalsMap extends Component {
 		// console.log(finalArray)
 		markers = []
 		finalArray.forEach((e2) => {
-
-			lab = this.splitProvName(e2.ProviderName)
-
+			// console.log("marker 2")
+			// console.log(e2)
+			if (!this.state.markOn) {
+				lab = " "
+			} else {
+				
+				lab = this.splitProvName(e2.ProviderName)  
+				// lab= "B"
+				//lab=this.findDistancesFromCoord(e2.Latitude, e2.longitude)
+				//lab = this.findDistancesFromCoord({lat: e2.Latitude, lng: e2.longitude})
+			}
 
 			markers.push(<Marker
 				address={e2.Address + ', ' + e2.City + ', ' + e2.State}
@@ -133,12 +142,22 @@ class HospitalsMap extends Component {
 				activeMarker: null
 			})
 		}
-		this.processProcAndProv()
+		if(this.state.markOn){
+			this.setState({
+				markOn: false
+			})
+		}else{
+			this.setState({
+				markOn: true
+			})
+		}
+		console.log("Click: " + this.state.markOn)
+		this.marcPush()
+		
+		// this.processProcAndProv()
 	};
 
 	initCen() {
-		console.log("Location:")
-		console.log(this.props.location)
 		if (finalArray.length > 0) {
 			return { lat: finalArray[0].Latitude, lng: finalArray[0].longitude }
 		} else if (this.props.location !== null) {
@@ -150,7 +169,7 @@ class HospitalsMap extends Component {
 
 	handleZoomChanged() {
 		// this.state.map.setZoom(6);
-		console.log("Fix")
+		// console.log("Fix")
 	}
 
 	iterateZoom() {
@@ -170,9 +189,9 @@ class HospitalsMap extends Component {
 					<Map google={this.props.google}
 						onClick={this.onMapClicked}
 						initialCenter={this.initCen()}
-						zoom={9}
+						zoom={3}
 						style={{ width: this.props.wi, height: this.props.hi, backgroundColor: 'powderblue' }}
-						onDragend={this.handleZoomChanged()}
+						onZoomChanged={this.handleZoomChanged()}
 						ref={this.state.map}
 
 					>
