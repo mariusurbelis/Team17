@@ -81,7 +81,7 @@ app.get('/procedures', function (req, res) {
         });
 
         results.forEach(function (item, index) {
-            item.distance = Math.round(distance(item.Latitude, item.longitude, lat, lon) * 100) / 100;
+            item.distance = distance(item.Latitude, item.longitude, lat, lon);
         });
 
         res.end(JSON.stringify(results));
@@ -168,7 +168,7 @@ app.get('/proceduresbyid', function (req, res) {
         });
 
         results.forEach(function (item, index) {
-            item.distance = Math.round(distance(item.Latitude, item.longitude, lat, lon) * 100) / 100;
+            item.distance = distance(item.Latitude, item.longitude, lat, lon);
         });
 
         res.end(JSON.stringify(results));
@@ -218,7 +218,7 @@ function distance(lat1, lon1, lat2, lon2) {
         dist = dist * 180 / Math.PI;
         dist = dist * 60 * 1.1515;
 
-        return dist;
+        return Math.round(dist * 100) / 100;
     }
 }
 
