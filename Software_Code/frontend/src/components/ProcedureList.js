@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Card from './Card'
 
-
 class ProcedureList extends Component {
   render() {
     return this.props.procedures.map((card) => (

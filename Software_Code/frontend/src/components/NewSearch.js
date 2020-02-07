@@ -178,7 +178,7 @@ export default class NewSearch extends Component {
                         </Col>
 
                         <Col sm='2'>
-                            <label className="smallLabel">Search Radius (KM)</label>
+                            <label className="smallLabel">Search Radius (Miles)</label>
                         </Col>
 
                     </Row>

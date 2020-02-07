@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import { css } from "@emotion/core";
+import FadeLoader from "react-spinners/FadeLoader";
+
 // These are for page navigation, components change depending page..
 import { About } from './About';
 
@@ -20,6 +23,22 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import NewSearch from './components/NewSearch';
 
+const override = css`
+    display: block;
+    margin: 200px auto;
+    background: white;
+    border-color: red;
+`;
+
+const overrideFullScreen = css`
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    // transform: translate(-50%, -50%);
+`;
 
 var locations = ""
 
@@ -36,7 +55,7 @@ class App extends Component {
             providersLoaded: false,
             proceduresidLoaded: false,
             query: '',
-            loading: false,
+            loading: true,
             initial: true,
             searchMain: "",
             searchLocation: "",
@@ -83,7 +102,7 @@ class App extends Component {
             },
         }).then(response => {
             if (response.ok) {
-                response.json().then(data => this.setState({ 'providers': data }))
+                response.json().then(data => this.setState({ 'providers': data, 'loading': false }))
             }
         });
     }
@@ -134,6 +153,15 @@ class App extends Component {
         if (this.state.initial) {
             return (
                 <React.Fragment>
+
+                    <div className="sweet-loading">
+                        <FadeLoader
+                            css={overrideFullScreen}
+                            size={200}
+                            color={"#123abc"}
+                            loading={this.state.loading}
+                        />
+                    </div>
 
                     {/* Header Area - Essentially the Navbar and color gradient components*/}
                     <ColorLayout>
@@ -197,8 +225,8 @@ class App extends Component {
             return (
 
                 <React.Fragment>
-
                     <div className={'container-fluid'}>
+
                         <Row className={''}>
 
                             <Col style={{ width: '100%', background: 'white' }} sm='12' >
@@ -210,6 +238,16 @@ class App extends Component {
                         <Row >
                             <div style={{ height: '80vh' }} className={'col-3 p-3 overflow-auto'}>
                                 <ProcedureList procedures={this.state.procedures}></ProcedureList>
+
+                                <div className="sweet-loading">
+                                    <FadeLoader
+                                        css={override}
+                                        size={200}
+                                        color={"#123abc"}
+                                        loading={this.state.loading}
+                                    />
+                                </div>
+
                             </div>
 
                             <div className={'col-9 m-0 p-0 pr-1'}>
